@@ -2,8 +2,9 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import {
-  applyPatch, boardColumns, COLUMNS, commandFor, currentPlace, DEFAULT_ROLES, dispatchPatch,
-  emptyMessage, filterTasks, hcArgv, mergeAction, parseConfig, parseState, taskAgent, taskLine,
+  applyPatch, boardColumns, cardAction, COLUMNS, commandFor, commitAttempt, currentPlace, DEFAULT_ROLES,
+  dispatchPatch, emptyMessage, filterTasks, hcArgv, hcDelivery, mergeAction, openablePath, PANE_NAME,
+  paneChoices, parseConfig, parseState, taskAgent, taskLine,
 } from "../mods/herdr-board/state.js";
 
 const read = (path) => readFileSync(new URL(path, import.meta.url), "utf8");
@@ -60,7 +61,7 @@ test("taskLine is one line, keeps the id, title and result paths, and strips con
 test("merge action moves the task to decide and never mentions git", () => {
   const plan = mergeAction({ id: "T-009\n" }, { leadExists: true });
   assert.deepEqual(plan.patch, { column: "decide", needs_pol: true });
-  assert.deepEqual(plan.hc, ["send", "--if", "idle", "lead", "task T-009 請示 Pol哥 是否合併"]);
+  assert.deepEqual(plan.hc, ["send", "--if", "idle", "--", "lead", "task T-009 請示 Pol哥 是否合併"]);
   assert.equal(JSON.stringify(plan).includes("git"), false);
   assert.equal(plan.hc.includes("merge"), false);
   assert.equal(mergeAction({ id: "T-001" }, { leadExists: false }).hc, null);
@@ -101,7 +102,14 @@ test("dispatch from 待辦 sets the column, and an existing pane is an idle send
     "--", "grok", "-m", "grok-4.7", "Task T-001",
   ]);
   assert.deepEqual(hcArgv({ exists: true, pane: "review", command: ["codex"], task: "Task T-002", space: "s1", tab: "t1" }),
-    ["send", "--if", "idle", "review", "Task T-002"]);
+    ["send", "--if", "idle", "--", "review", "Task T-002"]);
+  assert.equal(hcArgv({ exists: true, pane: "--help", command: ["grok"], task: "Task T-001", space: "s1", tab: "t1" }), null);
+  assert.equal(PANE_NAME.test("--help"), false);
+  assert.equal(PANE_NAME.test("-lead"), false);
+  assert.equal(PANE_NAME.test("build-grok"), true);
+  const choices = paneChoices({ "--help": ["grok"], "review-2": ["codex"] });
+  assert.equal(choices.includes("--help"), false);
+  assert.equal(choices.includes("review-2"), true);
 });
 
 test("config expands ~ and a patch touches only the one task", () => {
@@ -119,6 +127,82 @@ test("config expands ~ and a patch touches only the one task", () => {
   assert.equal(next.state.tasks[0].title, "a");
   assert.equal(next.state.tasks[1].column, "build");
   assert.equal(next.state.updated_at, "2026-11-02T00:00:00.000Z");
+  const configRoles = parseConfig('{ "roles": { "--help": ["grok"], "review-2": ["codex"] } }', "/h");
+  assert.equal(configRoles.roles["--help"], undefined);
+  assert.deepEqual(configRoles.roles["review-2"], ["codex"]);
+});
+
+test("a conflicting write is retried and only the target task changes", () => {
+  const base = {
+    version: 1, other: "root", updated_at: "t0",
+    tasks: [
+      { id: "T-1", title: "before", column: "todo", custom: "a" },
+      { id: "T-2", title: "before", column: "build", custom: "b" },
+    ],
+  };
+  const baseText = JSON.stringify(base);
+  const concurrent = JSON.parse(baseText);
+  concurrent.tasks[1].title = "concurrent update";
+  concurrent.updated_at = "t1";
+  const concurrentText = JSON.stringify(concurrent);
+  const conflict = commitAttempt(
+    { text: baseText, mtime: "1", updated_at: "t0" },
+    { text: concurrentText, mtime: "2", updated_at: "t1" },
+    "T-1", { pane: "spec", column: "spec", title: "nope" }, "t2");
+  assert.equal(conflict.action, "retry");
+  const sameSecond = commitAttempt(
+    { text: baseText, mtime: "1", updated_at: "t0" },
+    { text: concurrentText, mtime: "1", updated_at: "t0" },
+    "T-1", { pane: "spec", column: "spec" }, "t2");
+  assert.equal(sameSecond.action, "retry");
+  const written = commitAttempt(
+    { text: concurrentText, mtime: "2", updated_at: "t1" },
+    { text: concurrentText, mtime: "2", updated_at: "t1" },
+    "T-1", { pane: "spec", column: "spec", title: "nope" }, "t2");
+  assert.equal(written.action, "write");
+  const saved = JSON.parse(written.text);
+  assert.equal(saved.other, "root");
+  assert.equal(saved.tasks[0].title, "before");
+  assert.equal(saved.tasks[0].custom, "a");
+  assert.equal(saved.tasks[0].pane, "spec");
+  assert.equal(saved.tasks[0].column, "spec");
+  assert.equal(saved.tasks[0].updated_at, "t2");
+  assert.equal(saved.tasks[1].title, "concurrent update");
+  assert.equal(saved.tasks[1].custom, "b");
+  assert.equal(saved.tasks[1].pane, undefined);
+  assert.deepEqual(Object.keys(saved.tasks[1]).sort(), ["column", "custom", "id", "title"]);
+  assert.equal(saved.updated_at, "t2");
+});
+
+test("a launch that did not deliver the first message is not success", () => {
+  assert.deepEqual(hcDelivery({ code: 0, stdout: JSON.stringify({ first_message: { sent: false } }) }),
+    { ok: false, error: "代理沒有收到第一句任務" });
+  assert.equal(hcDelivery({ code: 0, stdout: JSON.stringify({ first_message: { sent: true } }) }).ok, true);
+  assert.equal(hcDelivery({ code: 0, stdout: JSON.stringify({ ok: true }) }).ok, true);
+  assert.equal(hcDelivery({ code: 3, stderr: JSON.stringify({ error: { message: "no terminal" } }) }).ok, false);
+});
+
+test("only a local absolute path or a home path can be opened", () => {
+  assert.equal(openablePath("https://example.invalid/a", "/Users/p"), null);
+  assert.equal(openablePath("file:///etc/passwd", "/Users/p"), null);
+  assert.equal(openablePath("notes.md", "/Users/p"), null);
+  assert.equal(openablePath("//share/a", "/Users/p"), null);
+  assert.equal(openablePath("/tmp/build.md", "/Users/p"), "/tmp/build.md");
+  assert.equal(openablePath("~/ops/a.md", "/Users/p"), "/Users/p/ops/a.md");
+});
+
+test("an unknown column is drawn in 待辦 and still offers 派工", () => {
+  assert.equal(cardAction("todo"), "dispatch");
+  assert.equal(cardAction("spec"), "dispatch");
+  assert.equal(cardAction("build"), "dispatch");
+  assert.equal(cardAction("review"), "dispatch");
+  assert.equal(cardAction("nope"), "dispatch");
+  assert.equal(cardAction("merge"), "pol");
+  assert.equal(cardAction("decide"), null);
+  assert.equal(cardAction("merged"), null);
+  const { columns } = boardColumns([{ id: "T-9", column: "nope" }, { id: "T-1", column: "todo" }]);
+  assert.deepEqual(columns[0].tasks.map((task) => task.id), ["T-9", "T-1"]);
+  assert.equal(cardAction(columns[0].tasks[0].column), "dispatch");
 });
 
 test("filter matches id or title, and an agent matches the pane name then the task id", () => {

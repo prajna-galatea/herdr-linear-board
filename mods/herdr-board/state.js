@@ -28,9 +28,9 @@ export const DEFAULT_ROLES = {
 // Panes the dispatch dialog offers before any extra names in config.
 export const PICK_PANES = ["spec", "build", "build-grok", "build-deepseek", "build-glm", "review", "merge"];
 
-const PANE_NAME = /^[a-z0-9_-]{1,32}$/;
+// Names starting with "-" would be read as hc options (`--help`). 1–32 chars, first char is not "-".
+export const PANE_NAME = /^[a-z0-9_][a-z0-9_-]{0,31}$/;
 const RESULT_KEYS = ["spec", "build", "review"];
-const PATCH_KEYS = ["column", "pane", "needs_pol"];
 const AGENT_RANK = { blocked: 3, done: 2, working: 1, idle: 0 };
 
 export function expandHome(path, homeDir) {
@@ -55,7 +55,7 @@ function roleTable(overrides) {
   for (const [key, value] of Object.entries(DEFAULT_ROLES)) roles[key] = value.slice();
   if (!overrides || typeof overrides !== "object") return roles;
   for (const [key, value] of Object.entries(overrides)) {
-    if (!Array.isArray(value) || !value.length) continue;
+    if (!PANE_NAME.test(key) || !Array.isArray(value) || !value.length) continue;
     const args = [];
     let ok = true;
     for (const part of value) {
@@ -184,10 +184,16 @@ export function resultPath(task) {
   return results.review || results.build || results.spec || null;
 }
 
+// A result may be opened only as a local file: an absolute path, or one that starts with ~.
 export function openablePath(path, homeDir) {
   const text = String(path ?? "").trim();
-  if (!text || text.startsWith("-") || /[\u0000-\u001f\u007f]/.test(text)) return null;
-  return expandHome(text, homeDir);
+  if (!text || /[\u0000-\u001f\u007f]/.test(text)) return null;
+  if (/^[a-z][a-z0-9+.-]*:/i.test(text)) return null;
+  let absolute = null;
+  if (text === "~" || text.startsWith("~/")) absolute = expandHome(text, homeDir);
+  else if (text.startsWith("/") && !text.startsWith("//")) absolute = text;
+  if (!absolute || !absolute.startsWith("/") || absolute.startsWith("//")) return null;
+  return absolute;
 }
 
 function sameAddress(a, b) {
@@ -285,8 +291,10 @@ export function commandFor(pane, roles = DEFAULT_ROLES) {
 }
 
 export function hcArgv({ exists, pane, command, task, space, tab, cwd }) {
+  if (!PANE_NAME.test(String(pane ?? ""))) return null;
   const line = plain(task);
-  if (exists) return ["send", "--if", "idle", pane, line];
+  // `--` ends hc's own options, so a pane name is never read as a flag.
+  if (exists) return ["send", "--if", "idle", "--", pane, line];
   const args = ["run", "--bg", "--name", pane, "--keep"];
   if (space) args.push("--label", `herdr.space=${space}`);
   if (tab) args.push("--label", `herdr.tab=${tab}`);
@@ -301,22 +309,91 @@ export function hcArgv({ exists, pane, command, task, space, tab, cwd }) {
 export function mergeAction(task, { leadExists = false } = {}) {
   return {
     patch: { column: "decide", needs_pol: true },
-    hc: leadExists ? ["send", "--if", "idle", "lead", `task ${plain(task?.id)} 請示 Pol哥 是否合併`] : null,
+    hc: leadExists ? ["send", "--if", "idle", "--", "lead", `task ${plain(task?.id)} 請示 Pol哥 是否合併`] : null,
   };
 }
 
-export function applyPatch(state, id, fields, now) {
-  const allowed = {};
-  for (const key of PATCH_KEYS) if (fields?.[key] !== undefined) allowed[key] = fields[key];
+const KNOWN_COLUMNS = new Set(COLUMNS.map((column) => column.id));
+
+// Where a card is drawn. An unknown column is shown in 待辦.
+export function placedColumn(column) {
+  return KNOWN_COLUMNS.has(column) ? column : "todo";
+}
+
+// 待辦、規格師、施工手、審查手，以及被放進待辦的未知欄位，可以派工。
+export function cardAction(column) {
+  const placed = placedColumn(column);
+  if (placed === "merge") return "pol";
+  if (placed === "todo" || placed === "spec" || placed === "build" || placed === "review") return "dispatch";
+  return null;
+}
+
+export function readUpdatedAt(text) {
+  if (text == null) return null;
+  try {
+    const raw = JSON.parse(text);
+    if (!raw || typeof raw !== "object" || Array.isArray(raw)) return null;
+    return typeof raw.updated_at === "string" ? raw.updated_at : "";
+  } catch {
+    return null;
+  }
+}
+
+// True when the file changed between the read we patched and the moment we would write.
+export function isStale(seen, current) {
+  if (!seen || !current) return true;
+  return seen.mtime !== current.mtime || seen.updated_at !== current.updated_at || seen.text !== current.text;
+}
+
+// Copy the raw document and change one task. Other tasks and unknown keys stay as they were.
+export function patchDocument(raw, id, fields, now) {
+  if (!raw || typeof raw !== "object" || Array.isArray(raw) || !Array.isArray(raw.tasks)) return { ok: false, error: "狀態檔缺少 tasks" };
+  if (raw.version != null && raw.version !== 1) return { ok: false, error: `不支援的 version ${raw.version}` };
+  const next = JSON.parse(JSON.stringify(raw));
   let found = false;
-  const tasks = [];
-  for (const task of state?.tasks ?? []) {
-    if (task.id !== id) { tasks.push(task); continue; }
+  for (const task of next.tasks) {
+    if (!task || typeof task !== "object" || Array.isArray(task) || task.id !== id) continue;
     found = true;
-    tasks.push({ ...task, ...allowed, updated_at: now });
+    if (fields?.column !== undefined) task.column = fields.column;
+    if (fields?.pane !== undefined) task.pane = fields.pane;
+    if (fields?.needs_pol !== undefined) task.needs_pol = fields.needs_pol;
+    task.updated_at = now;
   }
   if (!found) return { ok: false, error: `找不到任務 ${id}` };
-  return { ok: true, state: { ...state, version: 1, updated_at: now, tasks } };
+  next.updated_at = now;
+  return { ok: true, state: next, text: `${JSON.stringify(next, null, 2)}\n` };
+}
+
+export function applyPatch(state, id, fields, now) {
+  const patched = patchDocument(state, id, fields, now);
+  if (!patched.ok) return patched;
+  return { ok: true, state: patched.state };
+}
+
+// `retry` when mtime, updated_at, or the text changed. Otherwise the text to write.
+export function commitAttempt(seen, current, id, fields, now) {
+  if (isStale(seen, current)) return { action: "retry" };
+  let raw;
+  try { raw = JSON.parse(seen.text); }
+  catch { return { action: "error", error: "狀態檔不是合法的 JSON" }; }
+  const patched = patchDocument(raw, id, fields, now);
+  if (!patched.ok) return { action: "error", error: patched.error };
+  return { action: "write", text: patched.text, state: patched.state };
+}
+
+// A launch can exit 0 while `first_message.sent` is false. That task was not delivered.
+export function hcDelivery(result) {
+  const stdout = String(result?.stdout ?? "").trim();
+  const stderr = String(result?.stderr ?? "").trim();
+  const raw = stdout || stderr;
+  let body = null;
+  if (raw) {
+    try { body = JSON.parse(raw); } catch { body = null; }
+  }
+  const message = body?.error?.message ? String(body.error.message) : (raw.replace(/[\u0000-\u001f\u007f-\u009f\s]+/g, " ").trim() || "hc 失敗");
+  if ((result?.code ?? 1) !== 0) return { ok: false, error: message };
+  if (body?.first_message && body.first_message.sent === false) return { ok: false, error: "代理沒有收到第一句任務" };
+  return { ok: true };
 }
 
 const MONTHS = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"];

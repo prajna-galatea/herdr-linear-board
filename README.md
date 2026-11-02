@@ -216,7 +216,7 @@ mkdir -p ~/herdr-ops/board && cp examples/state.example.json ~/herdr-ops/board/s
 
 - 待辦、規格師、施工手、審查手的卡片有「派工」。選角色分頁（規格師預設 `spec`，施工手預設 `build-grok`，審查手預設 `review`），可加一句補充。分頁已經在就 `hc send --if idle`；還沒有就 `hc run --bg --name … --keep`，帶上目前的 space 與 tab。從待辦派出去時，任務會移到那個角色的欄。
 - 合併手的按鈕是「請 Pol哥 決定」。它只把任務改成 `needs_pol` 並移到「等Pol哥決定」。若有名為 `lead` 的分頁，另外送一句請示。它不跑 git，也不合併。
-- 有結果路徑的卡片，點卡片會用系統的 `open` 打開那個檔。沒有路徑就什麼都不做。
+- 有結果路徑的卡片，點卡片會用系統的 `open` 打開那個檔。只接受本機絕對路徑或 `~` 開頭。沒有路徑、或是網址，就什麼都不做。
 
 細節與重做這組 mod 的說明在 [`RECIPE.herdr.md`](RECIPE.herdr.md)。
 
