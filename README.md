@@ -164,8 +164,65 @@ herdr-app check mods/linear-board && herdr-app check mods/linear-board-agent
 [`RECIPE.md`](RECIPE.md) is the full brief: everything an agent needs to rebuild the mod from an
 empty folder.
 
+## 本機模式 (herdr ops)
+
+這份倉庫另外有一組本機看板，給「Herdr 新任務流程」用。它不連 Linear、不跑 `claude`、也不建立 worktree。合併不會自動發生。
+
+原作是 [nu0ma/herdr-linear-board](https://github.com/nu0ma/herdr-linear-board)（MIT）。本機模式是加在旁邊的另一組 mod，原本的 Linear 看板還在。
+
+### 安裝
+
+不要蓋掉 `linear-board`。把這兩個資料夾複製進 Herdr 的 mod 目錄（這份倉庫自己不會代你複製）：
+
+```sh
+cp -R mods/herdr-board mods/herdr-board-agent ~/.config/herdr-app/mods/
+```
+
+快捷鍵自己加到 `~/.config/herdr-app/keys.json` 的 `global`，避開 Linear 看板已經用的 `ctrl-shift-y`，例如：
+
+```json
+"ctrl-shift-h": "mod.open:herdr-board"
+```
+
+### 狀態檔
+
+預設讀 `~/herdr-ops/board/state.json`。第一次：
+
+```sh
+mkdir -p ~/herdr-ops/board && cp examples/state.example.json ~/herdr-ops/board/state.json
+```
+
+範例裡七張卡各占一欄，標題都以 `[範例]` 開頭。路徑可以改，寫在 `~/.config/herdr-app/herdr-board.json`：
+
+```json
+{
+  "state": "~/herdr-ops/board/state.json",
+  "roles": {
+    "build-grok": ["grok", "-m", "grok-4.7"],
+    "review": ["codex", "--no-daemon"]
+  }
+}
+```
+
+`~` 會展開。沒寫的角色用內建指令。看板打開時、按 `Refresh`、以及打開期間每 5 秒會重讀。檔案不在時顯示「尚無任務」。JSON 壞掉時留著上一份好的內容，並顯示錯誤。
+
+### 欄位
+
+固定七欄，空的也在：待辦、等Pol哥決定、規格師、施工手、審查手、合併手、已合併。上方可以用編號或標題篩，也可以用模型篩。
+
+卡片有編號、完整標題、模型、分頁名、退回次數、規格重寫、範例標記，以及更新日。`needs_pol` 為真時畫強調框並顯示「等 Pol哥」。Herdr 裡同名的分頁會顯示 Working／Needs you／Done／Idle，點它會跳過去。
+
+### 動作
+
+- 待辦、規格師、施工手、審查手的卡片有「派工」。選角色分頁（規格師預設 `spec`，施工手預設 `build-grok`，審查手預設 `review`），可加一句補充。分頁已經在就 `hc send --if idle`；還沒有就 `hc run --bg --name … --keep`，帶上目前的 space 與 tab。從待辦派出去時，任務會移到那個角色的欄。
+- 合併手的按鈕是「請 Pol哥 決定」。它只把任務改成 `needs_pol` 並移到「等Pol哥決定」。若有名為 `lead` 的分頁，另外送一句請示。它不跑 git，也不合併。
+- 有結果路徑的卡片，點卡片會用系統的 `open` 打開那個檔。沒有路徑就什麼都不做。
+
+細節與重做這組 mod 的說明在 [`RECIPE.herdr.md`](RECIPE.herdr.md)。
+
 ## License
 
 [MIT](LICENSE). Built from [dantech99/herdr-linear](https://github.com/dantech99/herdr-linear) (MIT);
 the agent dialog is adapted from `issue-agent` in
 [obrunogonzaga/herdr-mods](https://github.com/obrunogonzaga/herdr-mods) (MIT).
+Original board by [nu0ma](https://github.com/nu0ma/herdr-linear-board).
