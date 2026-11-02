@@ -49,3 +49,9 @@ Header title "Herdr 新任務流程". Keep text filter (id/title). Replace proje
 - `herdr-app check mods/herdr-board` and `herdr-app check mods/herdr-board-agent` pass.
 - No reference to `claude -p` / Linear MCP in the herdr-board mods.
 - Commit(s) on branch herdr-local-board. Do NOT push.
+
+## Round 3 changes (Pol哥 decisions, 2026-11-02)
+1. **Single writer**: `state.json` is written ONLY by the future dispatch script. The board must NEVER write/rename/mv state.json. Board actions (派工, 送 herdr cto 把關) instead create a NEW request file `~/herdr-ops/board/requests/<UTC-timestamp>-<taskid>-<rand>.json` (write to a tmp name in the same dir, then rename to the final unique name; never overwrite an existing file). Request schema: `{ "version":1, "kind":"dispatch|gate", "task":"<id>", "pane":"<role pane>", "instructions":"…", "created_at":"ISO", "from":"herdr-board" }`. The board may additionally `hc send` (dispatch to a role pane, or notify `lead` for gate) as before. Show pending requests for a card as a "待處理請求" pill (read-only scan of requests/). Remove all state-writing code (savePatch etc.) and its tests; add tests proving no write path targets state.json.
+2. **Polling (blocker 2)**: change detection must not rely on second-precision mtime. Compare mtimeMs + size + a content hash (or always re-read and compare text when stat is equal). Add a test where mtime is identical but content changed → board updates.
+3. **Unknown column**: cards with unknown `column` are shown in 待辦 and a dispatch request for them carries `"column_hint":"todo"`; the card UI treats them as todo consistently. Add a test.
+4. **Rename column**: 「等Pol哥決定」 → 「herdr cto 把關」 everywhere (code, examples, README, RECIPE.herdr.md, this spec's earlier text may stay as history, tests). Keep the stable id `decide`. Merge-column button label: 「送 herdr cto 把關」; it writes a `gate` request and, if `lead` exists, `hc send --if idle lead -- "task <id> 待 herdr cto 把關"`. It never runs git.
