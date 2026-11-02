@@ -167,3 +167,68 @@ BOARD_EXIT:0
 check passed: mods/herdr-board-agent
 AGENT_EXIT:0
 ```
+
+
+## 第 3 輪
+
+- 施工提交：`f5859a4914b5a383cb434bfb8755767fa2ac9b88`。
+- 看板只讀狀態檔，派工與把關寫入獨立請求檔；顯示待處理請求，未知欄位派工附 `column_hint: "todo"`。
+- 每次輪詢重讀狀態，並將 `decide` 欄及合併按鈕改為 herdr cto 把關。
+- 以下指令均在專案根目錄執行，退出碼皆為 0。`herdr-app check` 在沙箱內等待無輸出，中止後於沙箱外重跑。
+- 隔離測試使用臨時目錄及替身，不對既有窗格發送訊息；尚未在真實 Herdr 視窗驗證互動，未安裝 mod。
+
+```text
+$ node --test
+✔ parseSync reads issues from the tool results (0.648375ms)
+✔ a state without an answer fails the sync (0.2075ms)
+✔ parseRepos expands ~ and tolerates a missing or broken file (0.506584ms)
+✔ filterIssues by id or title (0.135583ms)
+✔ projectsOf counts projects, biggest first and no project last (0.19775ms)
+✔ filterIssues narrows by project along with the text (0.080625ms)
+✔ boardColumns orders states and puts urgent issues first (0.225417ms)
+✔ limitCards shares the limit out so no column starves (0.141292ms)
+✔ ago takes an ISO date or a timestamp (0.643834ms)
+✔ safeUrl lets only https through (0.164125ms)
+✔ parseSyncResult reads a finished sync and reports a failed one (0.23925ms)
+✔ issueAgents finds the agent by tab, space or branch, the most urgent first (0.165459ms)
+✔ poll reloads changed content despite identical modification time (21.15275ms)
+✔ dispatch and gate write unique request files without touching state.json (28.407875ms)
+✔ parseState reads a task and rejects broken JSON without inventing a board (0.614667ms)
+✔ unknown columns land in 待辦 and every column stays, in order (0.486083ms)
+✔ taskLine is one line, keeps the id, title and result paths, and strips controls (0.272958ms)
+✔ gate action requests a lead notification and never mentions git (0.416917ms)
+✔ the example file has one example task in every column (0.195291ms)
+✔ dispatch uses configured commands and an existing pane is an idle send (0.180917ms)
+✔ config expands ~ and validates roles (0.181334ms)
+✔ requests carry unknown column hints and pending files are associated with tasks (0.131625ms)
+✔ a launch that did not deliver the first message is not success (0.108209ms)
+✔ only a local absolute path or a home path can be opened (0.245958ms)
+✔ an unknown column is drawn in 待辦 and still offers 派工 (0.531875ms)
+✔ filter matches id or title, and an agent matches the pane name then the task id (0.170792ms)
+✔ branchFor uses Linear's suggested branch (0.90725ms)
+✔ branchFor falls back to the identifier and title (0.202583ms)
+✔ folderName turns a branch into one path segment (0.107708ms)
+✔ taskFor is one line with the issue and its rules (0.181541ms)
+✔ taskFor asks for subagents only when chosen (0.062459ms)
+✔ taskFor shortens long descriptions (0.075084ms)
+✔ taskFor works without a description (0.052125ms)
+✔ branchProblem refuses names git would read as options (0.056292ms)
+✔ worktreeFolder never lands on the repo's worktrees folder itself (0.069042ms)
+✔ taskFor strips control characters from Linear's text (0.125625ms)
+✔ taskFor starts with the skill and adds the instructions (0.072833ms)
+✔ taskFor leaves skill and instructions out when blank (0.046666ms)
+ℹ tests 38
+ℹ suites 0
+ℹ pass 38
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 103.974
+
+$ herdr-app check mods/herdr-board
+check passed: mods/herdr-board
+
+$ herdr-app check mods/herdr-board-agent
+check passed: mods/herdr-board-agent
+```
