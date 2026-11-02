@@ -2,8 +2,8 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import {
-  applyPatch, boardColumns, cardAction, COLUMNS, commandFor, commitAttempt, currentPlace, DEFAULT_ROLES,
-  dispatchPatch, emptyMessage, filterTasks, hcArgv, hcDelivery, mergeAction, openablePath, PANE_NAME,
+  boardColumns, cardAction, COLUMNS, commandFor, currentPlace, DEFAULT_ROLES,
+  emptyMessage, filterTasks, hcArgv, hcDelivery, makeRequest, mergeAction, openablePath, pendingTasks, PANE_NAME,
   paneChoices, parseConfig, parseState, taskAgent, taskLine,
 } from "../mods/herdr-board/state.js";
 
@@ -58,10 +58,9 @@ test("taskLine is one line, keeps the id, title and result paths, and strips con
   assert.match(line, /Do not merge, push or deploy/);
 });
 
-test("merge action moves the task to decide and never mentions git", () => {
+test("gate action requests a lead notification and never mentions git", () => {
   const plan = mergeAction({ id: "T-009\n" }, { leadExists: true });
-  assert.deepEqual(plan.patch, { column: "decide", needs_pol: true });
-  assert.deepEqual(plan.hc, ["send", "--if", "idle", "--", "lead", "task T-009 請示 Pol哥 是否合併"]);
+  assert.deepEqual(plan.hc, ["send", "--if", "idle", "--", "lead", "task T-009 待 herdr cto 把關"]);
   assert.equal(JSON.stringify(plan).includes("git"), false);
   assert.equal(plan.hc.includes("merge"), false);
   assert.equal(mergeAction({ id: "T-001" }, { leadExists: false }).hc, null);
@@ -87,11 +86,7 @@ test("the example file has one example task in every column", () => {
   }
 });
 
-test("dispatch from 待辦 sets the column, and an existing pane is an idle send", () => {
-  assert.deepEqual(dispatchPatch({ column: "todo" }, "build-grok"), { pane: "build-grok", column: "build" });
-  assert.deepEqual(dispatchPatch({ column: "todo" }, "spec"), { pane: "spec", column: "spec" });
-  assert.deepEqual(dispatchPatch({ column: "todo" }, "review-2"), { pane: "review-2", column: "review" });
-  assert.deepEqual(dispatchPatch({ column: "build" }, "build-grok"), { pane: "build-grok" });
+test("dispatch uses configured commands and an existing pane is an idle send", () => {
   assert.deepEqual(commandFor("build-grok"), ["grok", "-m", "grok-4.7"]);
   assert.deepEqual(commandFor("review"), ["codex", "--no-daemon"]);
   assert.deepEqual(hcArgv({
@@ -112,7 +107,7 @@ test("dispatch from 待辦 sets the column, and an existing pane is an idle send
   assert.equal(choices.includes("review-2"), true);
 });
 
-test("config expands ~ and a patch touches only the one task", () => {
+test("config expands ~ and validates roles", () => {
   const config = parseConfig('{ "state": "~/ops/state.json", "roles": { "build-grok": ["grok", "-m", "grok-4.6"] } }', "/Users/p");
   assert.equal(config.state, "/Users/p/ops/state.json");
   assert.deepEqual(config.roles["build-grok"], ["grok", "-m", "grok-4.6"]);
@@ -120,58 +115,18 @@ test("config expands ~ and a patch touches only the one task", () => {
   assert.equal(emptyMessage("/Users/p/herdr-ops/board/state.json", "/Users/p"), "尚無任務：~/herdr-ops/board/state.json");
   assert.equal(parseConfig("not json", "/h").state, "/h/herdr-ops/board/state.json");
 
-  const state = parseState(JSON.stringify({ version: 1, tasks: [{ id: "T-001", title: "a", column: "todo" }, { id: "T-002", title: "b", column: "build" }] })).state;
-  const next = applyPatch(state, "T-001", { pane: "spec", column: "spec", title: "nope" }, "2026-11-02T00:00:00.000Z");
-  assert.equal(next.ok, true);
-  assert.equal(next.state.tasks[0].column, "spec");
-  assert.equal(next.state.tasks[0].title, "a");
-  assert.equal(next.state.tasks[1].column, "build");
-  assert.equal(next.state.updated_at, "2026-11-02T00:00:00.000Z");
   const configRoles = parseConfig('{ "roles": { "--help": ["grok"], "review-2": ["codex"] } }', "/h");
   assert.equal(configRoles.roles["--help"], undefined);
   assert.deepEqual(configRoles.roles["review-2"], ["codex"]);
 });
 
-test("a conflicting write is retried and only the target task changes", () => {
-  const base = {
-    version: 1, other: "root", updated_at: "t0",
-    tasks: [
-      { id: "T-1", title: "before", column: "todo", custom: "a" },
-      { id: "T-2", title: "before", column: "build", custom: "b" },
-    ],
-  };
-  const baseText = JSON.stringify(base);
-  const concurrent = JSON.parse(baseText);
-  concurrent.tasks[1].title = "concurrent update";
-  concurrent.updated_at = "t1";
-  const concurrentText = JSON.stringify(concurrent);
-  const conflict = commitAttempt(
-    { text: baseText, mtime: "1", updated_at: "t0" },
-    { text: concurrentText, mtime: "2", updated_at: "t1" },
-    "T-1", { pane: "spec", column: "spec", title: "nope" }, "t2");
-  assert.equal(conflict.action, "retry");
-  const sameSecond = commitAttempt(
-    { text: baseText, mtime: "1", updated_at: "t0" },
-    { text: concurrentText, mtime: "1", updated_at: "t0" },
-    "T-1", { pane: "spec", column: "spec" }, "t2");
-  assert.equal(sameSecond.action, "retry");
-  const written = commitAttempt(
-    { text: concurrentText, mtime: "2", updated_at: "t1" },
-    { text: concurrentText, mtime: "2", updated_at: "t1" },
-    "T-1", { pane: "spec", column: "spec", title: "nope" }, "t2");
-  assert.equal(written.action, "write");
-  const saved = JSON.parse(written.text);
-  assert.equal(saved.other, "root");
-  assert.equal(saved.tasks[0].title, "before");
-  assert.equal(saved.tasks[0].custom, "a");
-  assert.equal(saved.tasks[0].pane, "spec");
-  assert.equal(saved.tasks[0].column, "spec");
-  assert.equal(saved.tasks[0].updated_at, "t2");
-  assert.equal(saved.tasks[1].title, "concurrent update");
-  assert.equal(saved.tasks[1].custom, "b");
-  assert.equal(saved.tasks[1].pane, undefined);
-  assert.deepEqual(Object.keys(saved.tasks[1]).sort(), ["column", "custom", "id", "title"]);
-  assert.equal(saved.updated_at, "t2");
+test("requests carry unknown column hints and pending files are associated with tasks", () => {
+  const now = "2026-11-02T00:00:00.000Z";
+  const unknown = makeRequest("dispatch", { id: "T-9", column: "unknown" }, "spec", "hello", now);
+  assert.deepEqual(unknown, { version: 1, kind: "dispatch", task: "T-9", pane: "spec", instructions: "hello", created_at: now, from: "herdr-board", column_hint: "todo" });
+  assert.equal(makeRequest("dispatch", { id: "T-1", column: "todo" }, "spec", "", now).column_hint, undefined);
+  const gate = makeRequest("gate", { id: "T-2", column: "merge" }, "lead", "", now);
+  assert.deepEqual([...pendingTasks([JSON.stringify(unknown), JSON.stringify(gate), "invalid"])], ["T-9", "T-2"]);
 });
 
 test("a launch that did not deliver the first message is not success", () => {

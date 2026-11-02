@@ -2,7 +2,7 @@
 
 export const COLUMNS = [
   { id: "todo", name: "待辦" },
-  { id: "decide", name: "等Pol哥決定" },
+  { id: "decide", name: "herdr cto 把關" },
   { id: "spec", name: "規格師" },
   { id: "build", name: "施工手" },
   { id: "review", name: "審查手" },
@@ -264,24 +264,6 @@ export function paneChoices(roles) {
   return list;
 }
 
-export function columnForPane(pane) {
-  if (pane === "spec") return "spec";
-  if (pane === "merge") return "merge";
-  if (pane === "review" || String(pane).startsWith("review-")) return "review";
-  if (pane === "build" || String(pane).startsWith("build-")) return "build";
-  return null;
-}
-
-// From 待辦, the task moves into the column of the pane that was chosen. Other columns keep their place.
-export function dispatchPatch(task, pane) {
-  const patch = { pane };
-  if (task?.column === "todo") {
-    const column = columnForPane(pane);
-    if (column) patch.column = column;
-  }
-  return patch;
-}
-
 export function commandFor(pane, roles = DEFAULT_ROLES) {
   const listed = roles?.[pane];
   if (Array.isArray(listed) && listed.length) return listed.slice();
@@ -305,12 +287,27 @@ export function hcArgv({ exists, pane, command, task, space, tab, cwd }) {
   return args;
 }
 
-// The merge column asks Pol. It never runs git, and it never merges.
 export function mergeAction(task, { leadExists = false } = {}) {
   return {
-    patch: { column: "decide", needs_pol: true },
-    hc: leadExists ? ["send", "--if", "idle", "--", "lead", `task ${plain(task?.id)} 請示 Pol哥 是否合併`] : null,
+    hc: leadExists ? ["send", "--if", "idle", "--", "lead", `task ${plain(task?.id)} 待 herdr cto 把關`] : null,
   };
+}
+
+export function makeRequest(kind, task, pane, instructions = "", now = new Date().toISOString()) {
+  const request = { version: 1, kind, task: task.id, pane, instructions: String(instructions ?? ""), created_at: now, from: "herdr-board" };
+  if (kind === "dispatch" && task.column !== "todo" && placedColumn(task.column) === "todo") request.column_hint = "todo";
+  return request;
+}
+
+export function pendingTasks(texts) {
+  const tasks = new Set();
+  for (const text of texts) {
+    try {
+      const request = JSON.parse(text);
+      if (request.version === 1 && (request.kind === "dispatch" || request.kind === "gate") && typeof request.task === "string") tasks.add(request.task);
+    } catch { /* Ignore incomplete or unrelated files. */ }
+  }
+  return tasks;
 }
 
 const KNOWN_COLUMNS = new Set(COLUMNS.map((column) => column.id));
@@ -326,59 +323,6 @@ export function cardAction(column) {
   if (placed === "merge") return "pol";
   if (placed === "todo" || placed === "spec" || placed === "build" || placed === "review") return "dispatch";
   return null;
-}
-
-export function readUpdatedAt(text) {
-  if (text == null) return null;
-  try {
-    const raw = JSON.parse(text);
-    if (!raw || typeof raw !== "object" || Array.isArray(raw)) return null;
-    return typeof raw.updated_at === "string" ? raw.updated_at : "";
-  } catch {
-    return null;
-  }
-}
-
-// True when the file changed between the read we patched and the moment we would write.
-export function isStale(seen, current) {
-  if (!seen || !current) return true;
-  return seen.mtime !== current.mtime || seen.updated_at !== current.updated_at || seen.text !== current.text;
-}
-
-// Copy the raw document and change one task. Other tasks and unknown keys stay as they were.
-export function patchDocument(raw, id, fields, now) {
-  if (!raw || typeof raw !== "object" || Array.isArray(raw) || !Array.isArray(raw.tasks)) return { ok: false, error: "狀態檔缺少 tasks" };
-  if (raw.version != null && raw.version !== 1) return { ok: false, error: `不支援的 version ${raw.version}` };
-  const next = JSON.parse(JSON.stringify(raw));
-  let found = false;
-  for (const task of next.tasks) {
-    if (!task || typeof task !== "object" || Array.isArray(task) || task.id !== id) continue;
-    found = true;
-    if (fields?.column !== undefined) task.column = fields.column;
-    if (fields?.pane !== undefined) task.pane = fields.pane;
-    if (fields?.needs_pol !== undefined) task.needs_pol = fields.needs_pol;
-    task.updated_at = now;
-  }
-  if (!found) return { ok: false, error: `找不到任務 ${id}` };
-  next.updated_at = now;
-  return { ok: true, state: next, text: `${JSON.stringify(next, null, 2)}\n` };
-}
-
-export function applyPatch(state, id, fields, now) {
-  const patched = patchDocument(state, id, fields, now);
-  if (!patched.ok) return patched;
-  return { ok: true, state: patched.state };
-}
-
-// `retry` when mtime, updated_at, or the text changed. Otherwise the text to write.
-export function commitAttempt(seen, current, id, fields, now) {
-  if (isStale(seen, current)) return { action: "retry" };
-  let raw;
-  try { raw = JSON.parse(seen.text); }
-  catch { return { action: "error", error: "狀態檔不是合法的 JSON" }; }
-  const patched = patchDocument(raw, id, fields, now);
-  if (!patched.ok) return { action: "error", error: patched.error };
-  return { action: "write", text: patched.text, state: patched.state };
 }
 
 // A launch can exit 0 while `first_message.sent` is false. That task was not delivered.

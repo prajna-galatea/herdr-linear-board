@@ -1,5 +1,5 @@
 // Dispatch dialog. Props: { taskId, title, panes, defaultPane, board }.
-// It only records the choice. The board talks to hc and writes the state file.
+// It only records the choice. The board talks to hc and creates request files.
 import { View, div } from "gpui-kit";
 import { v_flex, h_flex, TextareaState, Textarea } from "gpui-base";
 import { props, closeOverlay, theme, shared, setShared } from "herdr";

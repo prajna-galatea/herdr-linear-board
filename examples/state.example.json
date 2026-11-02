@@ -18,7 +18,7 @@
     },
     {
       "id": "T-002",
-      "title": "[範例] 等 Pol哥決定要不要合併",
+      "title": "[範例] herdr cto 把關合併請求",
       "column": "decide",
       "pane": "lead",
       "model": "grok-4.7",
@@ -74,7 +74,7 @@
     },
     {
       "id": "T-006",
-      "title": "[範例] 合併手等 Pol哥點頭",
+      "title": "[範例] 合併手送 herdr cto 把關",
       "column": "merge",
       "pane": "merge",
       "model": "grok-4.7",

@@ -1,13 +1,13 @@
 // Local kanban for the Herdr ops flow. It reads ~/herdr-ops/board/state.json.
-// The only writes are 派工 and 請 Pol哥 決定, one task at a time, via a temp file and rename.
+// Actions create request files; the state file remains read-only.
 import { View, div, svg } from "gpui-kit";
 import { v_flex, h_flex, InputState, Input } from "gpui-base";
 import { agents, spaces, focused, run, exec, theme, home, appHome, props, readTextFile, writeTextFile, openOverlay, shared, closeOverlay, terminals, hc } from "herdr";
 import { openFile } from "./open.js";
 import {
-  boardColumns, cardAction, commandFor, commitAttempt, currentPlace, defaultPane, dispatchPatch,
-  emptyMessage, filterTasks, hcArgv, hcDelivery, isStale, mergeAction, modelsOf, openablePath,
-  PANE_NAME, paneChoices, parseConfig, parseState, readUpdatedAt, resultPath, shortDate, taskAgent, taskLine,
+  boardColumns, cardAction, commandFor, currentPlace, defaultPane,
+  emptyMessage, filterTasks, hcArgv, hcDelivery, makeRequest, mergeAction, modelsOf, openablePath,
+  PANE_NAME, paneChoices, parseConfig, parseState, pendingTasks, resultPath, shortDate, taskAgent, taskLine,
 } from "./state.js";
 
 const REQUEST_KEY = "herdr-board.request";
@@ -17,7 +17,6 @@ const COLUMN_WIDTH = 280;
 const TITLE_HEIGHT = 42;
 const SPINNER = "mods/herdr-board/spinner.svg";
 const AGENT_LABELS = { working: "Working", blocked: "Needs you", done: "Done", idle: "Idle" };
-const SAVE_TRIES = 5;
 
 const emptyState = () => ({ version: 1, updated_at: "", tasks: [] });
 
@@ -59,8 +58,7 @@ class HerdrBoard extends View {
     this.text = "";
     this.model = null;
     this.error = null;
-    this.ticket = 0;
-    this.mtime = null;
+    this.pending = new Set();
     this.seenRequest = shared(REQUEST_KEY)?.n ?? null;
     this.search = InputState.new({ placeholder: "編號或標題" });
     this.search.on("change", (_event, cx) => { this.text = this.search.value(); cx.notify(); });
@@ -91,27 +89,22 @@ class HerdrBoard extends View {
     if (!cx) return;
     if (this.reading) { this.reloadQueued = this.reloadQueued || force; return; }
     this.reading = true;
-    const ticket = this.ticket;
     cx.spawn(async (cx) => {
       try {
         await this.loadConfig();
+        await this.loadRequests();
         const mtime = await this.fileMtime();
-        if (ticket !== this.ticket) return;
         if (mtime == null) {
           this.missing = true;
           this.snapshot = emptyState();
           this.error = null;
-          this.mtime = null;
           return;
         }
-        if (!force && mtime === this.mtime) return;
         const text = await readTextFile(this.statePath);
-        if (ticket !== this.ticket) return;
         if (text == null) { this.error = "讀不到狀態檔"; return; }
         const parsed = parseState(text);
         if (!parsed.ok) { this.error = parsed.error; this.missing = false; return; }
         this.snapshot = parsed.state;
-        this.mtime = mtime;
         this.missing = false;
         this.error = null;
       } catch (error) {
@@ -130,33 +123,40 @@ class HerdrBoard extends View {
     cx.notify();
   }
 
-  async savePatch(id, fields) {
-    for (let attempt = 0; attempt < SAVE_TRIES; attempt++) {
-      this.ticket += 1;
-      const seenMtime = await this.fileMtime();
-      const text = await readTextFile(this.statePath);
-      if (text == null) throw new Error(emptyMessage(this.statePath, this.homeDir));
-      const seen = { text, mtime: seenMtime, updated_at: readUpdatedAt(text) };
-      const now = new Date().toISOString();
-      const current = { text: await readTextFile(this.statePath), mtime: await this.fileMtime(), updated_at: null };
-      current.updated_at = readUpdatedAt(current.text);
-      const decision = commitAttempt(seen, current, id, fields, now);
-      if (decision.action === "retry") continue;
-      if (decision.action !== "write") throw new Error(decision.error || "無法更新狀態");
-      const tmp = `${this.statePath}.tmp`;
-      await writeTextFile(tmp, decision.text, await readTextFile(tmp));
-      const again = { text: await readTextFile(this.statePath), mtime: await this.fileMtime(), updated_at: null };
-      again.updated_at = readUpdatedAt(again.text);
-      if (isStale(seen, again)) continue;
-      const moved = await exec("mv", ["-f", tmp, this.statePath]);
-      if (moved.code !== 0) throw new Error(failText(moved));
-      const parsed = parseState(decision.text);
-      this.snapshot = parsed.ok ? parsed.state : decision.state;
-      this.missing = false;
-      this.mtime = await this.fileMtime();
+  async loadRequests() {
+    const dir = `${this.homeDir}/herdr-ops/board/requests`;
+    const listing = await exec("find", [dir, "-maxdepth", "1", "-type", "f", "-name", "*.json", "-print"]);
+    if (listing.code !== 0) {
+      const exists = await exec("test", ["-d", dir]);
+      if (exists.code === 0) throw new Error("讀不到請求目錄");
+      this.pending = new Set();
       return;
     }
-    throw new Error("狀態檔剛被更新，請再試一次");
+    const texts = [];
+    for (const path of listing.stdout.split("\n")) {
+      if (path) {
+        const text = await readTextFile(path);
+        if (text != null) texts.push(text);
+      }
+    }
+    this.pending = pendingTasks(texts);
+  }
+
+  async writeRequest(request) {
+    const dir = `${this.homeDir}/herdr-ops/board/requests`;
+    const made = await exec("mkdir", ["-p", dir]);
+    if (made.code !== 0) throw new Error(failText(made));
+    const temp = await exec("mktemp", [`${dir}/.request.XXXXXXXXXXXX`]);
+    if (temp.code !== 0) throw new Error(failText(temp));
+    const tmp = temp.stdout.trim();
+    const suffix = tmp.slice(tmp.lastIndexOf(".") + 1);
+    const id = request.task.replace(/[^a-zA-Z0-9_-]/g, "_") || "task";
+    const stamp = request.created_at.replace(/[:.]/g, "-");
+    const target = `${dir}/${stamp}-${id}-${suffix}.json`;
+    await writeTextFile(tmp, `${JSON.stringify(request, null, 2)}\n`, "");
+    const moved = await exec("mv", ["-n", tmp, target]);
+    if (moved.code !== 0 || (await exec("test", ["-e", tmp])).code === 0) throw new Error("無法建立唯一請求檔");
+    this.pending.add(request.task);
   }
 
   paneExists(name) {
@@ -197,13 +197,12 @@ class HerdrBoard extends View {
       cwd: exists ? "" : (openablePath(task.repo, this.homeDir) || ""),
     });
     if (!argv) { this.error = "這個分頁名稱不能派工"; cx.notify(); return; }
-    const patch = dispatchPatch(task, request.pane);
     this.acting = true;
     cx.spawn(async (cx) => {
       try {
+        await this.writeRequest(makeRequest("dispatch", task, request.pane, request.instructions));
         const delivery = hcDelivery(await hc(withJson(argv)));
-        if (!delivery.ok) throw new Error(delivery.error);
-        await this.savePatch(task.id, patch);
+        if (!delivery.ok) throw new Error(`請求已建立，送出失敗：${delivery.error}`);
         this.error = null;
       } catch (error) {
         this.error = String(error.message ?? error);
@@ -221,10 +220,10 @@ class HerdrBoard extends View {
     this.acting = true;
     cx.spawn(async (cx) => {
       try {
-        await this.savePatch(task.id, plan.patch);
+        await this.writeRequest(makeRequest("gate", task, "lead"));
         if (plan.hc) {
           const delivery = hcDelivery(await hc(withJson(plan.hc)));
-          if (!delivery.ok) throw new Error(`已標成等 Pol哥。送到 lead 失敗：${delivery.error}`);
+          if (!delivery.ok) throw new Error(`請求已建立，送到 lead 失敗：${delivery.error}`);
         }
         this.error = null;
       } catch (error) {
@@ -279,6 +278,7 @@ class HerdrBoard extends View {
       if (task.reject_counts[key] > 0) addPill(`reject-${task.id}-${key}`, `退回 ${key}×${task.reject_counts[key]}`);
     }
     if (task.spec_rewrites > 0) addPill(`rewrites-${task.id}`, `規格重寫 ${task.spec_rewrites}`);
+    if (this.pending.has(task.id)) addPill(`pending-${task.id}`, "待處理請求");
     if (task.example) addPill(`example-${task.id}`, "範例");
     if (task.needs_pol) addPill(`pol-${task.id}`, "等 Pol哥", t.accent);
     if (agent) {
@@ -298,7 +298,7 @@ class HerdrBoard extends View {
         .hover((style) => style.bg(t.background).text_color(t.foreground))
         .on_mouse_down("left", (_event, cx) => cx.stop_propagation())
         .on_click((_event, cx) => { cx.stop_propagation(); this.askPol(task, cx); })
-        .child("請 Pol哥 決定");
+        .child("送 herdr cto 把關");
     } else if (actionKind === "dispatch") {
       action = h_flex().id(`dispatch-${task.id}`).h(22).px(8).flex_none().items_center().rounded(6).cursor_pointer()
         .text_size(11).text_color(t.muted).bg(t.raised).border_1().border_color(t.border)
@@ -386,6 +386,6 @@ class HerdrBoard extends View {
   }
 }
 
-const source = [HerdrBoard, parseState, taskLine, mergeAction, hcArgv, boardColumns, commitAttempt, hcDelivery, cardAction].map(String).join();
+const source = [HerdrBoard, parseState, taskLine, mergeAction, hcArgv, boardColumns, makeRequest, pendingTasks, hcDelivery, cardAction].map(String).join();
 if (globalThis.__herdrBoard?.source !== source) globalThis.__herdrBoard = { source, view: HerdrBoard };
 export default globalThis.__herdrBoard.view;
