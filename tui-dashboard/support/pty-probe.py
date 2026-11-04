@@ -53,6 +53,8 @@ def run_case(name, width=120, height=40, finish='q', polling=False, permission=F
                 collect('atomic-tri',5.3)
                 state.write_text('{'); collect('stale-json',5.3)
                 state.write_text('{"tasks":{}}'); collect('stale-schema',5.3)
+                state.write_text('{"version":{"toString":null},"tasks":[]}'); collect('stale-object-version',5.3)
+                state.write_bytes(payload('tri')); collect('recovered-version',5.3)
                 state.unlink(); state.mkdir(); collect('stale-unreadable',5.3)
                 state.rmdir(); collect('stale-missing',5.3)
                 state.write_text('{"tasks":[]}'); collect('recovered-empty',5.3)

@@ -164,12 +164,20 @@ test('all states preserve order and strict needs_pol priority', () => {
   const falseFlag=projectBoard(JSON.stringify({tasks:[{id:'x',column:'build',needs_pol:'true'}]}),FIXED_NOW).board;
   assert.equal(falseFlag.columns[1].cards[0].id,'x');
 });
-test('invalid tasks, missing fields and terminal data are handled without hidden content', () => {
-  const out=projectBoard(JSON.stringify({tasks:[null,{}, {id:'A',column:'todo',title:'\x1b]8;;https://invalid\x07title\x1b]8;;\x07'}]}),FIXED_NOW);
+for (const item of [null, 12, 'bad', true, [], {}, {id:12}, {id:' '}, {id:'\x1b[31m'}]) {
+  test(`invalid task ${JSON.stringify(item)} is omitted with its own warning`, () => {
+    const out = projectBoard(JSON.stringify({tasks:[item]}), FIXED_NOW);
+    assert.equal(out.kind, 'valid');
+    assert.deepEqual(out.board.columns.map(c => c.cards), [[], [], [], []]);
+    assert.deepEqual(out.board.warnings, ['略過缺少 id 的任務']);
+  });
+}
+test('missing fields and terminal data are handled without hidden content', () => {
+  const out=projectBoard(JSON.stringify({tasks:[{id:'A',column:'todo',title:'\x1b]8;;https://invalid\x07title\x1b]8;;\x07'}]}),FIXED_NOW);
   assert.equal(out.board.columns[0].cards.length,1);
   assert.equal(out.board.columns[0].cards[0].title,'title');
   assert.equal(out.board.columns[0].cards[0].modelLabel,'未指定');
-  assert.match(out.board.warnings.join(' '),/缺少 id/);
+  assert.deepEqual(out.board.warnings, []);
   assert.equal(projectBoard('{"tasks":{}}',FIXED_NOW).kind,'failed');
   assert.equal(formatElapsed('badZ',FIXED_NOW,[]),'時間未知');
 });
@@ -180,7 +188,7 @@ test('CLI rejects unknown or incomplete options and non-TTY', async () => {
   assert.equal(await main(['--state','/nonexistent']),2);
 });
 
- test('null version is invalid through file read and preserves last valid snapshot', async () => {
+test('invalid version values fail through file read, preserve the snapshot and recover', async () => {
   const {mkdtemp, writeFile, rm} = await import('node:fs/promises');
   const {tmpdir} = await import('node:os');
   const dir = await mkdtemp(path.join(tmpdir(), 'tui-version-'));
@@ -191,14 +199,21 @@ test('CLI rejects unknown or incomplete options and non-TTY', async () => {
       assert.equal((await readStateFile(file, FIXED_NOW)).kind, 'valid');
     }
     const ready = nextDisplayState(null, projectBoard(fixtureText, FIXED_NOW));
-    await writeFile(file, JSON.stringify({version:null,tasks:[]}));
-    const invalid = await readStateFile(file, FIXED_NOW);
-    assert.equal(invalid.kind, 'failed');
-    assert.equal(invalid.reason, 'invalid');
-    assert.equal(nextDisplayState(null, invalid).kind, 'unavailable');
-    const stale = nextDisplayState(ready, invalid);
-    assert.equal(stale.kind, 'stale');
-    assert.equal(stale.board, ready.board);
+    for (const version of [null, 2, '1', false, [], {}, {toString:null}]) {
+      await writeFile(file, JSON.stringify({version,tasks:[]}));
+      const invalid = await readStateFile(file, FIXED_NOW);
+      assert.equal(invalid.kind, 'failed', JSON.stringify(version));
+      assert.equal(invalid.reason, 'invalid');
+      assert.equal(nextDisplayState(null, invalid).kind, 'unavailable');
+      const stale = nextDisplayState(ready, invalid);
+      assert.equal(stale.kind, 'stale');
+      assert.equal(stale.board, ready.board);
+      assert.equal(stale.lastReadAt, ready.readAt);
+      await writeFile(file, fixtureText);
+      const recovered = nextDisplayState(stale, await readStateFile(file, FIXED_NOW));
+      assert.equal(recovered.kind, 'ready');
+      assert.deepEqual(recovered.board, ready.board);
+    }
   } finally { await rm(dir, {recursive:true,force:true}); }
 });
 test('null reject count is ignored with a warning on the projected card', () => {

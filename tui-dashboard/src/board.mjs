@@ -195,7 +195,7 @@ export function projectBoard(text, nowMs) {
     return { kind: "failed", reason: "invalid", message: "狀態檔格式錯誤" };
   }
   if (Object.hasOwn(raw, "version") && raw.version !== 1) {
-    return { kind: "failed", reason: "invalid", message: `不支援的 version ${raw.version}` };
+    return { kind: "failed", reason: "invalid", message: "不支援的 version（僅接受 1 或省略）" };
   }
   if (!Array.isArray(raw.tasks)) {
     return { kind: "failed", reason: "invalid", message: "狀態檔缺少 tasks 陣列" };
@@ -204,8 +204,7 @@ export function projectBoard(text, nowMs) {
   const warnings = [];
   const buckets = new Map(/** @type {Bucket[]} */ (COLUMN_DEFS.map((c) => c.id)).map((id) => [id, /** @type {Card[]} */ ([])]));
   for (const item of raw.tasks) {
-    if (!item || typeof item !== "object") continue;
-    const card = taskToCard(item, nowMs, warnings);
+    const card = item && typeof item === "object" ? taskToCard(item, nowMs, warnings) : null;
     if (!card) {
       warnings.push("略過缺少 id 的任務");
       continue;

@@ -41,9 +41,13 @@ test('real CLI polling: unavailable, same length/mtime, atomic replace, stale an
   for (const [key,value] of [['ready-one','one'],['same-length-mtime-two','two'],['atomic-tri','tri']]) {
     assert.match(s[key].join('\n'),new RegExp(value)); assert.match(s[key].join('\n'),/ready/);
   }
-  for (const key of ['stale-json','stale-schema','stale-unreadable','stale-missing']) {
+  for (const key of ['stale-json','stale-schema','stale-object-version','stale-unreadable','stale-missing']) {
     assert.match(s[key].join('\n'),/stale/); assert.match(s[key].join('\n'),/tri/);
   }
+  assert.match(s['stale-object-version'].join('\n'), /不支援的 version/);
+  assert.match(s['recovered-version'].join('\n'), /ready/);
+  assert.match(s['recovered-version'].join('\n'), /tri/);
+  assert.doesNotMatch(s['recovered-version'].join('\n'), /stale/);
   assert.match(s['recovered-empty'].join('\n'),/ready/);
   assert.doesNotMatch(s['recovered-empty'].join('\n'),/POLL|tri|stale/);
   await saveEvidence('poll',[c]);
