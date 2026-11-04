@@ -91,6 +91,7 @@ TZ=UTC node --test
 | node_modules/ink/build/ink.js:307–328、411–433 | 終端尺寸、resize、alternate screen 與 stdout；App.js:145、265、334 處理 raw mode |
 | node_modules/ink/build/utils.js:16–25、terminal-size/index.js:81–165 | 有效 TTY 尺寸走直接回傳；fallback 可讀 /dev/tty、/proc 或 execFileSync(tput/resize)，本入口拒絕無尺寸並以真 PTY guard 驗證未到達 |
 | node_modules/ink/build/reconciler.js:10–25、102–119 | DEV=true 時可載入選配 devtools 與讀 package.json；本鎖檔未安裝 devtools。測試明設 DEV=false |
+| node_modules/ink/build/components/ErrorOverview.js:1 | 發生呈現錯誤時可讀堆疊對應的程式來源；限程式資源，未掃描業務資料目錄 |
 | node_modules/yoga-layout/dist/binaries/yoga-wasm-base64-esm.js:15 | fetch 內嵌 data:application/octet-stream;base64 WASM，無 socket；guard 僅放行此 data URI |
 | support/、test/ | 測試工具可建立隔離假檔、啟動子程序與擷取證據；不屬於原型 runtime，writer 與受測 CLI 分開 |
 

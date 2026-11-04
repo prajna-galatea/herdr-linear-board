@@ -1,0 +1,8 @@
+{
+  "candidate": "5c15729d65289e2cc484e991ad8f10ae7be01f3a",
+  "mutationExit": 1,
+  "restoredExit": 0,
+  "baselineSHA256": "a707b3107df72843e6e5349075d2df035869ca83876c63e983ae1b5e790b88e4",
+  "restoredSHA256": "a707b3107df72843e6e5349075d2df035869ca83876c63e983ae1b5e790b88e4",
+  "isolatedDirectory": "/private/tmp/tui-mutation-qih74f0_"
+}

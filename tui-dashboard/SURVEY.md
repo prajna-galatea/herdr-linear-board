@@ -11,7 +11,7 @@
 - 語言：TypeScript（Node 執行，JS 可直接 `createElement`）
 - 星數：40,218（查詢日 2026-11-04）
 - 最近正式發版：v8.0.0，2026-10-03 UTC（https://github.com/vadimdemedes/ink/releases/tag/v8.0.0）
-- macOS：Node ≥22、專案內 `npm ci`；需 React ≥19.3
+- macOS：Node ≥22、專案內 `npm ci`；需 React ≥19.3.0
 - 滿版：`alternateScreen: true` 進 alternate buffer，離開還原
 - 唯讀輪詢 JSON：應用層 `fs.readFile` + `setInterval`／timer；框架不寫業務檔
 - 依賴：直接鎖 ink 8.0.0 + react；間接含 Yoga 等排版依賴
@@ -63,7 +63,7 @@
 - 語言：Go
 - 星數：17,141（2026-11-04 UTC 官方 repository API）
 - 最近正式發版：[v0.51.0，2026-09-29T16:31:41Z](https://github.com/wtfutil/wtf/releases/tag/v0.51.0)
-- macOS：使用官方發行 binary 或依 go.mod 安裝 Go toolchain 後局部編譯，不需全域安裝。
+- macOS：使用官方發行 binary 或依 go.mod 安裝 Go ≥1.26.4 toolchain 後局部編譯，不需全域安裝。
 - 滿版：內建終端 dashboard layout。
 - 唯讀輪詢 JSON：需要自訂 module 以 os.ReadFile 及更新週期投影四欄；不能直接把 herdr state 當設定檔。
 - 依賴：既有多 widget／tview 應用，整合成本比單用途框架高。
@@ -82,3 +82,5 @@
 - [ratatui/ratatui repository API](https://api.github.com/repos/ratatui/ratatui)；[最新正式發版 API](https://api.github.com/repos/ratatui/ratatui/releases/latest)；[正式發版](https://github.com/ratatui/ratatui/releases/tag/ratatui-v0.30.2)：ratatui-v0.30.2，2026-06-19T08:56:52Z，23,158 星，查詢 2026-11-04T08:06:28.415132+00:00。
 - [charmbracelet/bubbletea repository API](https://api.github.com/repos/charmbracelet/bubbletea)；[最新正式發版 API](https://api.github.com/repos/charmbracelet/bubbletea/releases/latest)；[正式發版](https://github.com/charmbracelet/bubbletea/releases/tag/v2.1.1)：v2.1.1，2026-10-28T10:19:27Z，45,601 星，查詢 2026-11-04T08:06:29.123689+00:00。
 - [wtfutil/wtf repository API](https://api.github.com/repos/wtfutil/wtf)；[最新正式發版 API](https://api.github.com/repos/wtfutil/wtf/releases/latest)；[正式發版](https://github.com/wtfutil/wtf/releases/tag/v0.51.0)：v0.51.0，2026-09-29T16:31:41Z，17,141 星，查詢 2026-11-04T08:06:29.893790+00:00。
+
+官方 runtime 需求另存 [逐專案來源與擷取](docs/survey-runtime-sources.json)：Ink release package.json Node ≥22／React ≥19.3.0、Textual release pyproject.toml Python ^3.9、Bubble Tea Go 1.26.0、WTF Go 1.26.4。Ratatui 的 Rust 1.88.0 為查詢當時 main 工作區門檻，並非聲稱 0.30.2 release 的 MSRV，安裝 release 時以其鎖定 manifest 為準。
