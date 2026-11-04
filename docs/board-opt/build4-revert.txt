@@ -1,0 +1,28 @@
+✖ empty successful snapshot remains visibly stale on disappearance or damage and recovers (8.576709ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 59.693083
+
+✖ failing tests:
+
+test at tests/herdr-board-runtime.test.mjs:94:1
+✖ empty successful snapshot remains visibly stale on disappearance or damage and recovers (8.576709ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /未更新/. Input:
+  
+  'Herdr 新任務流程0 個任務未歸檔已歸檔全部Refresh全部0尚無任務：~/state.json待辦0進行中0等把關0已結案0'
+  
+      at TestContext.<anonymous> (file:///private/var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/T-board-build4-revert-6cwu5dyz/tests/herdr-board-runtime.test.mjs:100:12)
+      at async Test.run (node:internal/test_runner/test:1404:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'Herdr 新任務流程0 個任務未歸檔已歸檔全部Refresh全部0尚無任務：~/state.json待辦0進行中0等把關0已結案0',
+    expected: /未更新/,
+    operator: 'match',
+    diff: 'simple'
+  }

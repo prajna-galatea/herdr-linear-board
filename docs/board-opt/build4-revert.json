@@ -1,0 +1,6 @@
+{
+  "command": "node --test --test-name-pattern=\"empty successful snapshot\" tests/herdr-board-runtime.test.mjs",
+  "exit": 1,
+  "change": "restore task-count stale predicate",
+  "copy": "/var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/T-board-build4-revert-6cwu5dyz"
+}

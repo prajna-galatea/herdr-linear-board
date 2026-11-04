@@ -22,6 +22,7 @@ class HerdrBoard extends View {
     this.homeDir = home();
     this.statePath = `${this.homeDir}/herdr-ops/board/state.json`;
     this.snapshot = emptyState();
+    this.hasSnapshot = false;
     this.missing = false;
     this.loaded = false;
     this.reading = false;
@@ -67,6 +68,7 @@ class HerdrBoard extends View {
         if (this.closed) return;
         if (previousPath && previousPath !== this.statePath) {
           this.snapshot = emptyState();
+          this.hasSnapshot = false;
           this.missing = false;
           this.error = null;
           this.loaded = false;
@@ -76,7 +78,7 @@ class HerdrBoard extends View {
         if (this.closed) return;
         if (text == null) {
           this.missing = true;
-          this.stale = this.loaded && this.snapshot.tasks.length > 0;
+          this.stale = this.hasSnapshot;
           this.error = this.stale ? "來源消失，保留上次快照（未更新）" : null;
           return;
         }
@@ -88,6 +90,7 @@ class HerdrBoard extends View {
           return;
         }
         this.snapshot = parsed.state;
+        this.hasSnapshot = true;
         this.missing = false;
         this.error = null;
         this.stale = false;

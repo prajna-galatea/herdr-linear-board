@@ -91,6 +91,23 @@ test('same-size same-mtime reload, deletion, broken JSON and recovery',async t=>
   await f.save([task('b','merged')]);f.click('refresh');await f.drain();assert.equal(f.board.stale,false);assert.equal(byId(f.board.render(),'card-b'),undefined);
   await f.save([task('b','todo')]);f.click('refresh');await f.drain();assert.ok(byId(f.board.render(),'card-b'));
 });
+test('empty successful snapshot remains visibly stale on disappearance or damage and recovers',async t=>{
+  const f=await fixture(t);await f.save([]);await f.drain();
+  assert.doesNotMatch(texts(f.board.render()).join(''),/未更新/);
+  for(const broken of ['missing','json']) {
+    if(broken==='missing')await rm(f.path);else await writeFile(f.path,'{');
+    f.click('refresh');await f.drain();
+    assert.match(texts(f.board.render()).join(''),/未更新/);
+    for(const id of ['todo','active','gate','closed'])assert.ok(byId(f.board.render(),`lane-${id}`));
+    await f.save([]);f.click('refresh');await f.drain();
+    assert.doesNotMatch(texts(f.board.render()).join(''),/未更新/);
+  }
+});
+test('repeated initial missing is empty rather than a stale successful snapshot',async t=>{
+  const f=await fixture(t);await f.drain();f.click('refresh');await f.drain();
+  assert.match(texts(f.board.render()).join(''),/尚無任務/);
+  assert.doesNotMatch(texts(f.board.render()).join(''),/未更新/);
+});
 test('close cancels owned tasks and late callbacks do no work',async t=>{
   const f=await fixture(t);await f.save([task('a','todo')]);const job=f.jobs[0];f.board.close();const before=f.operations.length,n=f.notifications();await f.drain();f.timers[0].fn(f.cx);assert.equal(job.cancelled,true);assert.equal(f.timers[0].cancelled,true);assert.equal(f.operations.length,before);assert.equal(f.notifications(),n);
 });

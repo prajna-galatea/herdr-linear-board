@@ -6,6 +6,10 @@
 
 正式流程不含看板，啟用需 Pol哥 同意。
 
+## BUILD-4 修正
+
+成功讀取空任務也記錄為有效快照；來源消失時顯示未更新。新增空快照消失、損壞、恢復及重複首次缺檔的實際 Refresh 測試。最新候選證據見 BUILD-4-VALIDATION.md；下列 52 項測試、截圖與五類撤回均是前版證據，未冒充本輪重跑。既有截圖驅動改寫尺寸回呼，原生未修改候選的三尺寸截圖仍未補齊，整體驗收尚未完成。
+
 ## 驗證
 
 - `TZ=Asia/Taipei node --test`、`TZ=UTC node --test`：各 52 tests、52 pass、0 fail、0 skip；完整工作樹輸出見 `test-output-*.txt`，指定候選乾淨副本結果見 `CANDIDATE.md`。
