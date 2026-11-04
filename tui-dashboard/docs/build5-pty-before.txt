@@ -1,0 +1,346 @@
+✖ real CLI polling: unavailable, same length/mtime, atomic replace, stale and recovery (54956.833834ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 55014.989083
+
+✖ failing tests:
+
+test at tui-dashboard/test/terminal.test.mjs:37:1
+✖ real CLI polling: unavailable, same length/mtime, atomic replace, stale and recovery (54956.833834ms)
+  AssertionError [ERR_ASSERTION]: [?1049h[?25l[?2026h[?25l待辦                          進行中（角色＋模型）          等把關                        已結案
+  (空)                          (空)                          (空)                          (空)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  loading 讀取中
+  ↑↓ 捲動 · PgUp/PgDn 換頁 · q 離開[?2026l[?2026h[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G待辦                          進行中（角色＋模型）          等把關                        已結案
+  (空)                          (空)                          (空)                          (空)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  unavailable 無法載入：找不到狀態檔
+  ↑↓ 捲動 · PgUp/PgDn 換頁 · q 離開[?2026l[?2026h[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G待辦                          進行中（角色＋模型）          等把關                        已結案
+  POLL                          (空)                          (空)                          (空)
+  one
+  待指派 · 未指定
+  時間未知
+  退回 0
+  ─
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  ready 已更新 2026-11-04T08:31:25.841Z · /var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/tui-pty-n_ehte72/long-state-pat
+  ↑↓ 捲動 · PgUp/PgDn 換頁 · q 離開[?2026l[?2026h[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G待辦                          進行中（角色＋模型）          等把關                        已結案
+  POLL                          (空)                          (空)                          (空)
+  two
+  待指派 · 未指定
+  時間未知
+  退回 0
+  ─
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  ready 已更新 2026-11-04T08:31:30.856Z · /var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/tui-pty-n_ehte72/long-state-pat
+  ↑↓ 捲動 · PgUp/PgDn 換頁 · q 離開[?2026l[?2026h[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G待辦                          進行中（角色＋模型）          等把關                        已結案
+  POLL                          (空)                          (空)                          (空)
+  tri
+  待指派 · 未指定
+  時間未知
+  退回 0
+  ─
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  ready 已更新 2026-11-04T08:31:35.869Z · /var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/tui-pty-n_ehte72/long-state-pat
+  ↑↓ 捲動 · PgUp/PgDn 換頁 · q 離開[?2026l[?2026h[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G待辦                          進行中（角色＋模型）          等把關                        已結案
+  POLL                          (空)                          (空)                          (空)
+  tri
+  待指派 · 未指定
+  時間未知
+  退回 0
+  ─
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  stale 顯示舊資料：狀態檔不是合法的 JSON
+  ↑↓ 捲動 · PgUp/PgDn 換頁 · q 離開[?2026l[?2026h[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[1A[2K[G待辦                          進行中（角色＋模型）          等把關                        已結案
+  POLL                          (空)                          (空)                          (空)
+  tri
+  待指派 · 未指定
+  時間未知
+  退回 0
+  ─
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  stale 顯示舊資料：狀態檔缺少 tasks 陣列
+  ↑↓ 捲動 · PgUp/PgDn 換頁 · q 離開[?2026l看板錯誤：Cannot convert object to primitive value
+  [?2026h[1;1H[J待辦                          進行中（角色＋模型）          等把關                        已結案
+  POLL                          (空)                          (空)                          (空)
+  tri
+  待指派 · 未指定
+  時間未知
+  退回 0
+  ─
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  stale 顯示舊資料：狀態檔缺少 tasks 陣列
+  ↑↓ 捲動 · PgUp/PgDn 換頁 · q 離開[?2026l[?25h[?25h[?1049l[?25h
+  @@GUARD@@[]
+  [?25hq
+
+  1 !== 0
+
+      at invariant (file:///Users/pauuul/Documents/PJ/herdr-linear-board-tui/tui-dashboard/test/terminal.test.mjs:7:10)
+      at TestContext.<anonymous> (file:///Users/pauuul/Documents/PJ/herdr-linear-board-tui/tui-dashboard/test/terminal.test.mjs:38:29)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1397:25)
+      at Test.start (node:internal/test_runner/test:1257:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

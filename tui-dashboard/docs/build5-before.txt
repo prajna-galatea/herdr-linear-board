@@ -1,0 +1,158 @@
+用法: node tui-dashboard/src/cli.mjs [--state PATH] [--help]
+  --state PATH   覆寫 state.json 路徑（優先於 HERDR_BOARD_STATE）
+  HERDR_BOARD_STATE  第二優先
+  預設 ~/herdr-ops/board/state.json
+
+正式流程不含看板，啟用需 Pol哥 同意。請手動在獨立終端分頁執行。
+✔ projectBoard maps fixture tasks into four columns (1.225416ms)
+✔ needs_pol and unknown column priority (0.185083ms)
+✔ card fields follow T-board-1 simplified card contract (0.434875ms)
+✔ reject sum ignores invalid entries (0.078542ms)
+✔ formatElapsed boundary seconds (0.641625ms)
+✔ formatElapsed rejects missing timezone and future times (0.071916ms)
+✔ sanitizeText strips control sequences (0.054375ms)
+✔ displayWidth treats CJK wider than ASCII (0.070042ms)
+✔ wrapText respects display width (0.086291ms)
+✔ resolveStatePath precedence and home expansion (0.106041ms)
+✔ cli --help exits 0 without reading state (0.305958ms)
+未知參數或 --state 缺少路徑
+未知參數或 --state 缺少路徑
+未知參數或 --state 缺少路徑
+需要可用的 TTY 終端與尺寸才能顯示看板
+✔ readStateFile and display state transitions (2.683625ms)
+✔ invalid version fails whole board (0.075208ms)
+✔ empty tasks still yields four visible columns (0.045334ms)
+✔ timezone invariance for elapsed label (0.033292ms)
+✔ all states preserve order and strict needs_pol priority (0.108875ms)
+✖ invalid task null is omitted with its own warning (0.582041ms)
+✖ invalid task 12 is omitted with its own warning (0.141833ms)
+✖ invalid task "bad" is omitted with its own warning (0.095542ms)
+✖ invalid task true is omitted with its own warning (0.076584ms)
+✔ invalid task [] is omitted with its own warning (0.026625ms)
+✔ invalid task {} is omitted with its own warning (0.036167ms)
+✔ invalid task {"id":12} is omitted with its own warning (0.019584ms)
+✔ invalid task {"id":" "} is omitted with its own warning (0.026042ms)
+✔ invalid task {"id":"\u001b[31m"} is omitted with its own warning (0.02425ms)
+✔ missing fields and terminal data are handled without hidden content (0.046834ms)
+✔ CLI rejects unknown or incomplete options and non-TTY (0.215375ms)
+✖ invalid version values fail through file read, preserve the snapshot and recover (6.976375ms)
+✔ null reject count is ignored with a warning on the projected card (0.15975ms)
+ℹ tests 29
+ℹ suites 0
+ℹ pass 24
+ℹ fail 5
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 62.65725
+
+✖ failing tests:
+
+test at tui-dashboard/test/board.test.mjs:168:3
+✖ invalid task null is omitted with its own warning (0.582041ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+
+  + []
+  - [
+  -   '略過缺少 id 的任務'
+  - ]
+
+      at TestContext.<anonymous> (file:///Users/pauuul/Documents/PJ/herdr-linear-board-tui/tui-dashboard/test/board.test.mjs:172:12)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1397:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:969:18)
+      at Test.postRun (node:internal/test_runner/test:1537:19)
+      at Test.run (node:internal/test_runner/test:1462:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [],
+    expected: [ '略過缺少 id 的任務' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tui-dashboard/test/board.test.mjs:168:3
+✖ invalid task 12 is omitted with its own warning (0.141833ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+
+  + []
+  - [
+  -   '略過缺少 id 的任務'
+  - ]
+
+      at TestContext.<anonymous> (file:///Users/pauuul/Documents/PJ/herdr-linear-board-tui/tui-dashboard/test/board.test.mjs:172:12)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1397:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:969:18)
+      at Test.postRun (node:internal/test_runner/test:1537:19)
+      at Test.run (node:internal/test_runner/test:1462:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [],
+    expected: [ '略過缺少 id 的任務' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tui-dashboard/test/board.test.mjs:168:3
+✖ invalid task "bad" is omitted with its own warning (0.095542ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+
+  + []
+  - [
+  -   '略過缺少 id 的任務'
+  - ]
+
+      at TestContext.<anonymous> (file:///Users/pauuul/Documents/PJ/herdr-linear-board-tui/tui-dashboard/test/board.test.mjs:172:12)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1397:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:969:18)
+      at Test.postRun (node:internal/test_runner/test:1537:19)
+      at Test.run (node:internal/test_runner/test:1462:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [],
+    expected: [ '略過缺少 id 的任務' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tui-dashboard/test/board.test.mjs:168:3
+✖ invalid task true is omitted with its own warning (0.076584ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+
+  + []
+  - [
+  -   '略過缺少 id 的任務'
+  - ]
+
+      at TestContext.<anonymous> (file:///Users/pauuul/Documents/PJ/herdr-linear-board-tui/tui-dashboard/test/board.test.mjs:172:12)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1397:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:969:18)
+      at Test.postRun (node:internal/test_runner/test:1537:19)
+      at Test.run (node:internal/test_runner/test:1462:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [],
+    expected: [ '略過缺少 id 的任務' ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tui-dashboard/test/board.test.mjs:191:1
+✖ invalid version values fail through file read, preserve the snapshot and recover (6.976375ms)
+  TypeError: Cannot convert object to primitive value
+      at projectBoard (file:///Users/pauuul/Documents/PJ/herdr-linear-board-tui/tui-dashboard/src/board.mjs:198:78)
+      at readStateFile (file:///Users/pauuul/Documents/PJ/herdr-linear-board-tui/tui-dashboard/src/read-loop.mjs:20:10)
+      at async TestContext.<anonymous> (file:///Users/pauuul/Documents/PJ/herdr-linear-board-tui/tui-dashboard/test/board.test.mjs:204:23)
+      at async Test.run (node:internal/test_runner/test:1404:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:969:7)

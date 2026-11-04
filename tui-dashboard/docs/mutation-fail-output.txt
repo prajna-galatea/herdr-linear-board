@@ -4,48 +4,57 @@
   預設 ~/herdr-ops/board/state.json
 
 正式流程不含看板，啟用需 Pol哥 同意。請手動在獨立終端分頁執行。
-✖ projectBoard maps fixture tasks into four columns (3.918416ms)
-✔ needs_pol and unknown column priority (0.235958ms)
-✔ card fields follow T-board-1 simplified card contract (0.167542ms)
-✔ reject sum ignores invalid entries (0.057667ms)
-✔ formatElapsed boundary seconds (0.790833ms)
-✔ formatElapsed rejects missing timezone and future times (0.097292ms)
-✔ sanitizeText strips control sequences (0.059375ms)
-✔ displayWidth treats CJK wider than ASCII (0.078583ms)
-✔ wrapText respects display width (0.099417ms)
-✔ resolveStatePath precedence and home expansion (0.109542ms)
-✔ cli --help exits 0 without reading state (0.355792ms)
+✖ projectBoard maps fixture tasks into four columns (3.498209ms)
+✔ needs_pol and unknown column priority (0.220875ms)
+✔ card fields follow T-board-1 simplified card contract (0.155375ms)
+✔ reject sum ignores invalid entries (0.064208ms)
+✔ formatElapsed boundary seconds (0.73775ms)
+✔ formatElapsed rejects missing timezone and future times (0.071042ms)
+✔ sanitizeText strips control sequences (0.047916ms)
+✔ displayWidth treats CJK wider than ASCII (0.062083ms)
+✔ wrapText respects display width (0.08775ms)
+✔ resolveStatePath precedence and home expansion (0.100625ms)
+✔ cli --help exits 0 without reading state (0.33575ms)
 未知參數或 --state 缺少路徑
 未知參數或 --state 缺少路徑
 未知參數或 --state 缺少路徑
 需要可用的 TTY 終端與尺寸才能顯示看板
-✔ readStateFile and display state transitions (3.100959ms)
-✔ invalid version fails whole board (0.1085ms)
-✔ empty tasks still yields four visible columns (0.046416ms)
-✔ timezone invariance for elapsed label (0.0345ms)
-✖ all states preserve order and strict needs_pol priority (0.161084ms)
-✔ invalid tasks, missing fields and terminal data are handled without hidden content (0.058916ms)
-✔ CLI rejects unknown or incomplete options and non-TTY (0.29075ms)
-✔ null version is invalid through file read and preserves last valid snapshot (3.883792ms)
-✔ null reject count is ignored with a warning on the projected card (0.115292ms)
-ℹ tests 20
+✔ readStateFile and display state transitions (3.091167ms)
+✔ invalid version fails whole board (0.06925ms)
+✔ empty tasks still yields four visible columns (0.034916ms)
+✔ timezone invariance for elapsed label (0.038958ms)
+✖ all states preserve order and strict needs_pol priority (0.146375ms)
+✔ invalid task null is omitted with its own warning (0.044208ms)
+✔ invalid task 12 is omitted with its own warning (0.020292ms)
+✔ invalid task "bad" is omitted with its own warning (0.018ms)
+✔ invalid task true is omitted with its own warning (0.023041ms)
+✔ invalid task [] is omitted with its own warning (0.01775ms)
+✔ invalid task {} is omitted with its own warning (0.017375ms)
+✔ invalid task {"id":12} is omitted with its own warning (0.017209ms)
+✔ invalid task {"id":" "} is omitted with its own warning (0.022334ms)
+✔ invalid task {"id":"\u001b[31m"} is omitted with its own warning (0.018875ms)
+✔ missing fields and terminal data are handled without hidden content (0.040208ms)
+✔ CLI rejects unknown or incomplete options and non-TTY (0.192667ms)
+✔ invalid version values fail through file read, preserve the snapshot and recover (6.8545ms)
+✔ null reject count is ignored with a warning on the projected card (0.121958ms)
+ℹ tests 29
 ℹ suites 0
-ℹ pass 18
+ℹ pass 27
 ℹ fail 2
 ℹ cancelled 0
 ℹ skipped 0
 ℹ todo 0
-ℹ duration_ms 65.626417
+ℹ duration_ms 66.73275
 
 ✖ failing tests:
 
-test at ../../../../../private/var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/t-board4-mutation-4_zl1852/tui-dashboard/test/board.test.mjs:36:1
-✖ projectBoard maps fixture tasks into four columns (3.918416ms)
+test at tui-dashboard/test/board.test.mjs:36:1
+✖ projectBoard maps fixture tasks into four columns (3.498209ms)
   AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
 
     assert.ok(cardsInColumn(board, "進行中（角色＋模型）").some((c) => c.id === "DEMO-SPEC"))
 
-      at TestContext.<anonymous> (file:///private/var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/t-board4-mutation-4_zl1852/tui-dashboard/test/board.test.mjs:48:10)
+      at TestContext.<anonymous> (file:///private/tmp/t-board5-mutation-sfi6ugur/tui-dashboard/test/board.test.mjs:48:10)
       at Test.runInAsyncScope (node:async_hooks:226:14)
       at Test.run (node:internal/test_runner/test:1397:25)
       at Test.start (node:internal/test_runner/test:1257:17)
@@ -58,10 +67,10 @@ test at ../../../../../private/var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/t
     diff: 'simple'
   }
 
-test at ../../../../../private/var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/t-board4-mutation-4_zl1852/tui-dashboard/test/board.test.mjs:159:1
-✖ all states preserve order and strict needs_pol priority (0.161084ms)
+test at tui-dashboard/test/board.test.mjs:159:1
+✖ all states preserve order and strict needs_pol priority (0.146375ms)
   TypeError: Cannot read properties of undefined (reading 'id')
-      at TestContext.<anonymous> (file:///private/var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/t-board4-mutation-4_zl1852/tui-dashboard/test/board.test.mjs:165:46)
+      at TestContext.<anonymous> (file:///private/tmp/t-board5-mutation-sfi6ugur/tui-dashboard/test/board.test.mjs:165:46)
       at Test.runInAsyncScope (node:async_hooks:226:14)
       at Test.run (node:internal/test_runner/test:1397:25)
       at Test.processPendingSubtests (node:internal/test_runner/test:969:18)

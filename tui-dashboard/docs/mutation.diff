@@ -1,11 +1,5 @@
---- original
-+++ mutant
-@@ -125,7 +125,7 @@
-   }
-
-   if (ACTIVE_COLUMNS.has(column)) {
+--- a/tui-dashboard/src/board.mjs
++++ b/tui-dashboard/src/board.mjs
+@@ -128 +128 @@
 -    return { bucket: "active", roleLabel: ROLE_BY_COLUMN[column] };
 +    return { bucket: "todo", roleLabel: ROLE_BY_COLUMN[column] };
-   }
-
-   if (GATE_COLUMNS.has(column)) {

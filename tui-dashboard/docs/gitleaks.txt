@@ -1,2 +1,6 @@
-4:25PM INF scanned ~39907916 bytes (39.91 MB) in 4.99s
-4:25PM INF no leaks found
+command: gitleaks dir /private/tmp/t-board5-gitleaks-pf_lytv1 --redact --no-banner
+source: git ls-files --cached --others --exclude-standard -- tui-dashboard/
+files: 50; node_modules/cache/ignored files excluded; gitleaks.txt tool output excluded
+exit: 0
+4:38PM INF scanned ~376621 bytes (376.62 KB) in 25.5ms
+4:38PM INF no leaks found

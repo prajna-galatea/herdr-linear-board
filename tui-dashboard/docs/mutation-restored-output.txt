@@ -4,35 +4,44 @@
   預設 ~/herdr-ops/board/state.json
 
 正式流程不含看板，啟用需 Pol哥 同意。請手動在獨立終端分頁執行。
-✔ projectBoard maps fixture tasks into four columns (1.350417ms)
-✔ needs_pol and unknown column priority (0.200916ms)
-✔ card fields follow T-board-1 simplified card contract (0.163833ms)
-✔ reject sum ignores invalid entries (0.059166ms)
-✔ formatElapsed boundary seconds (1.161875ms)
-✔ formatElapsed rejects missing timezone and future times (0.0935ms)
-✔ sanitizeText strips control sequences (0.052333ms)
-✔ displayWidth treats CJK wider than ASCII (0.079666ms)
-✔ wrapText respects display width (0.087459ms)
-✔ resolveStatePath precedence and home expansion (0.108416ms)
-✔ cli --help exits 0 without reading state (0.368ms)
+✔ projectBoard maps fixture tasks into four columns (1.265334ms)
+✔ needs_pol and unknown column priority (0.185875ms)
+✔ card fields follow T-board-1 simplified card contract (0.545417ms)
+✔ reject sum ignores invalid entries (0.081167ms)
+✔ formatElapsed boundary seconds (0.797ms)
+✔ formatElapsed rejects missing timezone and future times (0.086667ms)
+✔ sanitizeText strips control sequences (0.051042ms)
+✔ displayWidth treats CJK wider than ASCII (0.075625ms)
+✔ wrapText respects display width (0.092583ms)
+✔ resolveStatePath precedence and home expansion (0.109041ms)
+✔ cli --help exits 0 without reading state (0.3575ms)
 未知參數或 --state 缺少路徑
 未知參數或 --state 缺少路徑
 未知參數或 --state 缺少路徑
 需要可用的 TTY 終端與尺寸才能顯示看板
-✔ readStateFile and display state transitions (2.908833ms)
-✔ invalid version fails whole board (0.080458ms)
-✔ empty tasks still yields four visible columns (0.045ms)
-✔ timezone invariance for elapsed label (0.036125ms)
-✔ all states preserve order and strict needs_pol priority (0.118541ms)
-✔ invalid tasks, missing fields and terminal data are handled without hidden content (0.055166ms)
-✔ CLI rejects unknown or incomplete options and non-TTY (0.258416ms)
-✔ null version is invalid through file read and preserves last valid snapshot (3.636083ms)
-✔ null reject count is ignored with a warning on the projected card (0.14ms)
-ℹ tests 20
+✔ readStateFile and display state transitions (2.501666ms)
+✔ invalid version fails whole board (0.086709ms)
+✔ empty tasks still yields four visible columns (0.051ms)
+✔ timezone invariance for elapsed label (0.034166ms)
+✔ all states preserve order and strict needs_pol priority (0.114125ms)
+✔ invalid task null is omitted with its own warning (0.046625ms)
+✔ invalid task 12 is omitted with its own warning (0.023792ms)
+✔ invalid task "bad" is omitted with its own warning (0.021834ms)
+✔ invalid task true is omitted with its own warning (0.021041ms)
+✔ invalid task [] is omitted with its own warning (0.019833ms)
+✔ invalid task {} is omitted with its own warning (0.021583ms)
+✔ invalid task {"id":12} is omitted with its own warning (0.019042ms)
+✔ invalid task {"id":" "} is omitted with its own warning (0.025875ms)
+✔ invalid task {"id":"\u001b[31m"} is omitted with its own warning (0.021ms)
+✔ missing fields and terminal data are handled without hidden content (0.042917ms)
+✔ CLI rejects unknown or incomplete options and non-TTY (0.215708ms)
+✔ invalid version values fail through file read, preserve the snapshot and recover (6.240042ms)
+✔ null reject count is ignored with a warning on the projected card (0.092541ms)
+ℹ tests 29
 ℹ suites 0
-ℹ pass 20
+ℹ pass 29
 ℹ fail 0
 ℹ cancelled 0
 ℹ skipped 0
 ℹ todo 0
-ℹ duration_ms 64.857583
+ℹ duration_ms 62.035458

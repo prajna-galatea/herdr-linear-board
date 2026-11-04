@@ -1,9 +1,9 @@
 {
-  "directory": "/var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/t-board4-mutation-4_zl1852/tui-dashboard",
-  "command": "node --test test/board.test.mjs",
+  "directory": "/private/tmp/t-board5-mutation-sfi6ugur",
+  "command": "node --test tui-dashboard/test/board.test.mjs",
   "failedExit": 1,
   "restoredExit": 0,
-  "before": "e20b66b631e984eb67b7faf3d73a18b2f4cfaa065cdd6b864ca45144dbfdd87d",
-  "after": "e20b66b631e984eb67b7faf3d73a18b2f4cfaa065cdd6b864ca45144dbfdd87d",
+  "before": "a611de276e647c9d923ada27df5a815fcd7fd4a749c240669758b1f75fdb3005",
+  "after": "a611de276e647c9d923ada27df5a815fcd7fd4a749c240669758b1f75fdb3005",
   "matchesCandidate": true
 }

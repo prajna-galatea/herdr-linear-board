@@ -79,7 +79,7 @@ one
 
 
 
-ready 已更新 2026-11-04T08:23:32.178Z · /var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/tui-pty-yznxzkq3/long-state-pat
+ready 已更新 2026-11-04T08:33:30.579Z · /var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/tui-pty-pab4ynsf/long-state-pat
 ↑↓ 捲動 · PgUp/PgDn 換頁 · q 離開
 --- same-length-mtime-two 120x40 ---
 待辦                          進行中（角色＋模型）          等把關                        已結案
@@ -120,7 +120,7 @@ two
 
 
 
-ready 已更新 2026-11-04T08:23:37.186Z · /var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/tui-pty-yznxzkq3/long-state-pat
+ready 已更新 2026-11-04T08:33:35.602Z · /var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/tui-pty-pab4ynsf/long-state-pat
 ↑↓ 捲動 · PgUp/PgDn 換頁 · q 離開
 --- atomic-tri 120x40 ---
 待辦                          進行中（角色＋模型）          等把關                        已結案
@@ -161,7 +161,7 @@ tri
 
 
 
-ready 已更新 2026-11-04T08:23:42.193Z · /var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/tui-pty-yznxzkq3/long-state-pat
+ready 已更新 2026-11-04T08:33:40.630Z · /var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/tui-pty-pab4ynsf/long-state-pat
 ↑↓ 捲動 · PgUp/PgDn 換頁 · q 離開
 --- stale-json 120x40 ---
 待辦                          進行中（角色＋模型）          等把關                        已結案
@@ -244,6 +244,88 @@ tri
 
 
 stale 顯示舊資料：狀態檔缺少 tasks 陣列
+↑↓ 捲動 · PgUp/PgDn 換頁 · q 離開
+--- stale-object-version 120x40 ---
+待辦                          進行中（角色＋模型）          等把關                        已結案
+POLL                          (空)                          (空)                          (空)
+tri
+待指派 · 未指定
+時間未知
+退回 0
+─
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+stale 顯示舊資料：不支援的 version（僅接受 1 或省略）
+↑↓ 捲動 · PgUp/PgDn 換頁 · q 離開
+--- recovered-version 120x40 ---
+待辦                          進行中（角色＋模型）          等把關                        已結案
+POLL                          (空)                          (空)                          (空)
+tri
+待指派 · 未指定
+時間未知
+退回 0
+─
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ready 已更新 2026-11-04T08:34:00.679Z · /var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/tui-pty-pab4ynsf/long-state-pat
 ↑↓ 捲動 · PgUp/PgDn 換頁 · q 離開
 --- stale-unreadable 120x40 ---
 待辦                          進行中（角色＋模型）          等把關                        已結案
@@ -366,5 +448,5 @@ stale 顯示舊資料：找不到狀態檔
 
 
 
-ready 已更新 2026-11-04T08:24:07.230Z · /var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/tui-pty-yznxzkq3/long-state-pat
+ready 已更新 2026-11-04T08:34:15.719Z · /var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/tui-pty-pab4ynsf/long-state-pat
 ↑↓ 捲動 · PgUp/PgDn 換頁 · q 離開

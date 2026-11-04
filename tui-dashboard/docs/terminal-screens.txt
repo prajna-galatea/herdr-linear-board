@@ -10,21 +10,21 @@ DEMO-TODO                     DEMO-SPEC                     DEMO-DECIDE         
 DEMO-UNKNOWN                  DEMO-BUILD                    DEMO-PR                       DEMO-CLOSED
 未知欄位 synthetic            施工進行中                    待 PR 把關                    已關閉結案
 未知角色 · demo-unknown-model 施工手 · demo-build-model     待 PR 把關 · demo-pr-model    已結案 · 未指定
-此狀態約 58 分（依更新時間）  此狀態約 2 小時（依更新時間） 此狀態約 1 小時（依更新時間） 此狀態約 1 小時（依更新時間）
+此狀態約 1 小時（依更新時間） 此狀態約 2 小時（依更新時間） 此狀態約 1 小時（依更新時間） 此狀態約 1 小時（依更新時間）
 退回 3                        退回 1                        退回 0                        退回 0
 ─                             ─                             ─                             ─
 WARN-NULL                     DEMO-REVIEW                   DEMO-MERGE                    DEMO-POL-MERGED
 （未命名）                    審查進行中                    合併手階段                    已合併但仍帶 needs_pol synthet
 待指派 · 未指定               審查手 · demo-review-model    合併手 · demo-merge-model     ic
-時間未知                      此狀態約 1 小時（依更新時間） 此狀態約 1 小時（依更新時間） 已結案 · demo-pol-merged
-退回 0                        退回 0                        退回 0                        此狀態約 56 分（依更新時間）
+時間未知                      此狀態約 2 小時（依更新時間） 此狀態約 1 小時（依更新時間） 已結案 · demo-pol-merged
+退回 0                        退回 0                        退回 0                        此狀態約 1 小時（依更新時間）
 ─                             ─                             ─                             退回 0
                               DEMO-LONG                     DEMO-POL-BUILD                ─
                               長標題測試：這是一段很長的中文施工但需要 Pol 把關 synthetic
                               標題，用來確認換行與捲動不會把施工手 · demo-pol-build
-                              卡片內容永久藏起來。          此狀態約 57 分（依更新時間）
+                              卡片內容永久藏起來。          此狀態約 1 小時（依更新時間）
                               規格師 · demo-long            退回 0
-                              此狀態約 55 分（依更新時間）  ─
+                              此狀態約 1 小時（依更新時間） ─
                               退回 0
                               ─
 
@@ -51,21 +51,21 @@ DEMO-TODO                     DEMO-SPEC                     DEMO-DECIDE         
 DEMO-UNKNOWN                  DEMO-BUILD                    DEMO-PR                       DEMO-CLOSED
 未知欄位 synthetic            施工進行中                    待 PR 把關                    已關閉結案
 未知角色 · demo-unknown-model 施工手 · demo-build-model     待 PR 把關 · demo-pr-model    已結案 · 未指定
-此狀態約 58 分（依更新時間）  此狀態約 2 小時（依更新時間） 此狀態約 1 小時（依更新時間） 此狀態約 1 小時（依更新時間）
+此狀態約 1 小時（依更新時間） 此狀態約 2 小時（依更新時間） 此狀態約 1 小時（依更新時間） 此狀態約 1 小時（依更新時間）
 退回 3                        退回 1                        退回 0                        退回 0
 ─                             ─                             ─                             ─
 WARN-NULL                     DEMO-REVIEW                   DEMO-MERGE                    DEMO-POL-MERGED
 （未命名）                    審查進行中                    合併手階段                    已合併但仍帶 needs_pol synthet
 待指派 · 未指定               審查手 · demo-review-model    合併手 · demo-merge-model     ic
-時間未知                      此狀態約 1 小時（依更新時間） 此狀態約 1 小時（依更新時間） 已結案 · demo-pol-merged
-退回 0                        退回 0                        退回 0                        此狀態約 56 分（依更新時間）
+時間未知                      此狀態約 2 小時（依更新時間） 此狀態約 1 小時（依更新時間） 已結案 · demo-pol-merged
+退回 0                        退回 0                        退回 0                        此狀態約 1 小時（依更新時間）
 ─                             ─                             ─                             退回 0
                               DEMO-LONG                     DEMO-POL-BUILD                ─
                               長標題測試：這是一段很長的中文施工但需要 Pol 把關 synthetic
                               標題，用來確認換行與捲動不會把施工手 · demo-pol-build
-                              卡片內容永久藏起來。          此狀態約 57 分（依更新時間）
+                              卡片內容永久藏起來。          此狀態約 1 小時（依更新時間）
                               規格師 · demo-long            退回 0
-                              此狀態約 55 分（依更新時間）  ─
+                              此狀態約 1 小時（依更新時間） ─
                               退回 0
                               ─
 
@@ -93,7 +93,7 @@ DEMO-TODO
 DEMO-UNKNOWN
 未知欄位 synthetic
 未知角色 · demo-unknown-model
-此狀態約 58 分（依更新時間）
+此狀態約 1 小時（依更新時間）
 退回 3
 ─
 WARN-NULL
@@ -126,7 +126,7 @@ DEMO-CLOSED
 DEMO-POL-MERGED
 已合併但仍帶 needs_pol synthetic
 已結案 · demo-pol-merged
-此狀態約 56 分（依更新時間）
+此狀態約 1 小時（依更新時間）
 退回 0
 ─
 
@@ -144,7 +144,7 @@ DEMO-TODO
 DEMO-UNKNOWN
 未知欄位 synthetic
 未知角色 · demo-unknown-model
-此狀態約 58 分（依更新時間）
+此狀態約 1 小時（依更新時間）
 退回 3
 ─
 WARN-NULL
@@ -177,7 +177,7 @@ DEMO-CLOSED
 DEMO-POL-MERGED
 已合併但仍帶 needs_pol synthetic
 已結案 · demo-pol-merged
-此狀態約 56 分（依更新時間）
+此狀態約 1 小時（依更新時間）
 退回 0
 ─
 
@@ -195,21 +195,21 @@ DEMO-TODO                     DEMO-SPEC                     DEMO-DECIDE         
 DEMO-UNKNOWN                  DEMO-BUILD                    DEMO-PR                       DEMO-CLOSED
 未知欄位 synthetic            施工進行中                    待 PR 把關                    已關閉結案
 未知角色 · demo-unknown-model 施工手 · demo-build-model     待 PR 把關 · demo-pr-model    已結案 · 未指定
-此狀態約 58 分（依更新時間）  此狀態約 2 小時（依更新時間） 此狀態約 1 小時（依更新時間） 此狀態約 1 小時（依更新時間）
+此狀態約 1 小時（依更新時間） 此狀態約 2 小時（依更新時間） 此狀態約 1 小時（依更新時間） 此狀態約 1 小時（依更新時間）
 退回 3                        退回 1                        退回 0                        退回 0
 ─                             ─                             ─                             ─
 WARN-NULL                     DEMO-REVIEW                   DEMO-MERGE                    DEMO-POL-MERGED
 （未命名）                    審查進行中                    合併手階段                    已合併但仍帶 needs_pol synthet
 待指派 · 未指定               審查手 · demo-review-model    合併手 · demo-merge-model     ic
-時間未知                      此狀態約 1 小時（依更新時間） 此狀態約 1 小時（依更新時間） 已結案 · demo-pol-merged
-退回 0                        退回 0                        退回 0                        此狀態約 56 分（依更新時間）
+時間未知                      此狀態約 2 小時（依更新時間） 此狀態約 1 小時（依更新時間） 已結案 · demo-pol-merged
+退回 0                        退回 0                        退回 0                        此狀態約 1 小時（依更新時間）
 ─                             ─                             ─                             退回 0
                               DEMO-LONG                     DEMO-POL-BUILD                ─
                               長標題測試：這是一段很長的中文施工但需要 Pol 把關 synthetic
                               標題，用來確認換行與捲動不會把施工手 · demo-pol-build
-                              卡片內容永久藏起來。          此狀態約 57 分（依更新時間）
+                              卡片內容永久藏起來。          此狀態約 1 小時（依更新時間）
                               規格師 · demo-long            退回 0
-                              此狀態約 55 分（依更新時間）  ─
+                              此狀態約 1 小時（依更新時間） ─
                               退回 0
                               ─
 
@@ -236,7 +236,7 @@ DEMO-TODO
 DEMO-UNKNOWN
 未知欄位 synthetic
 未知角色 · demo-unknown-model
-此狀態約 58 分（依更新時間）
+此狀態約 1 小時（依更新時間）
 退回 3
 ─
 WARN-NULL
@@ -269,7 +269,7 @@ DEMO-CLOSED
 DEMO-POL-MERGED
 已合併但仍帶 needs_pol synthetic
 已結案 · demo-pol-merged
-此狀態約 56 分（依更新時間）
+此狀態約 1 小時（依更新時間）
 退回 0
 ─
 
@@ -286,21 +286,21 @@ DEMO-TODO                     DEMO-SPEC                     DEMO-DECIDE         
 DEMO-UNKNOWN                  DEMO-BUILD                    DEMO-PR                       DEMO-CLOSED
 未知欄位 synthetic            施工進行中                    待 PR 把關                    已關閉結案
 未知角色 · demo-unknown-model 施工手 · demo-build-model     待 PR 把關 · demo-pr-model    已結案 · 未指定
-此狀態約 58 分（依更新時間）  此狀態約 2 小時（依更新時間） 此狀態約 1 小時（依更新時間） 此狀態約 1 小時（依更新時間）
+此狀態約 1 小時（依更新時間） 此狀態約 2 小時（依更新時間） 此狀態約 1 小時（依更新時間） 此狀態約 1 小時（依更新時間）
 退回 3                        退回 1                        退回 0                        退回 0
 ─                             ─                             ─                             ─
 WARN-NULL                     DEMO-REVIEW                   DEMO-MERGE                    DEMO-POL-MERGED
 （未命名）                    審查進行中                    合併手階段                    已合併但仍帶 needs_pol synthet
 待指派 · 未指定               審查手 · demo-review-model    合併手 · demo-merge-model     ic
-時間未知                      此狀態約 1 小時（依更新時間） 此狀態約 1 小時（依更新時間） 已結案 · demo-pol-merged
-退回 0                        退回 0                        退回 0                        此狀態約 56 分（依更新時間）
+時間未知                      此狀態約 2 小時（依更新時間） 此狀態約 1 小時（依更新時間） 已結案 · demo-pol-merged
+退回 0                        退回 0                        退回 0                        此狀態約 1 小時（依更新時間）
 ─                             ─                             ─                             退回 0
                               DEMO-LONG                     DEMO-POL-BUILD                ─
                               長標題測試：這是一段很長的中文施工但需要 Pol 把關 synthetic
                               標題，用來確認換行與捲動不會把施工手 · demo-pol-build
-                              卡片內容永久藏起來。          此狀態約 57 分（依更新時間）
+                              卡片內容永久藏起來。          此狀態約 1 小時（依更新時間）
                               規格師 · demo-long            退回 0
-                              此狀態約 55 分（依更新時間）  ─
+                              此狀態約 1 小時（依更新時間） ─
                               退回 0
                               ─
 
@@ -328,21 +328,21 @@ DEMO-TODO                     DEMO-SPEC                     DEMO-DECIDE         
 DEMO-UNKNOWN                  DEMO-BUILD                    DEMO-PR                       DEMO-CLOSED
 未知欄位 synthetic            施工進行中                    待 PR 把關                    已關閉結案
 未知角色 · demo-unknown-model 施工手 · demo-build-model     待 PR 把關 · demo-pr-model    已結案 · 未指定
-此狀態約 58 分（依更新時間）  此狀態約 2 小時（依更新時間） 此狀態約 1 小時（依更新時間） 此狀態約 1 小時（依更新時間）
+此狀態約 1 小時（依更新時間） 此狀態約 2 小時（依更新時間） 此狀態約 1 小時（依更新時間） 此狀態約 1 小時（依更新時間）
 退回 3                        退回 1                        退回 0                        退回 0
 ─                             ─                             ─                             ─
 WARN-NULL                     DEMO-REVIEW                   DEMO-MERGE                    DEMO-POL-MERGED
 （未命名）                    審查進行中                    合併手階段                    已合併但仍帶 needs_pol synthet
 待指派 · 未指定               審查手 · demo-review-model    合併手 · demo-merge-model     ic
-時間未知                      此狀態約 1 小時（依更新時間） 此狀態約 1 小時（依更新時間） 已結案 · demo-pol-merged
-退回 0                        退回 0                        退回 0                        此狀態約 56 分（依更新時間）
+時間未知                      此狀態約 2 小時（依更新時間） 此狀態約 1 小時（依更新時間） 已結案 · demo-pol-merged
+退回 0                        退回 0                        退回 0                        此狀態約 1 小時（依更新時間）
 ─                             ─                             ─                             退回 0
                               DEMO-LONG                     DEMO-POL-BUILD                ─
                               長標題測試：這是一段很長的中文施工但需要 Pol 把關 synthetic
                               標題，用來確認換行與捲動不會把施工手 · demo-pol-build
-                              卡片內容永久藏起來。          此狀態約 57 分（依更新時間）
+                              卡片內容永久藏起來。          此狀態約 1 小時（依更新時間）
                               規格師 · demo-long            退回 0
-                              此狀態約 55 分（依更新時間）  ─
+                              此狀態約 1 小時（依更新時間） ─
                               退回 0
                               ─
 
@@ -369,21 +369,21 @@ DEMO-TODO                     DEMO-SPEC                     DEMO-DECIDE         
 DEMO-UNKNOWN                  DEMO-BUILD                    DEMO-PR                       DEMO-CLOSED
 未知欄位 synthetic            施工進行中                    待 PR 把關                    已關閉結案
 未知角色 · demo-unknown-model 施工手 · demo-build-model     待 PR 把關 · demo-pr-model    已結案 · 未指定
-此狀態約 58 分（依更新時間）  此狀態約 2 小時（依更新時間） 此狀態約 1 小時（依更新時間） 此狀態約 1 小時（依更新時間）
+此狀態約 1 小時（依更新時間） 此狀態約 2 小時（依更新時間） 此狀態約 1 小時（依更新時間） 此狀態約 1 小時（依更新時間）
 退回 3                        退回 1                        退回 0                        退回 0
 ─                             ─                             ─                             ─
 WARN-NULL                     DEMO-REVIEW                   DEMO-MERGE                    DEMO-POL-MERGED
 （未命名）                    審查進行中                    合併手階段                    已合併但仍帶 needs_pol synthet
 待指派 · 未指定               審查手 · demo-review-model    合併手 · demo-merge-model     ic
-時間未知                      此狀態約 1 小時（依更新時間） 此狀態約 1 小時（依更新時間） 已結案 · demo-pol-merged
-退回 0                        退回 0                        退回 0                        此狀態約 56 分（依更新時間）
+時間未知                      此狀態約 2 小時（依更新時間） 此狀態約 1 小時（依更新時間） 已結案 · demo-pol-merged
+退回 0                        退回 0                        退回 0                        此狀態約 1 小時（依更新時間）
 ─                             ─                             ─                             退回 0
                               DEMO-LONG                     DEMO-POL-BUILD                ─
                               長標題測試：這是一段很長的中文施工但需要 Pol 把關 synthetic
                               標題，用來確認換行與捲動不會把施工手 · demo-pol-build
-                              卡片內容永久藏起來。          此狀態約 57 分（依更新時間）
+                              卡片內容永久藏起來。          此狀態約 1 小時（依更新時間）
                               規格師 · demo-long            退回 0
-                              此狀態約 55 分（依更新時間）  ─
+                              此狀態約 1 小時（依更新時間） ─
                               退回 0
                               ─
 
@@ -411,21 +411,21 @@ DEMO-TODO                     DEMO-SPEC                     DEMO-DECIDE         
 DEMO-UNKNOWN                  DEMO-BUILD                    DEMO-PR                       DEMO-CLOSED
 未知欄位 synthetic            施工進行中                    待 PR 把關                    已關閉結案
 未知角色 · demo-unknown-model 施工手 · demo-build-model     待 PR 把關 · demo-pr-model    已結案 · 未指定
-此狀態約 58 分（依更新時間）  此狀態約 2 小時（依更新時間） 此狀態約 1 小時（依更新時間） 此狀態約 1 小時（依更新時間）
+此狀態約 1 小時（依更新時間） 此狀態約 2 小時（依更新時間） 此狀態約 1 小時（依更新時間） 此狀態約 1 小時（依更新時間）
 退回 3                        退回 1                        退回 0                        退回 0
 ─                             ─                             ─                             ─
 WARN-NULL                     DEMO-REVIEW                   DEMO-MERGE                    DEMO-POL-MERGED
 （未命名）                    審查進行中                    合併手階段                    已合併但仍帶 needs_pol synthet
 待指派 · 未指定               審查手 · demo-review-model    合併手 · demo-merge-model     ic
-時間未知                      此狀態約 1 小時（依更新時間） 此狀態約 1 小時（依更新時間） 已結案 · demo-pol-merged
-退回 0                        退回 0                        退回 0                        此狀態約 56 分（依更新時間）
+時間未知                      此狀態約 2 小時（依更新時間） 此狀態約 1 小時（依更新時間） 已結案 · demo-pol-merged
+退回 0                        退回 0                        退回 0                        此狀態約 1 小時（依更新時間）
 ─                             ─                             ─                             退回 0
                               DEMO-LONG                     DEMO-POL-BUILD                ─
                               長標題測試：這是一段很長的中文施工但需要 Pol 把關 synthetic
                               標題，用來確認換行與捲動不會把施工手 · demo-pol-build
-                              卡片內容永久藏起來。          此狀態約 57 分（依更新時間）
+                              卡片內容永久藏起來。          此狀態約 1 小時（依更新時間）
                               規格師 · demo-long            退回 0
-                              此狀態約 55 分（依更新時間）  ─
+                              此狀態約 1 小時（依更新時間） ─
                               退回 0
                               ─
 
@@ -452,21 +452,21 @@ DEMO-TODO                     DEMO-SPEC                     DEMO-DECIDE         
 DEMO-UNKNOWN                  DEMO-BUILD                    DEMO-PR                       DEMO-CLOSED
 未知欄位 synthetic            施工進行中                    待 PR 把關                    已關閉結案
 未知角色 · demo-unknown-model 施工手 · demo-build-model     待 PR 把關 · demo-pr-model    已結案 · 未指定
-此狀態約 58 分（依更新時間）  此狀態約 2 小時（依更新時間） 此狀態約 1 小時（依更新時間） 此狀態約 1 小時（依更新時間）
+此狀態約 1 小時（依更新時間） 此狀態約 2 小時（依更新時間） 此狀態約 1 小時（依更新時間） 此狀態約 1 小時（依更新時間）
 退回 3                        退回 1                        退回 0                        退回 0
 ─                             ─                             ─                             ─
 WARN-NULL                     DEMO-REVIEW                   DEMO-MERGE                    DEMO-POL-MERGED
 （未命名）                    審查進行中                    合併手階段                    已合併但仍帶 needs_pol synthet
 待指派 · 未指定               審查手 · demo-review-model    合併手 · demo-merge-model     ic
-時間未知                      此狀態約 1 小時（依更新時間） 此狀態約 1 小時（依更新時間） 已結案 · demo-pol-merged
-退回 0                        退回 0                        退回 0                        此狀態約 56 分（依更新時間）
+時間未知                      此狀態約 2 小時（依更新時間） 此狀態約 1 小時（依更新時間） 已結案 · demo-pol-merged
+退回 0                        退回 0                        退回 0                        此狀態約 1 小時（依更新時間）
 ─                             ─                             ─                             退回 0
                               DEMO-LONG                     DEMO-POL-BUILD                ─
                               長標題測試：這是一段很長的中文施工但需要 Pol 把關 synthetic
                               標題，用來確認換行與捲動不會把施工手 · demo-pol-build
-                              卡片內容永久藏起來。          此狀態約 57 分（依更新時間）
+                              卡片內容永久藏起來。          此狀態約 1 小時（依更新時間）
                               規格師 · demo-long            退回 0
-                              此狀態約 55 分（依更新時間）  ─
+                              此狀態約 1 小時（依更新時間） ─
                               退回 0
                               ─
 
@@ -494,21 +494,21 @@ DEMO-TODO                     DEMO-SPEC                     DEMO-DECIDE         
 DEMO-UNKNOWN                  DEMO-BUILD                    DEMO-PR                       DEMO-CLOSED
 未知欄位 synthetic            施工進行中                    待 PR 把關                    已關閉結案
 未知角色 · demo-unknown-model 施工手 · demo-build-model     待 PR 把關 · demo-pr-model    已結案 · 未指定
-此狀態約 58 分（依更新時間）  此狀態約 2 小時（依更新時間） 此狀態約 1 小時（依更新時間） 此狀態約 1 小時（依更新時間）
+此狀態約 1 小時（依更新時間） 此狀態約 2 小時（依更新時間） 此狀態約 1 小時（依更新時間） 此狀態約 1 小時（依更新時間）
 退回 3                        退回 1                        退回 0                        退回 0
 ─                             ─                             ─                             ─
 WARN-NULL                     DEMO-REVIEW                   DEMO-MERGE                    DEMO-POL-MERGED
 （未命名）                    審查進行中                    合併手階段                    已合併但仍帶 needs_pol synthet
 待指派 · 未指定               審查手 · demo-review-model    合併手 · demo-merge-model     ic
-時間未知                      此狀態約 1 小時（依更新時間） 此狀態約 1 小時（依更新時間） 已結案 · demo-pol-merged
-退回 0                        退回 0                        退回 0                        此狀態約 56 分（依更新時間）
+時間未知                      此狀態約 2 小時（依更新時間） 此狀態約 1 小時（依更新時間） 已結案 · demo-pol-merged
+退回 0                        退回 0                        退回 0                        此狀態約 1 小時（依更新時間）
 ─                             ─                             ─                             退回 0
                               DEMO-LONG                     DEMO-POL-BUILD                ─
                               長標題測試：這是一段很長的中文施工但需要 Pol 把關 synthetic
                               標題，用來確認換行與捲動不會把施工手 · demo-pol-build
-                              卡片內容永久藏起來。          此狀態約 57 分（依更新時間）
+                              卡片內容永久藏起來。          此狀態約 1 小時（依更新時間）
                               規格師 · demo-long            退回 0
-                              此狀態約 55 分（依更新時間）  ─
+                              此狀態約 1 小時（依更新時間） ─
                               退回 0
                               ─
 
@@ -535,21 +535,21 @@ DEMO-TODO                     DEMO-SPEC                     DEMO-DECIDE         
 DEMO-UNKNOWN                  DEMO-BUILD                    DEMO-PR                       DEMO-CLOSED
 未知欄位 synthetic            施工進行中                    待 PR 把關                    已關閉結案
 未知角色 · demo-unknown-model 施工手 · demo-build-model     待 PR 把關 · demo-pr-model    已結案 · 未指定
-此狀態約 58 分（依更新時間）  此狀態約 2 小時（依更新時間） 此狀態約 1 小時（依更新時間） 此狀態約 1 小時（依更新時間）
+此狀態約 1 小時（依更新時間） 此狀態約 2 小時（依更新時間） 此狀態約 1 小時（依更新時間） 此狀態約 1 小時（依更新時間）
 退回 3                        退回 1                        退回 0                        退回 0
 ─                             ─                             ─                             ─
 WARN-NULL                     DEMO-REVIEW                   DEMO-MERGE                    DEMO-POL-MERGED
 （未命名）                    審查進行中                    合併手階段                    已合併但仍帶 needs_pol synthet
 待指派 · 未指定               審查手 · demo-review-model    合併手 · demo-merge-model     ic
-時間未知                      此狀態約 1 小時（依更新時間） 此狀態約 1 小時（依更新時間） 已結案 · demo-pol-merged
-退回 0                        退回 0                        退回 0                        此狀態約 56 分（依更新時間）
+時間未知                      此狀態約 2 小時（依更新時間） 此狀態約 1 小時（依更新時間） 已結案 · demo-pol-merged
+退回 0                        退回 0                        退回 0                        此狀態約 1 小時（依更新時間）
 ─                             ─                             ─                             退回 0
                               DEMO-LONG                     DEMO-POL-BUILD                ─
                               長標題測試：這是一段很長的中文施工但需要 Pol 把關 synthetic
                               標題，用來確認換行與捲動不會把施工手 · demo-pol-build
-                              卡片內容永久藏起來。          此狀態約 57 分（依更新時間）
+                              卡片內容永久藏起來。          此狀態約 1 小時（依更新時間）
                               規格師 · demo-long            退回 0
-                              此狀態約 55 分（依更新時間）  ─
+                              此狀態約 1 小時（依更新時間） ─
                               退回 0
                               ─
 
