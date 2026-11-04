@@ -1,0 +1,34 @@
+[
+  {
+    "id": "spccfd987930fea66e6b5fef7b97b44657",
+    "name": "T-board-1 BUILD-5 medium",
+    "folder": "/var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/T-board-build5-medium-0ib9_1rq",
+    "machine": null,
+    "active": true,
+    "tabs": [
+      {
+        "id": "tbb301c342d2511efb60b92a2996bea4e6",
+        "name": "1",
+        "active": false,
+        "settled": false,
+        "terminals": [
+          {
+            "terminal": "t67",
+            "pane": "p232c02f9d79de7a15f443a1a3dbc1686",
+            "status": null,
+            "app": null,
+            "name": null,
+            "sub_agents": []
+          }
+        ]
+      },
+      {
+        "id": "tb20a74b9332201fd38fb370aeb435e0fe",
+        "name": "T-board-1 BUILD-5 medium",
+        "active": true,
+        "settled": false,
+        "terminals": []
+      }
+    ]
+  }
+]

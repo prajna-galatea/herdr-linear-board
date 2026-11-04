@@ -1,0 +1,18 @@
+{
+  "command": "herdr-app check mods/herdr-board",
+  "cwd": "/var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/T-board-build5-pinned-4uvzxb6x",
+  "candidate": "083991ca7e8d5e2176d395ea74e8d06bc82d080a",
+  "home": "/var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/T-board-build5-native-nh3o85kj",
+  "exit": 0,
+  "stdout": "check passed: mods/herdr-board\n",
+  "stderr": "",
+  "hashes": {
+    "jsconfig.json": "76f43dd8eb9005eee9ed713cc437052788bd3900bfb81f9b71d6f0a609e47f5c",
+    "mod.json": "1b2c049fbfd9459a70075c0313f8f3adab9788136efcbeb13c53d3adf318ee2f",
+    "main.js": "450243761302ce888fc61deda55cdc6d9df4fd5a6fd37bceb966fac03a885c77",
+    "state.js": "cebe894ce23d489b8d4a90f884638a18e795b44cb368128d073ae1124b83dc7f",
+    "spinner.svg": "1844bedde800d69068cf7ac1128886ac23d0c5fb840fcf8944b6d604038f2f2d",
+    "gpui-kit.d.ts": "fbd44aaa241f31362677da18cc403a2f3f7f5d7aa61fdb8e19612cd2ceaaf176",
+    "open.js": "046a895303c836e4fdfdb681be457625b4380c6a1d68812046b0d9d89671829f"
+  }
+}

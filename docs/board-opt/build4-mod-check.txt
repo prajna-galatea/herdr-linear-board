@@ -1,0 +1,2 @@
+command: herdr-app check mods/herdr-board
+result: timeout after 40 seconds; no completed validation; subprocess terminated by timeout handler

@@ -1,0 +1,34 @@
+[
+  {
+    "id": "sp0373dc820b3aee837e2ac6fa35e8dea5",
+    "name": "T-board-1 BUILD-5 narrow",
+    "folder": "/var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/T-board-build5-narrow-2w2kgth_",
+    "machine": null,
+    "active": true,
+    "tabs": [
+      {
+        "id": "tbbd574b84b7a90239c6adc08694aa3b46",
+        "name": "1",
+        "active": false,
+        "settled": false,
+        "terminals": [
+          {
+            "terminal": "t66",
+            "pane": "pe70af3ffdce06e50c5dcd6bc7d11bb38",
+            "status": null,
+            "app": null,
+            "name": null,
+            "sub_agents": []
+          }
+        ]
+      },
+      {
+        "id": "tb47fc4b96e8e587d62d3fc63fafa425b4",
+        "name": "T-board-1 BUILD-5 narrow",
+        "active": true,
+        "settled": false,
+        "terminals": []
+      }
+    ]
+  }
+]

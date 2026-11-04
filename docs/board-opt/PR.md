@@ -1,38 +1,32 @@
 # 唯讀滿版四欄看板、精簡卡片與可逆歸檔
 
-目標：同一 fork `prajna-galatea/herdr-linear-board`，`herdr/t-board-1` → `herdr-local-board`；本次僅本機 commit 與 PR 材料，不 push、開遠端 PR、合併、部署或啟用。
-
-看板由派工工具改為唯讀投影：固定四欄，卡片只顯示任務號、標題、角色／模型、目前狀態經過時間與單一退回總數；點擊在同窗格查閱完整既有歷史與結果入口。merged／closed 與範例預設歸檔，切篩選即可查回，來源資料不變。根寬 <480／480–959／≥960px 分別一／二／四欄，整板垂直捲動。
+既有看板的派工與分割能力改為單一滿版分頁中的唯讀 state.json 投影：四欄、五項卡面資訊、同窗格詳情及未歸檔／已歸檔／全部篩選。根寬 <480／480–959／≥960px 分別一／二／四欄；merged／closed 與範例預設隱藏，資料不刪除。來源失效時，看板及詳情都保留最後快照並提示「未更新」，恢復後清除。
 
 正式流程不含看板，啟用需 Pol哥 同意。
 
-## BUILD-4 修正
-
-成功讀取空任務也記錄為有效快照；來源消失時顯示未更新。新增空快照消失、損壞、恢復及重複首次缺檔的實際 Refresh 測試。最新候選證據見 BUILD-4-VALIDATION.md；下列 52 項測試、截圖與五類撤回均是前版證據，未冒充本輪重跑。既有截圖驅動改寫尺寸回呼，原生未修改候選的三尺寸截圖仍未補齊，整體驗收尚未完成。
+交件目標：同一 fork `prajna-galatea/herdr-linear-board`，`herdr/t-board-1` → `herdr-local-board`。本機已提交，PR 由既有交件流程送出；未 push、開遠端 PR、合併、部署或正式啟用。
 
 ## 驗證
 
-- `TZ=Asia/Taipei node --test`、`TZ=UTC node --test`：各 52 tests、52 pass、0 fail、0 skip；完整工作樹輸出見 `test-output-*.txt`，指定候選乾淨副本結果見 `CANDIDATE.md`。
-- `herdr-app check`：exit 0，見 `native-check.txt`。
-- 原生截圖： [窄](narrow.png)、[中](medium.png)、[寬](wide.png)；量測與測試驅動限制見 [SCREENSHOTS.md](SCREENSHOTS.md)，候選拷貝逐檔雜湊一致。每張都是單一 mod 分頁，測試 space 與視窗已關閉。
-- 五類撤回修正各自實跑並失敗，見 [REVERT-EVIDENCE.md](REVERT-EVIDENCE.md)、`mutation-results.json`、各 `.patch.gz` 和原始 TAP 輸出。唯讀、四欄、卡面、尺寸、歸檔分別由對應行為斷言偵測。
-- 秘密掃描、白名單與 diff check 見 `CANDIDATE.md`；掃描使用隔離檔案副本，不讀正式金鑰或 .env。
-- 原 38 項中的派工衝突案例替換對照見 [TEST-MIGRATION.md](TEST-MIGRATION.md)。
+程式候選 `083991ca7e8d5e2176d395ea74e8d06bc82d080a`；base `b532c4db76f17614de16cdba30e4230afe772f97`。後續證據提交只改 docs/board-opt。
+
+- 指定候選的乾淨 Git clone，以假 HOME／XDG／appHome 執行 `TZ=Asia/Taipei node --test`、`TZ=UTC node --test`：各 exit 0、55 pass、0 fail、0 skip；完整輸出 [Taipei](build5-taipei.txt)、[UTC](build5-utc.txt)，候選／測試雜湊及乾淨狀態 [build5-pinned.json](build5-pinned.json)。
+- 同一候選 `herdr-app check mods/herdr-board` exit 0，見 [build5-mod-check.json](build5-mod-check.json)。
+- 三張原生 `herdr-app shot`：[窄 433px](build5-narrow.png)、[中 733px](build5-medium.png)、[寬 1263px](build5-wide.png)。候選檔案逐檔雜湊一致，測試驅動僅選「全部」及附加量測文字，沒有覆寫尺寸回呼；根寬由候選原本尺寸事件取得。每張單一 mod 窗格、zoom=1，測試 space 與專用視窗已關。命令、清理、status、雜湊與量測方法見 [BUILD-5-VALIDATION.md](BUILD-5-VALIDATION.md)。
+- 五類撤回修正各 exit 1，唯讀／四欄／卡面／尺寸／歸檔分別 13／1／1／1／3 fail；另撤回詳情警示為 1 fail。完整命令、變體差異及 TAP 見 [build5-mutations/](build5-mutations/)。
+- 秘密掃描 exit 0、無洩漏；`rg -n "split|pane.new|live.?workspace" mods/herdr-board` 零命中；差異非空且完全符合白名單，見 `build5-secret-scan.txt`、`build5-secret-report.json`、`build5-pane-check.txt`、`build5-paths.txt`。
+- 原 38 項中的派工衝突案例逐項替換對照見 [TEST-MIGRATION.md](TEST-MIGRATION.md)。完整本輪證據索引與限制見 [BUILD-5-VALIDATION.md](BUILD-5-VALIDATION.md)；舊版圖與測試僅保留歷史。
 
 ## Q1：完整退回歷史在哪裡？
 
-`state.js:280` 詳情投影、`main.js:146` 起詳情畫面保留 `_d.history` 全部紀錄與欄位、模型別次數、重寫次數、results 及 `.herdr/<任務號>/` 資料夾入口。`open.js:5` 驗證路徑後開啟。狀態歷史不等於完整退回歷史；逐次原因與各輪報告請見結果報告及任務資料夾，來源沒有的事件不能還原。
+`state.js:280` 詳情投影、`main.js:148` 詳情畫面、`open.js:5` 開啟器：保留全部既有 `_d.history` 欄位、模型別次數、規格重寫、results 及 `.herdr/<任務號>/` 入口。狀態歷史不等於逐次退回歷史；各輪原因須查結果報告，來源未記錄事件不能還原。
 
 ## Q2：是否有已歸檔檢視？
 
-有「未歸檔／已歸檔／全部」，預設未歸檔，可與搜尋、模型篩選共用。僅變更本 View 顯示，不寫 archived_at、不刪或搬資料。一般卡由原流程重新開案，下次刷新回到主畫面。
+有未歸檔／已歸檔／全部，預設未歸檔，可與搜尋及模型篩選共用。僅改本次 View，不寫 archived_at、不刪搬資料；原流程重新開案後刷新即回主畫面。
 
 ## Q3：如何確定只讀？
 
-所有產品 I/O／程序呼叫清單見 `io-audit.txt`：`main.js:53` 必要時讀 appHome()/herdr-board.json、`:75` 讀選定 state；`state.js` 無 I/O；`open.js:9–11` 僅明確點擊有效本機入口後以分離參數呼叫 explorer／xdg-open／open。沒有 hc、run、requests/gates 掃描或寫入、網路與持久化操作。
+完整外部操作只有 `main.js:54` 必要時唯讀設定、`:77` 唯讀選定 state，以及 `open.js:9–11` 明確點有效本機入口後的分離參數平台開啟器。`state.js` 無 I/O，沒有 hc、派工、requests／gates 存取、網路或寫入；[io-audit.txt](io-audit.txt) 附全部實際行號。
 
-runtime 測試載入實際 main/state/open，以保留畫面樹與事件的 UI 邊界執行搜尋 change、模型與歸檔 click、卡片、返回、Refresh、timer、size change；比較 state 完整位元組與 requests/gates 哨兵目錄及內容，記錄並拒絕清單外 I/O。實際 opener 只替換外部 exec；非開檔互動不得有任何程序。關閉後的 timer、未啟動工作及待決讀取均不再讀檔或更新畫面。唯讀撤回證明恢復真實寫入呼叫會被偵測。
-
-## 邊界
-
-未改 `tui-dashboard/`、上游 Linear 模組或代理對話框；未改正式設定與 ~/herdr-ops、未讀正式 state 或結果報告。只保留既有上游署名與授權。獨立審查與 PR 遞交由既有流程辦理，本報告不代替不同模型的審查。
+runtime 測試載入實際 main／state／open，經搜尋、模型／歸檔、卡片／返回、Refresh、timer、resize 等真實事件，前後比對 state 完整位元組及 requests／gates 哨兵檔名與內容，拒絕清單外操作；非開檔互動無程序呼叫，關閉後不讀檔或更新。唯讀撤回在實際操作路徑恢復寫入，得到預期 `forbidden writeTextFile`。

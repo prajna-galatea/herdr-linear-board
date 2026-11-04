@@ -1,0 +1,133 @@
+{
+  "candidate": "083991ca7e8d5e2176d395ea74e8d06bc82d080a",
+  "fixture_sha256": "7975fc7148f8194d5ca88a5352f480f3a32bc2ab3fb2b491ab98becf324305e1",
+  "driver_sha256": "8e5bd2394050fb7d3c6f4685dba83fd6d5345e936c2adb65a7116f33759f6213",
+  "captures": [
+    {
+      "name": "narrow",
+      "home": "/var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/T-board-build5-narrow-2w2kgth_",
+      "window_logical_width": 720,
+      "root_logical_width": 433.0,
+      "pane": "pd3b505f48dc2ab598355d82043b24613",
+      "tab": "tb47fc4b96e8e587d62d3fc63fafa425b4",
+      "source_hashes": {
+        "jsconfig.json": "76f43dd8eb9005eee9ed713cc437052788bd3900bfb81f9b71d6f0a609e47f5c",
+        "mod.json": "1b2c049fbfd9459a70075c0313f8f3adab9788136efcbeb13c53d3adf318ee2f",
+        "main.js": "450243761302ce888fc61deda55cdc6d9df4fd5a6fd37bceb966fac03a885c77",
+        "state.js": "cebe894ce23d489b8d4a90f884638a18e795b44cb368128d073ae1124b83dc7f",
+        "spinner.svg": "1844bedde800d69068cf7ac1128886ac23d0c5fb840fcf8944b6d604038f2f2d",
+        "gpui-kit.d.ts": "fbd44aaa241f31362677da18cc403a2f3f7f5d7aa61fdb8e19612cd2ceaaf176",
+        "open.js": "046a895303c836e4fdfdb681be457625b4380c6a1d68812046b0d9d89671829f"
+      },
+      "copy_hashes": {
+        "jsconfig.json": "76f43dd8eb9005eee9ed713cc437052788bd3900bfb81f9b71d6f0a609e47f5c",
+        "mod.json": "1b2c049fbfd9459a70075c0313f8f3adab9788136efcbeb13c53d3adf318ee2f",
+        "main.js": "450243761302ce888fc61deda55cdc6d9df4fd5a6fd37bceb966fac03a885c77",
+        "state.js": "cebe894ce23d489b8d4a90f884638a18e795b44cb368128d073ae1124b83dc7f",
+        "spinner.svg": "1844bedde800d69068cf7ac1128886ac23d0c5fb840fcf8944b6d604038f2f2d",
+        "gpui-kit.d.ts": "fbd44aaa241f31362677da18cc403a2f3f7f5d7aa61fdb8e19612cd2ceaaf176",
+        "open.js": "046a895303c836e4fdfdb681be457625b4380c6a1d68812046b0d9d89671829f"
+      },
+      "window_config": {
+        "state": "windowed",
+        "bounds": [
+          1560.0,
+          175.0,
+          720.0,
+          880.0
+        ],
+        "display": "d261cea8-3a85-4115-a511-8a90354d1187"
+      }
+    },
+    {
+      "cleanup": "narrow",
+      "process_exit": 0,
+      "pid": 88784,
+      "socket_exists": true
+    },
+    {
+      "name": "medium",
+      "home": "/var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/T-board-build5-medium-0ib9_1rq",
+      "window_logical_width": 1020,
+      "root_logical_width": 733.0,
+      "pane": "pd880b6576251b3e967aaf8905042c1b0",
+      "tab": "tb20a74b9332201fd38fb370aeb435e0fe",
+      "source_hashes": {
+        "jsconfig.json": "76f43dd8eb9005eee9ed713cc437052788bd3900bfb81f9b71d6f0a609e47f5c",
+        "mod.json": "1b2c049fbfd9459a70075c0313f8f3adab9788136efcbeb13c53d3adf318ee2f",
+        "main.js": "450243761302ce888fc61deda55cdc6d9df4fd5a6fd37bceb966fac03a885c77",
+        "state.js": "cebe894ce23d489b8d4a90f884638a18e795b44cb368128d073ae1124b83dc7f",
+        "spinner.svg": "1844bedde800d69068cf7ac1128886ac23d0c5fb840fcf8944b6d604038f2f2d",
+        "gpui-kit.d.ts": "fbd44aaa241f31362677da18cc403a2f3f7f5d7aa61fdb8e19612cd2ceaaf176",
+        "open.js": "046a895303c836e4fdfdb681be457625b4380c6a1d68812046b0d9d89671829f"
+      },
+      "copy_hashes": {
+        "jsconfig.json": "76f43dd8eb9005eee9ed713cc437052788bd3900bfb81f9b71d6f0a609e47f5c",
+        "mod.json": "1b2c049fbfd9459a70075c0313f8f3adab9788136efcbeb13c53d3adf318ee2f",
+        "main.js": "450243761302ce888fc61deda55cdc6d9df4fd5a6fd37bceb966fac03a885c77",
+        "state.js": "cebe894ce23d489b8d4a90f884638a18e795b44cb368128d073ae1124b83dc7f",
+        "spinner.svg": "1844bedde800d69068cf7ac1128886ac23d0c5fb840fcf8944b6d604038f2f2d",
+        "gpui-kit.d.ts": "fbd44aaa241f31362677da18cc403a2f3f7f5d7aa61fdb8e19612cd2ceaaf176",
+        "open.js": "046a895303c836e4fdfdb681be457625b4380c6a1d68812046b0d9d89671829f"
+      },
+      "window_config": {
+        "state": "windowed",
+        "bounds": [
+          1410.0,
+          175.0,
+          1020.0,
+          880.0
+        ],
+        "display": "d261cea8-3a85-4115-a511-8a90354d1187"
+      }
+    },
+    {
+      "cleanup": "medium",
+      "process_exit": 0,
+      "pid": 89725,
+      "socket_exists": true
+    },
+    {
+      "name": "wide",
+      "home": "/var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/T-board-build5-wide-khb_wntr",
+      "window_logical_width": 1550,
+      "root_logical_width": 1263.0,
+      "pane": "p7bebf67f27baa3d6ca3c1e064d343f39",
+      "tab": "tb74ab545a29130c789a1faf9ca46132bb",
+      "source_hashes": {
+        "jsconfig.json": "76f43dd8eb9005eee9ed713cc437052788bd3900bfb81f9b71d6f0a609e47f5c",
+        "mod.json": "1b2c049fbfd9459a70075c0313f8f3adab9788136efcbeb13c53d3adf318ee2f",
+        "main.js": "450243761302ce888fc61deda55cdc6d9df4fd5a6fd37bceb966fac03a885c77",
+        "state.js": "cebe894ce23d489b8d4a90f884638a18e795b44cb368128d073ae1124b83dc7f",
+        "spinner.svg": "1844bedde800d69068cf7ac1128886ac23d0c5fb840fcf8944b6d604038f2f2d",
+        "gpui-kit.d.ts": "fbd44aaa241f31362677da18cc403a2f3f7f5d7aa61fdb8e19612cd2ceaaf176",
+        "open.js": "046a895303c836e4fdfdb681be457625b4380c6a1d68812046b0d9d89671829f"
+      },
+      "copy_hashes": {
+        "jsconfig.json": "76f43dd8eb9005eee9ed713cc437052788bd3900bfb81f9b71d6f0a609e47f5c",
+        "mod.json": "1b2c049fbfd9459a70075c0313f8f3adab9788136efcbeb13c53d3adf318ee2f",
+        "main.js": "450243761302ce888fc61deda55cdc6d9df4fd5a6fd37bceb966fac03a885c77",
+        "state.js": "cebe894ce23d489b8d4a90f884638a18e795b44cb368128d073ae1124b83dc7f",
+        "spinner.svg": "1844bedde800d69068cf7ac1128886ac23d0c5fb840fcf8944b6d604038f2f2d",
+        "gpui-kit.d.ts": "fbd44aaa241f31362677da18cc403a2f3f7f5d7aa61fdb8e19612cd2ceaaf176",
+        "open.js": "046a895303c836e4fdfdb681be457625b4380c6a1d68812046b0d9d89671829f"
+      },
+      "window_config": {
+        "state": "windowed",
+        "bounds": [
+          1145.0,
+          175.0,
+          1550.0,
+          880.0
+        ],
+        "display": "d261cea8-3a85-4115-a511-8a90354d1187"
+      }
+    },
+    {
+      "cleanup": "wide",
+      "process_exit": 0,
+      "pid": 90723,
+      "socket_exists": true
+    }
+  ]
+}
