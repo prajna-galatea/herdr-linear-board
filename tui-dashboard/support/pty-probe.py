@@ -6,9 +6,12 @@ node = sys.argv[1]
 def run_case(name, width=120, height=40, finish='q', polling=False, permission=False):
     with tempfile.TemporaryDirectory(prefix='tui-pty-') as d:
         home = pathlib.Path(d)
-        state = home / 'state.json'
+        state = home / ('long-state-path-' * 10 + '.json')
         fixture = (root/'tui-dashboard/fixtures/state.anonymized.json').read_bytes()
-        if not polling: state.write_bytes(fixture)
+        if not polling:
+            data = json.loads(fixture)
+            data['tasks'].append({'id':'WARN-NULL','column':'todo','reject_counts':{'spec':None}})
+            state.write_text(json.dumps(data))
         master, slave = pty.openpty()
         def resize(w,h): fcntl.ioctl(slave, termios.TIOCSWINSZ, struct.pack('HHHH',h,w,0,0))
         resize(width,height)

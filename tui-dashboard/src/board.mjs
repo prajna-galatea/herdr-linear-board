@@ -81,7 +81,7 @@ export function sumRejectCounts(raw, warnings) {
   for (const [key, value] of Object.entries(raw)) {
     if (typeof value === "number" && Number.isInteger(value) && value >= 0) {
       total += value;
-    } else if (value != null && value !== 0) {
+    } else {
       warnings.push(`退回次數「${sanitizeText(key)}」無效，已忽略`);
     }
   }
@@ -194,7 +194,7 @@ export function projectBoard(text, nowMs) {
   if (!raw || typeof raw !== "object" || Array.isArray(raw)) {
     return { kind: "failed", reason: "invalid", message: "狀態檔格式錯誤" };
   }
-  if (raw.version != null && raw.version !== 1) {
+  if (Object.hasOwn(raw, "version") && raw.version !== 1) {
     return { kind: "failed", reason: "invalid", message: `不支援的 version ${raw.version}` };
   }
   if (!Array.isArray(raw.tasks)) {

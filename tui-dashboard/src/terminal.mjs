@@ -25,7 +25,7 @@ export function BoardView({displayState, scrollOffset, setScrollOffset, onExit, 
   const status = displayState.kind === "ready" ? `ready 已更新 ${new Date(displayState.readAt).toISOString()} · ${statePath}`
     : displayState.kind === "stale" ? `stale 顯示舊資料：${displayState.message}`
     : displayState.kind === "unavailable" ? `unavailable 無法載入：${displayState.message}` : "loading 讀取中";
-  const footer = wrapText(sanitizeText(status + (board.warnings.length ? ` · 警告 ${board.warnings.join("；")}` : "")), size.width)[0];
+  const footer = wrapText(sanitizeText((board.warnings.length ? `${displayState.kind} · 警告 ${board.warnings.length}：${board.warnings.join("；")} · ` : "") + status), size.width)[0];
   return React.createElement(Box, {flexDirection:"column", width:size.width, height:size.height},
     [...frame.lines, footer, "↑↓ 捲動 · PgUp/PgDn 換頁 · q 離開"].map((s, i) =>
       React.createElement(Text, {key:i, wrap:"truncate-end"}, s || " ")));

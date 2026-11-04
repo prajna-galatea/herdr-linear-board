@@ -179,3 +179,30 @@ test('CLI rejects unknown or incomplete options and non-TTY', async () => {
   assert.equal(await main(['--state','--unknown']),2);
   assert.equal(await main(['--state','/nonexistent']),2);
 });
+
+ test('null version is invalid through file read and preserves last valid snapshot', async () => {
+  const {mkdtemp, writeFile, rm} = await import('node:fs/promises');
+  const {tmpdir} = await import('node:os');
+  const dir = await mkdtemp(path.join(tmpdir(), 'tui-version-'));
+  const file = path.join(dir, 'state.json');
+  try {
+    for (const payload of [{tasks:[]}, {version:1,tasks:[]}]) {
+      await writeFile(file, JSON.stringify(payload));
+      assert.equal((await readStateFile(file, FIXED_NOW)).kind, 'valid');
+    }
+    const ready = nextDisplayState(null, projectBoard(fixtureText, FIXED_NOW));
+    await writeFile(file, JSON.stringify({version:null,tasks:[]}));
+    const invalid = await readStateFile(file, FIXED_NOW);
+    assert.equal(invalid.kind, 'failed');
+    assert.equal(invalid.reason, 'invalid');
+    assert.equal(nextDisplayState(null, invalid).kind, 'unavailable');
+    const stale = nextDisplayState(ready, invalid);
+    assert.equal(stale.kind, 'stale');
+    assert.equal(stale.board, ready.board);
+  } finally { await rm(dir, {recursive:true,force:true}); }
+});
+test('null reject count is ignored with a warning on the projected card', () => {
+  const out = projectBoard(JSON.stringify({tasks:[{id:'A',column:'todo',reject_counts:{spec:null,build:2}}]}), FIXED_NOW);
+  assert.equal(out.board.columns[0].cards[0].rejectionCount, 2);
+  assert.ok(out.board.warnings.includes('退回次數「spec」無效，已忽略'));
+});

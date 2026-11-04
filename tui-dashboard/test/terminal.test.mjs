@@ -19,6 +19,8 @@ test('real PTY: four columns, 80/59 widths, scrolling, resize and exit restorati
     const s=await replay(c);
     const initial=s.initial;
     assert.match(initial.at(-1),/q 離開/,c.name+' footer');
+    assert.match(initial.at(-2),/ready.*警告 [1-9]/,c.name+' visible warning count');
+    assert.match(initial.at(-2),/未知欄位/,c.name+' visible warning detail');
     if (['wide','resize','ctrl-c','term','int'].includes(c.name)) {
       assert.match(initial[0],/待辦.*進行中.*等把關.*已結案/);
       assert.match(initial.join('\n'),/DEMO-SPEC/);
