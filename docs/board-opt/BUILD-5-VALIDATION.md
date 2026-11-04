@@ -19,7 +19,7 @@ REVIEW-4 的詳情失效警示已修正，候選原生三尺寸、完成的 mod 
 | `TZ=UTC node --test` | 0 | 55 | 0 | 0 | [build5-utc.txt](build5-utc.txt) |
 | `herdr-app check mods/herdr-board` | 0 | — | — | — | [build5-mod-check.json](build5-mod-check.json) |
 
-副本、HEAD、乾淨狀態與程式／測試逐檔 SHA-256：[build5-pinned.json](build5-pinned.json)。mod check 在同一候選副本完成，使用隔離 app home；沙箱內首次嘗試因原生圖形服務無法完成而逾時，另存 [build5-mod-check-sandbox.json](build5-mod-check-sandbox.json)，其結果不計通過。
+副本、HEAD、乾淨狀態與程式／測試逐檔 SHA-256：[build5-pinned.json](build5-pinned.json)。mod check 在同一候選副本完成，使用隔離 app home；沙箱內首次嘗試出現圖形服務 Connection Invalid 並逾時，另存 [build5-mod-check-sandbox.json](build5-mod-check-sandbox.json)，其結果不計通過。
 
 新增 `tests/herdr-board-runtime.test.mjs:106`，從實際卡片點擊進詳情，再觸發 timer，驗證缺檔、壞 JSON、讀取錯誤都保留詳情並顯示「未更新」，恢復後顯示新標題並清除警示。產品由 `main.js:204` 集中建立警示，詳情 `:213`、看板 `:267` 共用。
 
@@ -63,3 +63,5 @@ REVIEW-4 的詳情失效警示已修正，候選原生三尺寸、完成的 mod 
 `rg -n "split|pane.new|live.?workspace" mods/herdr-board` exit 1、零命中，見 [build5-pane-check.txt](build5-pane-check.txt)。秘密掃描見 `build5-secret-scan.txt`／`build5-secret-report.json`；白名單及三點差異見 `build5-paths.txt`。原 38 案例替換對照保留於 TEST-MIGRATION.md；既有 BUILD-4 未提交證據一併納入 docs 作歷史紀錄，不當成本輪結果。
 
 正式流程不含看板，啟用需 Pol哥 同意。未動 tui-dashboard、上游 Linear 模組或正式 herdr-ops；未啟用、push、建立遠端 PR、合併、部署或執行 hc send。PR 材料供既有流程送往同一 fork 的 herdr-local-board；獨立審查仍由不同模型執行。
+
+交付核對：程式候選後的證據提交 `62d619a` 僅變更 docs/board-opt；提交中所有必要輸出、三張 PNG、PR.md 均存在，並以 git show 讀回核對雜湊。最終路徑清單見 build5-paths.txt。失敗 TAP 的 `.txt` 僅去除行尾空白以通過 diff check，`.txt.gz` 保留原始位元組。
