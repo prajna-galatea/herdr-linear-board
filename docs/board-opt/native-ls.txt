@@ -3,4 +3,3 @@ exit=0
   "spaces": [],
   "recent": []
 }
-
