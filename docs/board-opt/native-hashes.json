@@ -1,0 +1,47 @@
+[
+  {
+    "file": "mods/herdr-board/main.js",
+    "sha256": "aac82159621f401a83976efa5a1938d971faab008d59dbcfac6cd43ea925aaf0",
+    "native_copy_sha256": "aac82159621f401a83976efa5a1938d971faab008d59dbcfac6cd43ea925aaf0"
+  },
+  {
+    "file": "mods/herdr-board/mod.json",
+    "sha256": "1b2c049fbfd9459a70075c0313f8f3adab9788136efcbeb13c53d3adf318ee2f",
+    "native_copy_sha256": "1b2c049fbfd9459a70075c0313f8f3adab9788136efcbeb13c53d3adf318ee2f"
+  },
+  {
+    "file": "mods/herdr-board/open.js",
+    "sha256": "046a895303c836e4fdfdb681be457625b4380c6a1d68812046b0d9d89671829f",
+    "native_copy_sha256": "046a895303c836e4fdfdb681be457625b4380c6a1d68812046b0d9d89671829f"
+  },
+  {
+    "file": "mods/herdr-board/spinner.svg",
+    "sha256": "1844bedde800d69068cf7ac1128886ac23d0c5fb840fcf8944b6d604038f2f2d",
+    "native_copy_sha256": "1844bedde800d69068cf7ac1128886ac23d0c5fb840fcf8944b6d604038f2f2d"
+  },
+  {
+    "file": "mods/herdr-board/state.js",
+    "sha256": "cebe894ce23d489b8d4a90f884638a18e795b44cb368128d073ae1124b83dc7f",
+    "native_copy_sha256": "cebe894ce23d489b8d4a90f884638a18e795b44cb368128d073ae1124b83dc7f"
+  },
+  {
+    "file": "docs/board-opt/native-state.json",
+    "sha256": "7975fc7148f8194d5ca88a5352f480f3a32bc2ab3fb2b491ab98becf324305e1"
+  },
+  {
+    "file": "docs/board-opt/narrow.png",
+    "sha256": "6b66060298c155fc421cbafaf44b63270b67f5b458ef09872e467c4c0aae0ff0"
+  },
+  {
+    "file": "docs/board-opt/medium.png",
+    "sha256": "7f865a35d13841c545e20477d53d565717655df7ea29e13ba439b68b2568b069"
+  },
+  {
+    "file": "docs/board-opt/wide.png",
+    "sha256": "49acb6dcc17df30e26d33ce059f4eea3dcb4b1c26bd60b2245a3436cf9b5a3eb"
+  },
+  {
+    "file": "docs/board-opt/native-capture-driver.js",
+    "sha256": "82d5f80627bce74df67d076f434674dcf7534eef2f7c92c54ed69e6f13b872f3"
+  }
+]

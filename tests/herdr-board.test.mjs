@@ -2,174 +2,245 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import {
-  boardColumns, cardAction, COLUMNS, commandFor, currentPlace, DEFAULT_ROLES,
-  emptyMessage, filterTasks, hcArgv, hcDelivery, makeRequest, mergeAction, openablePath, pendingTasks, PANE_NAME,
-  paneChoices, parseConfig, parseState, taskAgent, taskLine,
+  columnWidthPx, emptyMessage, expandHome, filterTasks, formatDurationInState, herdrFolderPath, isArchived, laneForColumn,
+  layoutForWidth, modelsOf, openablePath, parseConfig, parseState, projectBoard, projectTaskDetail,
+  rejectTotal, roleLabel, stateEnteredAt, LANES,
 } from "../mods/herdr-board/state.js";
 
 const read = (path) => readFileSync(new URL(path, import.meta.url), "utf8");
 
-test("parseState reads a task and rejects broken JSON without inventing a board", () => {
+test("parseState reads tasks with history and rejects broken JSON", () => {
   const parsed = parseState(JSON.stringify({
     version: 1,
-    updated_at: "2026-11-02T00:00:00.000Z",
-    tasks: [{ id: "T-001", title: "寫看板", column: "build", pane: "build-grok", model: "grok-4.7", reject_counts: { "grok-4.7": 1 }, spec_rewrites: 2, results: { build: "/tmp/build.md" }, needs_pol: false, example: true }],
+    tasks: [{
+      id: "T-010",
+      title: "寫看板",
+      column: "build",
+      pane: "build-grok",
+      model: "grok-4.7",
+      reject_counts: { "grok-4.7": 1, bad: -1 },
+      _d: { history: [{ col: "spec", at: "2026-11-01T10:00:00.000Z" }, { col: "build", at: "2026-11-02T12:00:00.000Z" }] },
+    }],
   }));
   assert.equal(parsed.ok, true);
-  assert.equal(parsed.state.tasks[0].pane, "build-grok");
   assert.equal(parsed.state.tasks[0].reject_counts["grok-4.7"], 1);
-  assert.equal(parsed.state.tasks[0].results.build, "/tmp/build.md");
-  const broken = parseState("{");
-  assert.equal(broken.ok, false);
-  assert.match(broken.error, /JSON/);
+  assert.equal(parsed.state.tasks[0]._d.history.length, 2);
+  assert.equal(parseState("{").ok, false);
   assert.equal(parseState("[]").ok, false);
-  assert.equal(parseState(JSON.stringify({ version: 2, tasks: [] })).ok, false);
 });
 
-test("unknown columns land in 待辦 and every column stays, in order", () => {
-  const { columns, warnings } = boardColumns([
-    { id: "T-1", column: "merged" },
-    { id: "T-2", column: "nope" },
-    { id: "T-3", column: "todo" },
-  ]);
-  assert.deepEqual(columns.map((column) => column.id), COLUMNS.map((column) => column.id));
-  assert.deepEqual(columns[0].tasks.map((task) => task.id), ["T-2", "T-3"]);
-  assert.equal(columns[1].tasks.length, 0);
-  assert.equal(columns.at(-1).tasks[0].id, "T-1");
-  assert.match(warnings[0], /未知欄位「nope」的 T-2 已放進待辦/);
+test("four lanes map columns independently of expected table", () => {
+  const expect = {
+    todo: "todo",
+    spec: "active",
+    build: "active",
+    review: "active",
+    decide: "gate",
+    pr: "gate",
+    merge: "gate",
+    merged: "closed",
+    closed: "closed",
+    unknown: "todo",
+  };
+  for (const [column, lane] of Object.entries(expect)) {
+    assert.equal(laneForColumn(column), lane, column);
+  }
+  const board = projectBoard({
+    tasks: [
+      { id: "a", column: "todo", title: "t", reject_counts: {} },
+      { id: "b", column: "spec", title: "t", reject_counts: {} },
+      { id: "c", column: "decide", title: "t", reject_counts: {} },
+      { id: "d", column: "merged", title: "t", reject_counts: {} },
+      { id: "e", column: "nope", title: "t", reject_counts: {} },
+    ],
+  }, { archive: "all" });
+  assert.deepEqual(board.lanes.map((lane) => lane.id), LANES.map((lane) => lane.id));
+  assert.equal(board.lanes[0].cards[0].id, "a");
+  assert.equal(board.lanes[0].cards[1].id, "e");
+  assert.equal(board.lanes[1].cards[0].id, "b");
+  assert.equal(board.lanes[2].cards[0].id, "c");
+  assert.equal(board.lanes[3].cards[0].id, "d");
+  assert.match(board.warnings[0], /未知欄位「nope」/);
 });
 
-test("taskLine is one line, keeps the id, title and result paths, and strips controls", () => {
-  const line = taskLine({
-    id: "T-001",
-    title: "壞掉\n的\u0003標題",
-    repo: "~/repo",
-    results: { spec: "/tmp/a\nb", build: "", review: "/tmp/c" },
-  }, "請\n看");
-  assert.equal(line.includes("\n"), false);
-  assert.equal(line.includes("\u0003"), false);
-  assert.match(line, /Task T-001: 壞掉 的 標題/);
-  assert.match(line, /Repo: ~\/repo/);
-  assert.match(line, /spec=\/tmp\/a b/);
-  assert.match(line, /review=\/tmp\/c/);
-  assert.doesNotMatch(line, /build=/);
-  assert.match(line, /Instructions: 請 看/);
-  assert.match(line, /Use only herdr-app and hc/);
-  assert.match(line, /Do not merge, push or deploy/);
+test("card surface shows one reject total and detail holds history", () => {
+  const task = {
+    id: "T-020",
+    title: "卡",
+    column: "review",
+    pane: "review",
+    model: "m1",
+    reject_counts: { a: 2, b: 1 },
+    spec_rewrites: 3,
+    _d: { history: [{ col: "review", at: "2026-11-02T00:00:00.000Z" }] },
+    results: { review: "/tmp/r.md" },
+    repo: "/tmp/repo",
+  };
+  const now = Date.parse("2026-11-02T01:00:00.000Z");
+  const board = projectBoard({ tasks: [task] }, {}, now);
+  const card = board.lanes[1].cards[0];
+  assert.equal(card.rejectTotal, 3);
+  assert.equal(card.roleLabel, "審查手");
+  assert.equal(card.durationLabel, "1 小時");
+  const detail = projectTaskDetail(task, now, "/Users/p");
+  assert.equal(detail.rejectLines.length, 2);
+  assert.equal(detail.specRewrites, 3);
+  assert.equal(detail.history.length, 1);
+  assert.equal(detail.resultLinks[0].path, "/tmp/r.md");
 });
 
-test("gate action requests a lead notification and never mentions git", () => {
-  const plan = mergeAction({ id: "T-009\n" }, { leadExists: true });
-  assert.deepEqual(plan.hc, ["send", "--if", "idle", "--", "lead", "task T-009 待 herdr cto 把關"]);
-  assert.equal(JSON.stringify(plan).includes("git"), false);
-  assert.equal(plan.hc.includes("merge"), false);
-  assert.equal(mergeAction({ id: "T-001" }, { leadExists: false }).hc, null);
+test("duration uses history not updated_at and handles invalid times", () => {
+  const task = { id: "T-1", column: "todo", updated_at: "2026-11-05T00:00:00.000Z", _d: { history: [{ col: "todo", at: "2026-11-02T00:00:00.000Z" }] }, reject_counts: {} };
+  const now = Date.parse("2026-11-02T00:00:30.000Z");
+  assert.equal(formatDurationInState(task, now), "不到 1 分鐘");
+  assert.equal(formatDurationInState({ id: "T-2", column: "todo", reject_counts: {}, _d: {} }, now), "時間未知");
+  assert.equal(formatDurationInState({ id: "T-3", column: "todo", reject_counts: {}, _d: { history: [{ col: "todo", at: "2099-01-01T00:00:00.000Z" }] } }, now), "時間未知");
+});
 
+test("archive filter hides merged and example T-001..T-003 by default", () => {
+  const tasks = [
+    { id: "T-001", column: "todo", example: true, reject_counts: {} },
+    { id: "T-100", column: "merged", reject_counts: {} },
+    { id: "T-200", column: "build", reject_counts: {} },
+    { id: "T-004", column: "todo", example: true, reject_counts: {} },
+  ];
+  assert.equal(isArchived(tasks[0]), true);
+  assert.equal(isArchived(tasks[3]), true);
+  const active = projectBoard({ tasks }, { archive: "active" });
+  assert.deepEqual(active.lanes.flatMap((lane) => lane.cards.map((c) => c.id)).sort(), ["T-200"]);
+  const archived = projectBoard({ tasks }, { archive: "archived" });
+  assert.deepEqual(archived.lanes.flatMap((lane) => lane.cards.map((c) => c.id)).sort(), ["T-001", "T-004", "T-100"]);
+});
+
+test("reject counts ignore non-integers and missing column warns", () => {
+  const parsed = parseState(JSON.stringify({
+    version: 1,
+    tasks: [
+      { id: "T-x", title: "no col", reject_counts: { a: 1.5, b: "2", c: 2 } },
+    ],
+  }));
+  assert.equal(parsed.ok, true);
+  assert.equal(parsed.state.tasks[0].reject_counts.a, undefined);
+  assert.equal(parsed.state.tasks[0].reject_counts.b, undefined);
+  assert.equal(parsed.state.tasks[0].reject_counts.c, 2);
+  assert.equal(rejectTotal(parsed.state.tasks[0]), 2);
+  const board = projectBoard({ tasks: parsed.state.tasks }, { archive: "all" });
+  assert.match(board.warnings[0], /缺少 column/);
+});
+
+test("contradictory history yields unknown duration", () => {
+  const task = {
+    id: "T-c",
+    column: "build",
+    reject_counts: {},
+    _d: {
+      history: [
+        { col: "spec", at: "2026-11-01T00:00:00.000Z" },
+        { col: "review", at: "2026-11-02T00:00:00.000Z" },
+        { col: "build", at: "2026-11-03T00:00:00.000Z" },
+      ],
+    },
+  };
+  assert.equal(stateEnteredAt(task), "2026-11-03T00:00:00.000Z");
+  const bad = { ...task, _d: { history: [{ col: "spec", at: "2026-11-01T00:00:00.000Z" }, { col: "review", at: "2026-11-02T00:00:00.000Z" }] } };
+  assert.equal(stateEnteredAt(bad), null);
+  const now = Date.parse("2026-11-05T00:00:00.000Z");
+  assert.equal(formatDurationInState(bad, now), "時間未知");
+});
+
+test("herdr folder path rejects traversal in task id", () => {
+  assert.equal(herdrFolderPath({ id: "../outside", repo: "/tmp/repo" }, "/tmp"), null);
+  assert.equal(herdrFolderPath({ id: "T-1", repo: "/tmp/repo" }, "/tmp"), "/tmp/repo/.herdr/T-1");
+});
+
+test("layout breakpoints at 479/480/959/960 logical pixels", () => {
+  assert.equal(layoutForWidth(479).columnsPerRow, 1);
+  assert.equal(layoutForWidth(480).columnsPerRow, 2);
+  assert.equal(layoutForWidth(959).columnsPerRow, 2);
+  assert.equal(layoutForWidth(960).columnsPerRow, 4);
+  const w = columnWidthPx(960, 4, 12, 24);
+  assert.ok(w >= 120);
+  assert.ok(w * 4 + 12 * 3 + 24 <= 960);
+});
+
+test("config expands ~ for state path only", () => {
+  const config = parseConfig('{ "state": "~/ops/state.json", "roles": { "x": ["y"] } }', "/Users/p");
+  assert.equal(config.state, "/Users/p/ops/state.json");
+  assert.equal(emptyMessage("/Users/p/herdr-ops/board/state.json", "/Users/p"), "尚無任務：~/herdr-ops/board/state.json");
+});
+
+test("openable paths refuse URLs and relative paths", () => {
+  assert.equal(openablePath("https://example.invalid/a", "/Users/p"), null);
+  assert.equal(openablePath("notes.md", "/Users/p"), null);
+  assert.equal(openablePath("/tmp/build.md", "/Users/p"), "/tmp/build.md");
+  assert.equal(openablePath("~/ops/a.md", "/Users/p"), "/Users/p/ops/a.md");
+});
+
+test("main board source has no hc writes or pane splits", () => {
   const board = read("../mods/herdr-board/main.js");
-  const dialog = read("../mods/herdr-board-agent/main.js");
   const state = read("../mods/herdr-board/state.js");
   const open = read("../mods/herdr-board/open.js");
-  for (const source of [board, dialog, open]) assert.doesNotMatch(source, /\bgit\b/);
-  for (const source of [board, dialog, state, open]) {
+  assert.doesNotMatch(board, /\bhc\s*\(/);
+  assert.doesNotMatch(board, /import\s*\{[^}]*\bhc\b/);
+  assert.doesNotMatch(board, /writeTextFile/);
+  assert.doesNotMatch(board, /openOverlay/);
+  assert.doesNotMatch(board, /\brun\s*\(/);
+  for (const source of [board, state, open]) {
+    assert.doesNotMatch(source, /\bgit\b/);
     assert.doesNotMatch(source, /claude/);
     assert.doesNotMatch(source, /Linear/);
   }
 });
 
-test("the example file has one example task in every column", () => {
-  const parsed = parseState(read("../examples/state.example.json"));
-  assert.equal(parsed.ok, true);
-  assert.deepEqual(parsed.state.tasks.map((task) => task.column), COLUMNS.map((column) => column.id));
-  for (const task of parsed.state.tasks) {
-    assert.equal(task.example, true);
-    assert.match(task.title, /^\[範例\]/);
+test("rejectTotal sums non-negative counts only", () => {
+  assert.equal(rejectTotal({ reject_counts: { a: 1, b: 0, c: -3, d: 2 } }), 3);
+});
+
+test("roleLabel maps pane prefixes", () => {
+  assert.equal(roleLabel(""), "未指派");
+  assert.equal(roleLabel("spec"), "規格師");
+  assert.equal(roleLabel("build-grok"), "施工手");
+  assert.equal(roleLabel("custom-pane"), "custom-pane");
+});
+
+test("stateEnteredAt picks last matching column entry", () => {
+  const task = {
+    column: "build",
+    _d: {
+      history: [
+        { col: "spec", at: "2026-11-01T00:00:00.000Z" },
+        { col: "build", at: "2026-11-02T00:00:00.000Z" },
+        { col: "build", at: "2026-11-03T00:00:00.000Z" },
+      ],
+    },
+  };
+  assert.equal(stateEnteredAt(task), "2026-11-03T00:00:00.000Z");
+});
+
+test("filter and model chips respect archive mode", () => {
+  const tasks = [
+    { id: "T-1", title: "alpha", model: "m1", column: "todo", reject_counts: {} },
+    { id: "T-2", title: "beta", model: "m1", column: "merged", reject_counts: {} },
+  ];
+  assert.deepEqual(filterTasks(tasks, "alpha", null, "active").map((t) => t.id), ["T-1"]);
+  assert.equal(modelsOf(tasks, "active").length, 1);
+  assert.equal(modelsOf(tasks, "all").length, 1);
+});
+
+test('v2 producer history, strict counts, roles and timezone rules', () => {
+  const task = parseState(JSON.stringify({tasks:[{id:'T-real',column:'build',pane:'spec-sol',example:'true',reject_counts:{a:2,b:'3',c:1.2,d:-1,e:true},_d:{history:[{col:'build',at:'2026-11-04T08:00:00+08:00',note:'keep'}]}}]})).state.tasks[0];
+  assert.equal(rejectTotal(task),2);assert.equal(isArchived(task),false);assert.equal(roleLabel(task.pane),'規格師');
+  assert.equal(formatDurationInState(task,Date.parse('2026-11-04T01:00:00Z')),'1 小時');
+  for(const tail of [null,{col:'review',at:'2026-11-04T00:00:00Z'},{col:'build',at:'2026-11-04T00:00:00'},{col:'build',at:'invalid'}]) {
+    assert.equal(formatDurationInState({...task,_d:{history:[...task._d.history,tail]}},Date.parse('2026-11-04T01:00:00Z')),'時間未知');
   }
 });
-
-test("dispatch uses configured commands and an existing pane is an idle send", () => {
-  assert.deepEqual(commandFor("build-grok"), ["grok", "-m", "grok-4.7"]);
-  assert.deepEqual(commandFor("review"), ["codex", "--no-daemon"]);
-  assert.deepEqual(hcArgv({
-    exists: false, pane: "build-grok", command: DEFAULT_ROLES["build-grok"], task: "Task T-001", space: "s1", tab: "t1",
-  }), [
-    "run", "--bg", "--name", "build-grok", "--keep",
-    "--label", "herdr.space=s1", "--label", "herdr.tab=t1",
-    "--", "grok", "-m", "grok-4.7", "Task T-001",
-  ]);
-  assert.deepEqual(hcArgv({ exists: true, pane: "review", command: ["codex"], task: "Task T-002", space: "s1", tab: "t1" }),
-    ["send", "--if", "idle", "--", "review", "Task T-002"]);
-  assert.equal(hcArgv({ exists: true, pane: "--help", command: ["grok"], task: "Task T-001", space: "s1", tab: "t1" }), null);
-  assert.equal(PANE_NAME.test("--help"), false);
-  assert.equal(PANE_NAME.test("-lead"), false);
-  assert.equal(PANE_NAME.test("build-grok"), true);
-  const choices = paneChoices({ "--help": ["grok"], "review-2": ["codex"] });
-  assert.equal(choices.includes("--help"), false);
-  assert.equal(choices.includes("review-2"), true);
+test('invalid config and unsafe local paths fail explicitly',()=>{
+ for(const value of ['{','[]','{"state":"relative"}','{"state":"https://invalid"}'])assert.throws(()=>parseConfig(value,'/tmp/home'));
+ for(const path of ['//server/share','/tmp/a\nfile','../x'])assert.equal(openablePath(path,'/tmp/home'),null);
+ assert.equal(herdrFolderPath({id:'.',repo:'/tmp/repo'},'/tmp'),null);
 });
-
-test("config expands ~ and validates roles", () => {
-  const config = parseConfig('{ "state": "~/ops/state.json", "roles": { "build-grok": ["grok", "-m", "grok-4.6"] } }', "/Users/p");
-  assert.equal(config.state, "/Users/p/ops/state.json");
-  assert.deepEqual(config.roles["build-grok"], ["grok", "-m", "grok-4.6"]);
-  assert.deepEqual(config.roles.review, ["codex", "--no-daemon"]);
-  assert.equal(emptyMessage("/Users/p/herdr-ops/board/state.json", "/Users/p"), "尚無任務：~/herdr-ops/board/state.json");
-  assert.equal(parseConfig("not json", "/h").state, "/h/herdr-ops/board/state.json");
-
-  const configRoles = parseConfig('{ "roles": { "--help": ["grok"], "review-2": ["codex"] } }', "/h");
-  assert.equal(configRoles.roles["--help"], undefined);
-  assert.deepEqual(configRoles.roles["review-2"], ["codex"]);
-});
-
-test("requests carry unknown column hints and pending files are associated with tasks", () => {
-  const now = "2026-11-02T00:00:00.000Z";
-  const unknown = makeRequest("dispatch", { id: "T-9", column: "unknown" }, "spec", "hello", now);
-  assert.deepEqual(unknown, { version: 1, kind: "dispatch", task: "T-9", pane: "spec", instructions: "hello", created_at: now, from: "herdr-board", column_hint: "todo" });
-  assert.equal(makeRequest("dispatch", { id: "T-1", column: "todo" }, "spec", "", now).column_hint, undefined);
-  const gate = makeRequest("gate", { id: "T-2", column: "merge" }, "lead", "", now);
-  assert.deepEqual([...pendingTasks([JSON.stringify(unknown), JSON.stringify(gate), "invalid"])], ["T-9", "T-2"]);
-});
-
-test("a launch that did not deliver the first message is not success", () => {
-  assert.deepEqual(hcDelivery({ code: 0, stdout: JSON.stringify({ first_message: { sent: false } }) }),
-    { ok: false, error: "代理沒有收到第一句任務" });
-  assert.equal(hcDelivery({ code: 0, stdout: JSON.stringify({ first_message: { sent: true } }) }).ok, true);
-  assert.equal(hcDelivery({ code: 0, stdout: JSON.stringify({ ok: true }) }).ok, true);
-  assert.equal(hcDelivery({ code: 3, stderr: JSON.stringify({ error: { message: "no terminal" } }) }).ok, false);
-});
-
-test("only a local absolute path or a home path can be opened", () => {
-  assert.equal(openablePath("https://example.invalid/a", "/Users/p"), null);
-  assert.equal(openablePath("file:///etc/passwd", "/Users/p"), null);
-  assert.equal(openablePath("notes.md", "/Users/p"), null);
-  assert.equal(openablePath("//share/a", "/Users/p"), null);
-  assert.equal(openablePath("/tmp/build.md", "/Users/p"), "/tmp/build.md");
-  assert.equal(openablePath("~/ops/a.md", "/Users/p"), "/Users/p/ops/a.md");
-});
-
-test("an unknown column is drawn in 待辦 and still offers 派工", () => {
-  assert.equal(cardAction("todo"), "dispatch");
-  assert.equal(cardAction("spec"), "dispatch");
-  assert.equal(cardAction("build"), "dispatch");
-  assert.equal(cardAction("review"), "dispatch");
-  assert.equal(cardAction("nope"), "dispatch");
-  assert.equal(cardAction("merge"), "pol");
-  assert.equal(cardAction("decide"), null);
-  assert.equal(cardAction("merged"), null);
-  const { columns } = boardColumns([{ id: "T-9", column: "nope" }, { id: "T-1", column: "todo" }]);
-  assert.deepEqual(columns[0].tasks.map((task) => task.id), ["T-9", "T-1"]);
-  assert.equal(cardAction(columns[0].tasks[0].column), "dispatch");
-});
-
-test("filter matches id or title, and an agent matches the pane name then the task id", () => {
-  const tasks = [{ id: "T-001", title: "寫看板", model: "grok-4.7" }, { id: "T-002", title: "別的", model: "" }];
-  assert.deepEqual(filterTasks(tasks, "看板").map((task) => task.id), ["T-001"]);
-  assert.deepEqual(filterTasks(tasks, "t-002").map((task) => task.id), ["T-002"]);
-  const agents = [
-    { address: "t9", pane: "p9", tab_name: "T-002 notes", space_name: "ops", status: "idle" },
-    { address: "box/t1m", pane: "p1", tab_name: "other", space_name: "ops", status: "working" },
-  ];
-  const terminals = [{ name: "build-grok", address: "t1m" }];
-  assert.equal(taskAgent({ id: "T-004", pane: "build-grok" }, agents, terminals).address, "box/t1m");
-  assert.equal(taskAgent({ id: "T-002", pane: "" }, agents, terminals).tab_name, "T-002 notes");
-  assert.deepEqual(currentPlace(null, [{ id: "mac/s1", active: true, tabs: [{ id: "mac/tab2", active: true }] }]), { space: "s1", tab: "tab2" });
+test('source path controls remain invalid after parsing',()=>{
+ const t=parseState(JSON.stringify({tasks:[{id:'T-safe',column:'build',results:{build:'/tmp/report\n'},_d:{root:'/tmp/repo\n'}}]})).state.tasks[0];
+ assert.equal(openablePath(t.results.build,'/tmp'),null);assert.equal(herdrFolderPath(t,'/tmp'),null);
 });

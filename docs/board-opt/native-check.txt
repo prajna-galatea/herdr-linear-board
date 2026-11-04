@@ -1,0 +1,3 @@
+exit=0
+check passed: /var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/T-board-native-6695lwj0/mods/herdr-board
+

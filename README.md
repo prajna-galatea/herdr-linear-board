@@ -166,61 +166,57 @@ empty folder.
 
 ## 本機模式 (herdr ops)
 
-這份倉庫另外有一組本機看板，給「Herdr 新任務流程」用。它不連 Linear、不跑 `claude`、也不建立 worktree。合併不會自動發生。
+這份倉庫另外有一組**唯讀**本機看板，給「Herdr 新任務流程」用。它不連 Linear、不跑 `claude`、不建立 worktree、不寫 `state.json`、不寫 `requests/`、不呼叫 `hc`。
+
+**正式流程不含看板，啟用需 Pol哥 同意。** 本 PR 不在任何地方自動啟用看板；合併也不等於啟用。
 
 原作是 [nu0ma/herdr-linear-board](https://github.com/nu0ma/herdr-linear-board)（MIT）。本機模式是加在旁邊的另一組 mod，原本的 Linear 看板還在。
 
-### 安裝
+### 開啟方式（滿版）
 
-不要蓋掉 `linear-board`。把這兩個資料夾複製進 Herdr 的 mod 目錄（這份倉庫自己不會代你複製）：
+以**單一 mod 分頁**開啟（不要 overlay、不要分割窗格）：
 
 ```sh
-cp -R mods/herdr-board mods/herdr-board-agent ~/.config/herdr-app/mods/
+herdr-app do tab.new --name 唯讀看板 --mod herdr-board --space <你的 space> --props '{"state":"/absolute/path/state.json"}'
 ```
 
-快捷鍵自己加到 `~/.config/herdr-app/keys.json` 的 `global`，避開 Linear 看板已經用的 `ctrl-shift-y`，例如：
+`mods/herdr-board/mod.json` 已移除 overlay 設定。
 
-```json
-"ctrl-shift-h": "mod.open:herdr-board"
-```
+### 安裝
+
+不要蓋掉 `linear-board`。把 `mods/herdr-board/` 複製進 Herdr 的 mod 目錄（這份倉庫自己不會代你複製）。不必再為看板安裝 `herdr-board-agent`。
+
+以下安裝與設定僅供獲准後操作；本次不執行。
 
 ### 狀態檔
 
-預設讀 `~/herdr-ops/board/state.json`。第一次：
-
-```sh
-mkdir -p ~/herdr-ops/board && cp examples/state.example.json ~/herdr-ops/board/state.json
-```
-
-範例裡七張卡各占一欄，標題都以 `[範例]` 開頭。路徑可以改，寫在 `~/.config/herdr-app/herdr-board.json`：
+預設讀 `~/herdr-ops/board/state.json`。路徑可改：
 
 ```json
-{
-  "state": "~/herdr-ops/board/state.json",
-  "roles": {
-    "build-grok": ["grok", "-m", "grok-4.7"],
-    "review": ["codex", "--no-daemon"]
-  }
-}
+{ "state": "~/herdr-ops/board/state.json" }
 ```
 
-`~` 會展開。沒寫的角色用內建指令。看板打開時、按 `Refresh`、以及打開期間每 5 秒會重讀。檔案不在時顯示「尚無任務」。JSON 壞掉時留著上一份好的內容，並顯示錯誤。
+寫在 `~/.config/herdr-app/herdr-board.json`。打開、Refresh、每 5 秒重讀；相同 mtime 但內容變更仍會更新。
 
-### 欄位
+### 四欄映射
 
-固定七欄，空的也在：待辦、herdr cto 把關、規格師、施工手、審查手、合併手、已合併。上方可以用編號或標題篩，也可以用模型篩。
+| 原始 `column` | 顯示欄 |
+|---|---|
+| `todo` | 待辦 |
+| `spec`、`build`、`review` | 進行中 |
+| `decide`、`pr`、`merge` | 等把關 |
+| `merged`、`closed` | 已結案 |
+| 未知 | 待辦（並警告） |
 
-卡片有編號、完整標題、模型、分頁名、退回次數、規格重寫、範例標記，以及更新日。尚在請求目錄的任務顯示「待處理請求」。`needs_pol` 為真時畫強調框並顯示「等 Pol哥」。Herdr 裡同名的分頁會顯示 Working／Needs you／Done／Idle，點它會跳過去。
+### 卡片與歸檔
 
-### 動作
+卡面：任務號、標題、角色／模型、在此狀態多久、退回總次數。詳情含 `_d.history`、結果檔與 `.herdr/<任務號>/` 入口。
 
-- 待辦、規格師、施工手、審查手的卡片有「派工」。選角色分頁（規格師預設 `spec`，施工手預設 `build-grok`，審查手預設 `review`），可加一句補充。分頁已經在就 `hc send --if idle`；還沒有就 `hc run --bg --name … --keep`，帶上目前的 space 與 tab。看板先建立派工請求；狀態由未來的派工腳本更新。未知欄位顯示在待辦，請求附有 `column_hint: "todo"`。
-- 合併手的按鈕是「送 herdr cto 把關」。它建立 `gate` 請求；若有名為 `lead` 的分頁，另外送出 `task <id> 待 herdr cto 把關`。它不跑 git，也不合併。
-- 有結果路徑的卡片，點卡片會用系統的 `open` 打開那個檔。只接受本機絕對路徑或 `~` 開頭。沒有路徑、或是網址，就什麼都不做。
+`merged`／`closed`、`example === true` 與範例 `T-001`～`T-003` 預設不顯示（顯示篩選，不刪資料）。標題列可切「未歸檔／已歸檔／全部」，預設未歸檔。
 
-看板只讀狀態檔，派工與把關動作將請求寫入 `~/herdr-ops/board/requests/`，不修改 `state.json`。請求檔由未來的派工腳本處理並移除；送出終端訊息失敗時請求仍會保留。
+響應式：根寬小於 480px 每列 1 欄；480–959px 每列 2 欄；960px 以上四欄同列。
 
-細節與重做這組 mod 的說明在 [`RECIPE.herdr.md`](RECIPE.herdr.md)。
+細節在 [`RECIPE.herdr.md`](RECIPE.herdr.md)。驗收輸出在 [`docs/board-opt/`](docs/board-opt/)。
 
 ## License
 
@@ -228,3 +224,7 @@ mkdir -p ~/herdr-ops/board && cp examples/state.example.json ~/herdr-ops/board/s
 the agent dialog is adapted from `issue-agent` in
 [obrunogonzaga/herdr-mods](https://github.com/obrunogonzaga/herdr-mods) (MIT).
 Original board by [nu0ma](https://github.com/nu0ma/herdr-linear-board).
+
+唯讀邊界：main.js 僅讀選定 state 與必要時的 appHome()/herdr-board.json；state.js 無 I/O；open.js 僅在明確點擊有效本機路徑後呼叫系統開啟器。沒有 requests/gates、hc、排版或網路操作。
+
+退回次數只計非負整數 number（含退回 0）；詳情的狀態歷史不等於完整退回歷史，逐次退回原因請見結果報告與 .herdr 任務資料夾。無效來源設定會報錯，不回退正式來源；同來源讀取失敗保留舊快照並標示未更新。關閉取消本 View 工作與輪詢。

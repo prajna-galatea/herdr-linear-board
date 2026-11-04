@@ -1,0 +1,36 @@
+{
+  "spaces": [
+    {
+      "id": "spa7a7dbd8d352d6d411290e4aeef8d8fd",
+      "name": "T-board-1 isolated capture",
+      "folder": "/var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/T-board-native-6695lwj0",
+      "machine": null,
+      "active": true,
+      "tabs": [
+        {
+          "id": "tb3ab5daeaad6210e949883835e4bacf28",
+          "name": "1",
+          "active": false,
+          "settled": false,
+          "terminals": [
+            {
+              "terminal": "t5n",
+              "pane": "pcd9c06bad72bd29931a16c4fd6943cea",
+              "status": null,
+              "app": null,
+              "name": null,
+              "sub_agents": []
+            }
+          ]
+        },
+        {
+          "id": "tb6173336af9ef0b5ff15de50076ea5655",
+          "name": "T-board-1 wide",
+          "active": true,
+          "settled": false,
+          "terminals": []
+        }
+      ]
+    }
+  ]
+}

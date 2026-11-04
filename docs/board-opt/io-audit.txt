@@ -1,0 +1,6 @@
+mods/herdr-board/open.js:9:  if (platform === "windows") exec("explorer", [local]).catch(() => {});
+mods/herdr-board/open.js:10:  else if (platform === "linux") exec("xdg-open", [local]).catch(() => {});
+mods/herdr-board/open.js:11:  else exec("open", ["--", local]).catch(() => {});
+mods/herdr-board/main.js:4:import { theme, home, appHome, props, readTextFile } from "herdr";
+mods/herdr-board/main.js:53:    const text = await readTextFile(`${appHome()}/herdr-board.json`);
+mods/herdr-board/main.js:75:        const text = await readTextFile(this.statePath);

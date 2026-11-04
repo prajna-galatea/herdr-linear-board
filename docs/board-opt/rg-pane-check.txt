@@ -1,0 +1,2 @@
+command: rg -n "split|pane.new|live.?workspace" mods/herdr-board
+exit: 1 (1 = no matches)
