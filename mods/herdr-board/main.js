@@ -201,6 +201,7 @@ class HerdrBoard extends View {
     const models = modelsOf(tasks, this.archive);
     const layout = layoutForWidth(this.rootWidth);
     const colWidth = columnWidthPx(this.rootWidth, layout.columnsPerRow, LANE_GAP, BOARD_PADDING);
+    const sourceWarning = this.error ? [div().flex_none().px(14).py(6).text_size(11).text_color(t.ansi1).child(`未更新：${this.error}`)] : [];
 
     if (this.screen.kind === "detail") {
       const task = taskById(this.snapshot, this.screen.taskId);
@@ -209,6 +210,7 @@ class HerdrBoard extends View {
       } else {
         return v_flex().id("herdr-board").size_full().min_h(0).rounded(10).overflow_hidden().bg(t.background).border_1().border_color(t.border)
           .on_size_change((size, cx) => { this.rootWidth = size.width; cx.notify(); })
+          .children(sourceWarning)
           .child(this.detailView(task, t, hover));
       }
     }
@@ -245,7 +247,6 @@ class HerdrBoard extends View {
       laneRows.push(h_flex().flex_none().w_full().gap(LANE_GAP).items_start().children(cells));
     }
 
-    const staleNote = this.error ? `未更新：${this.error}` : null;
     return v_flex().id("herdr-board").size_full().min_h(0).rounded(10).overflow_hidden().bg(t.background).border_1().border_color(t.border)
       .text_color(t.foreground).text_size(13)
       .on_size_change((size, cx) => { this.rootWidth = size.width; cx.notify(); })
@@ -263,7 +264,7 @@ class HerdrBoard extends View {
           .hover(hover).on_click((_event, cx) => this.reload(true, cx))
           .child(this.reading ? svg(SPINNER).size(13).flex_none().text_color(t.muted).spin(900) : "Refresh")))
       .child(h_flex().flex_none().flex_wrap().px(14).py(8).gap(6).items_center().border_b(1).border_color(t.border).children(chips))
-      .children(staleNote ? [div().flex_none().px(14).py(6).text_size(11).text_color(t.ansi1).child(staleNote)] : [])
+      .children(sourceWarning)
       .children(placed.warnings.length ? [div().flex_none().px(14).py(4).text_size(11).text_color(t.dim).child(placed.warnings.join(" · "))] : [])
       .children(!waiting && this.missing ? [div().flex_none().px(14).py(6).text_size(11).text_color(t.dim).child(emptyMessage(this.statePath, this.homeDir))] : [])
       .children(!waiting ? [v_flex().id("board").flex_1().min_h(0).px(12).pt(6).gap(LANE_GAP).overflow_y_scrollbar().children(laneRows)] : [])

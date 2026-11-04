@@ -103,6 +103,25 @@ test('empty successful snapshot remains visibly stale on disappearance or damage
     assert.doesNotMatch(texts(f.board.render()).join(''),/未更新/);
   }
 });
+test('detail shows stale snapshot warning for missing, damaged and unreadable source and clears it on recovery',async t=>{
+  const f=await fixture(t);await f.save([task('T-detail','build')]);await f.drain();f.click('card-T-detail');
+  let title='title T-detail';
+  for(const broken of ['missing','json','read-error']) {
+    if(broken==='missing')await rm(f.path);
+    else if(broken==='json')await writeFile(f.path,'{');
+    else f.hooks.read=async()=>{throw Error('test source unreadable');};
+    f.timers[0].fn(f.cx);await f.drain();
+    let tree=f.board.render();assert.ok(byId(tree,'herdr-board-detail'));
+    assert.match(texts(tree).join(''),/未更新/);
+    assert.ok(texts(tree).includes(title));
+    title=`recovered ${broken}`;
+    f.hooks.read=null;await f.save([task('T-detail','build',{title})]);
+    f.timers[0].fn(f.cx);await f.drain();tree=f.board.render();
+    assert.ok(byId(tree,'herdr-board-detail'));assert.doesNotMatch(texts(tree).join(''),/未更新/);
+    assert.ok(texts(tree).includes(title));
+  }
+  assert.ok(f.operations.every(([op])=>op==='read'));
+});
 test('repeated initial missing is empty rather than a stale successful snapshot',async t=>{
   const f=await fixture(t);await f.drain();f.click('refresh');await f.drain();
   assert.match(texts(f.board.render()).join(''),/尚無任務/);
