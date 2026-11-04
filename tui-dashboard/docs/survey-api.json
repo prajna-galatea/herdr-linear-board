@@ -1,0 +1,77 @@
+[
+  {
+    "repo": "vadimdemedes/ink",
+    "stars": 40218,
+    "license": {
+      "key": "mit",
+      "name": "MIT License",
+      "spdx_id": "MIT",
+      "url": "https://api.github.com/licenses/mit",
+      "node_id": "MDc6TGljZW5zZTEz"
+    },
+    "release": "v8.0.0",
+    "published_at": "2026-10-03T11:25:42Z",
+    "url": "https://github.com/vadimdemedes/ink/releases/tag/v8.0.0",
+    "queried_at": "2026-11-04T08:06:26.959755+00:00"
+  },
+  {
+    "repo": "Textualize/textual",
+    "stars": 37573,
+    "license": {
+      "key": "mit",
+      "name": "MIT License",
+      "spdx_id": "MIT",
+      "url": "https://api.github.com/licenses/mit",
+      "node_id": "MDc6TGljZW5zZTEz"
+    },
+    "release": "v8.2.8",
+    "published_at": "2026-06-30T06:53:30Z",
+    "url": "https://github.com/Textualize/textual/releases/tag/v8.2.8",
+    "queried_at": "2026-11-04T08:06:27.641552+00:00"
+  },
+  {
+    "repo": "ratatui/ratatui",
+    "stars": 23158,
+    "license": {
+      "key": "mit",
+      "name": "MIT License",
+      "spdx_id": "MIT",
+      "url": "https://api.github.com/licenses/mit",
+      "node_id": "MDc6TGljZW5zZTEz"
+    },
+    "release": "ratatui-v0.30.2",
+    "published_at": "2026-06-19T08:56:52Z",
+    "url": "https://github.com/ratatui/ratatui/releases/tag/ratatui-v0.30.2",
+    "queried_at": "2026-11-04T08:06:28.415132+00:00"
+  },
+  {
+    "repo": "charmbracelet/bubbletea",
+    "stars": 45601,
+    "license": {
+      "key": "mit",
+      "name": "MIT License",
+      "spdx_id": "MIT",
+      "url": "https://api.github.com/licenses/mit",
+      "node_id": "MDc6TGljZW5zZTEz"
+    },
+    "release": "v2.1.1",
+    "published_at": "2026-10-28T10:19:27Z",
+    "url": "https://github.com/charmbracelet/bubbletea/releases/tag/v2.1.1",
+    "queried_at": "2026-11-04T08:06:29.123689+00:00"
+  },
+  {
+    "repo": "wtfutil/wtf",
+    "stars": 17141,
+    "license": {
+      "key": "mpl-2.0",
+      "name": "Mozilla Public License 2.0",
+      "spdx_id": "MPL-2.0",
+      "url": "https://api.github.com/licenses/mpl-2.0",
+      "node_id": "MDc6TGljZW5zZTE0"
+    },
+    "release": "v0.51.0",
+    "published_at": "2026-09-29T16:31:41Z",
+    "url": "https://github.com/wtfutil/wtf/releases/tag/v0.51.0",
+    "queried_at": "2026-11-04T08:06:29.893790+00:00"
+  }
+]
