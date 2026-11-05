@@ -111,7 +111,6 @@ export function classifyTask(raw, warnings) {
   if (!KNOWN_COLUMNS.has(column)) {
     if (!column) warnings.push("任務缺少 column，已放進待辦");
     else warnings.push(`未知欄位「${sanitizeText(column)}」的任務已放進待辦`);
-    const paneRole = roleFromPane(raw.pane);
     return { bucket: "todo", roleLabel: "未知角色" };
   }
 
@@ -133,7 +132,6 @@ export function classifyTask(raw, warnings) {
   }
 
   warnings.push(`未知欄位「${sanitizeText(column)}」的任務已放進待辦`);
-  const paneRole = roleFromPane(raw.pane);
   return { bucket: "todo", roleLabel: "未知角色" };
 }
 

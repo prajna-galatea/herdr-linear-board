@@ -34,7 +34,7 @@ test('real PTY: four columns, 80/59 widths, scrolling, resize and exit restorati
   }
   await saveEvidence('screens',cases);
 });
-test('real CLI polling: unavailable, same length/mtime, atomic replace, stale and recovery', {timeout:70000},async()=>{
+test('real CLI polling: unavailable, same length/mtime, atomic replace, stale and recovery', {timeout:85000},async()=>{
   const c=drive('poll')[0]; invariant(c,0);
   const s=await replay(c);
   assert.match(s.initial.join('\n'),/unavailable/);
@@ -48,6 +48,11 @@ test('real CLI polling: unavailable, same length/mtime, atomic replace, stale an
   assert.match(s['recovered-version'].join('\n'), /ready/);
   assert.match(s['recovered-version'].join('\n'), /tri/);
   assert.doesNotMatch(s['recovered-version'].join('\n'), /stale/);
+  assert.match(s['unknown-pane'].join('\n'), /PANE/);
+  assert.match(s['unknown-pane'].join('\n'), /未知欄位/);
+  assert.match(s['unknown-pane'].join('\n'), /ready/);
+  assert.match(s['recovered-pane'].join('\n'), /tri/);
+  assert.match(s['recovered-pane'].join('\n'), /ready/);
   assert.match(s['recovered-empty'].join('\n'),/ready/);
   assert.doesNotMatch(s['recovered-empty'].join('\n'),/POLL|tri|stale/);
   await saveEvidence('poll',[c]);

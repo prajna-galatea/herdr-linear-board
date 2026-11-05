@@ -59,6 +59,17 @@ test("needs_pol and unknown column priority", () => {
   assert.match(board.warnings.join(" "), /未知欄位/);
 });
 
+test("unknown or missing column ignores malformed pane and retains polling data", () => {
+  for (const column of ["unknown", undefined]) {
+    const outcome = projectBoard(JSON.stringify({tasks:[{id:"PANE", column, pane:{toString:null}, needs_pol:true}]}), FIXED_NOW);
+    assert.equal(outcome.kind, "valid");
+    const result = findCard(outcome.board, "PANE");
+    assert.equal(result.column, "待辦");
+    assert.equal(result.card.roleLabel, "未知角色");
+    assert.match(outcome.board.warnings.join(" "), /未知欄位|缺少 column/);
+  }
+});
+
 test("card fields follow T-board-1 simplified card contract", () => {
   const board = projectBoard(fixtureText, FIXED_NOW).board;
   const build = findCard(board, "DEMO-BUILD")?.card;
