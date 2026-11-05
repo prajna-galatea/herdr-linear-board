@@ -1,0 +1,34 @@
+[
+  {
+    "id": "sp02b1633e1771e1e1533c14bf5c1109a6",
+    "name": "T-board-1 BUILD-5 wide",
+    "folder": "/var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/T-board-build5-wide-khb_wntr",
+    "machine": null,
+    "active": true,
+    "tabs": [
+      {
+        "id": "tbbbbe156b11bb00df3959deefb866384a",
+        "name": "1",
+        "active": false,
+        "settled": false,
+        "terminals": [
+          {
+            "terminal": "t68",
+            "pane": "p95403fd79fe7376e42e06e41dff4dcea",
+            "status": null,
+            "app": null,
+            "name": null,
+            "sub_agents": []
+          }
+        ]
+      },
+      {
+        "id": "tb74ab545a29130c789a1faf9ca46132bb",
+        "name": "T-board-1 BUILD-5 wide",
+        "active": true,
+        "settled": false,
+        "terminals": []
+      }
+    ]
+  }
+]

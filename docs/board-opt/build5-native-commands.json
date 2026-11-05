@@ -1,0 +1,458 @@
+[
+  {
+    "home": "/var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/T-board-build5-narrow-2w2kgth_",
+    "command": [
+      "herdr-app",
+      "ls"
+    ],
+    "exit": 2,
+    "stdout": "",
+    "stderr": "herdr-app: no Herdr window at /var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/T-board-build5-narrow-2w2kgth_/herdr-app.sock: No such file or directory (os error 2)\n"
+  },
+  {
+    "home": "/var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/T-board-build5-narrow-2w2kgth_",
+    "command": [
+      "herdr-app",
+      "ls"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"spaces\": [],\n  \"recent\": []\n}\n",
+    "stderr": ""
+  },
+  {
+    "home": "/var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/T-board-build5-narrow-2w2kgth_",
+    "command": [
+      "herdr-app",
+      "status"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"zoom\": 1.2,\n  \"font_size\": 16.8,\n  \"ui_font_size\": 15.6,\n  \"space\": \"spa85b670e9d704f2d54c93ef1c12d261b\",\n  \"tab\": \"tb1c67b6fcb110837fe988052277b749da\",\n  \"focused_pane\": \"p3d4336c56e796b7fdef680a35f96ea44\",\n  \"layout\": \"main\",\n  \"agent\": null,\n  \"floats\": {},\n  \"overlays\": [],\n  \"errors\": []\n}\n",
+    "stderr": ""
+  },
+  {
+    "home": "/var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/T-board-build5-narrow-2w2kgth_",
+    "command": [
+      "herdr-app",
+      "do",
+      "app.zoom_reset"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"ok\": true\n}\n",
+    "stderr": ""
+  },
+  {
+    "home": "/var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/T-board-build5-narrow-2w2kgth_",
+    "command": [
+      "herdr-app",
+      "do",
+      "space.new",
+      "--name",
+      "T-board-1 BUILD-5 narrow",
+      "--folder",
+      "/var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/T-board-build5-narrow-2w2kgth_"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"space\": \"sp0373dc820b3aee837e2ac6fa35e8dea5\",\n  \"tab\": \"tbbd574b84b7a90239c6adc08694aa3b46\",\n  \"terminal\": \"t66\"\n}\n",
+    "stderr": ""
+  },
+  {
+    "home": "/var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/T-board-build5-narrow-2w2kgth_",
+    "command": [
+      "herdr-app",
+      "do",
+      "tab.new",
+      "--name",
+      "T-board-1 BUILD-5 narrow",
+      "--space",
+      "sp0373dc820b3aee837e2ac6fa35e8dea5",
+      "--mod",
+      "board-capture",
+      "--props",
+      "{\"state\": \"/Users/pauuul/Documents/PJ/herdr-linear-board/docs/board-opt/native-state.json\"}"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"space\": \"sp0373dc820b3aee837e2ac6fa35e8dea5\",\n  \"tab\": \"tb47fc4b96e8e587d62d3fc63fafa425b4\",\n  \"pane\": \"pd3b505f48dc2ab598355d82043b24613\"\n}\n",
+    "stderr": ""
+  },
+  {
+    "home": "/var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/T-board-build5-narrow-2w2kgth_",
+    "command": [
+      "herdr-app",
+      "status"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"zoom\": 1.0,\n  \"font_size\": 14.0,\n  \"ui_font_size\": 13.0,\n  \"space\": \"sp0373dc820b3aee837e2ac6fa35e8dea5\",\n  \"tab\": \"tb47fc4b96e8e587d62d3fc63fafa425b4\",\n  \"focused_pane\": \"pd3b505f48dc2ab598355d82043b24613\",\n  \"layout\": \"main\",\n  \"agent\": \"t2h\",\n  \"floats\": {},\n  \"overlays\": [],\n  \"errors\": []\n}\n",
+    "stderr": ""
+  },
+  {
+    "home": "/var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/T-board-build5-narrow-2w2kgth_",
+    "command": [
+      "herdr-app",
+      "ls"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"spaces\": [\n    {\n      \"id\": \"spa85b670e9d704f2d54c93ef1c12d261b\",\n      \"name\": \"~家目錄\",\n      \"folder\": \"/Users/pauuul\",\n      \"machine\": null,\n      \"active\": false,\n      \"tabs\": [\n        {\n          \"id\": \"tb1c67b6fcb110837fe988052277b749da\",\n          \"name\": \"1\",\n          \"active\": true,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t1\",\n              \"pane\": \"p3d4336c56e796b7fdef680a35f96ea44\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"id\": \"sp89877e295296ac45dd33f3db2f1b8825\",\n      \"name\": \"herdr ops-工廠主控\",\n      \"folder\": \"/Users/pauuul/herdr-ops\",\n      \"machine\": null,\n      \"active\": false,\n      \"tabs\": [\n        {\n          \"id\": \"tb0a761228dd14c76bdb51e8c92801cdb9\",\n          \"name\": \"主控\",\n          \"active\": true,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t2h\",\n              \"pane\": \"p59d6b03ce32ab642a5e765ef7d66640c\",\n              \"status\": \"done\",\n              \"app\": \"codex\",\n              \"name\": \"lead\",\n              \"sub_agents\": []\n            }\n          ]\n        },\n        {\n          \"id\": \"tb2e54c67d9e6e2d98f52c18fb1dc2fb88\",\n          \"name\": \"規格師\",\n          \"active\": false,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t3t\",\n              \"pane\": \"p8a127711c429a1ed892e38b8abadf1af\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        },\n        {\n          \"id\": \"tb251eb80c80a2ab64169784074af077a7\",\n          \"name\": \"施工手\",\n          \"active\": false,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t3v\",\n              \"pane\": \"pd28ad69962097e4ab5ddfd1379235e16\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        },\n        {\n          \"id\": \"tbb151bfeb5d095117d139f557e70c9977\",\n          \"name\": \"審查手\",\n          \"active\": false,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t3w\",\n              \"pane\": \"p3e63df95932486ea161c9ee301a796ff\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"id\": \"sp234618934829945d2aea0813e563c5e2\",\n      \"name\": \"獵人腳本\",\n      \"folder\": \"/Users/pauuul/herdr-ops\",\n      \"machine\": null,\n      \"active\": false,\n      \"tabs\": [\n        {\n          \"id\": \"tb2c668e6e833332b6f73abf58be092be1\",\n          \"name\": \"1\",\n          \"active\": true,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t32\",\n              \"pane\": \"p5b38b12182d2e3bc10c9115fed8e3bc1\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        },\n        {\n          \"id\": \"tbfc9d785837932c65d1f46f1e1e4fd150\",\n          \"name\": \"規格師\",\n          \"active\": false,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t3x\",\n              \"pane\": \"pf888523cb751cf76cb67e78166ad8525\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        },\n        {\n          \"id\": \"tbc6531ac37612529ea7e0fad0faae9a67\",\n          \"name\": \"施工手\",\n          \"active\": false,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t3y\",\n              \"pane\": \"pf0b128a7b33e9e1432966e4258c6d315\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        },\n        {\n          \"id\": \"tba251cd8b66f31d7180b33595da577e6c\",\n          \"name\": \"審查手\",\n          \"active\": false,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t3z\",\n              \"pane\": \"p46d60ea9df068533418e33b7e0a5e091\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"id\": \"sp778d67b72e355bc7f2f92423a6f5f7be\",\n      \"name\": \"IOTA挖礦\",\n      \"folder\": \"/Users/pauuul/Documents/PJ/ai礦工\",\n      \"machine\": null,\n      \"active\": false,\n      \"tabs\": [\n        {\n          \"id\": \"tb5ca5e3ee6625677129e6b8f937845884\",\n          \"name\": \"規格師\",\n          \"active\": true,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t41\",\n              \"pane\": \"p6b4774b4f48ea0953d4a7f1abdd5bfd9\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        },\n        {\n          \"id\": \"tbe0e0a1336345b799a7650f7f40db2e7e\",\n          \"name\": \"施工手\",\n          \"active\": false,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t42\",\n              \"pane\": \"p499c03babca6cffed6751bc1a389e634\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        },\n        {\n          \"id\": \"tb6c959547554ed213057de555a514cb77\",\n          \"name\": \"審查手\",\n          \"active\": false,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t43\",\n              \"pane\": \"pee3717b9886bb014c280cc56b94dfdda\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"id\": \"spcfd37187a255d3b0e674fdb2a8df20cf\",\n      \"name\": \"herdr 看板改良\",\n      \"folder\": \"/Users/pauuul/Documents/PJ/herdr-linear-board\",\n      \"machine\": null,\n      \"active\": false,\n      \"tabs\": [\n        {\n          \"id\": \"tbef4f3bb63f56337b1e00666d09c53329\",\n          \"name\": \"規格師\",\n          \"active\": true,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t4r\",\n              \"pane\": \"pae831de3fb1db14e508203d182a71f6e\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        },\n        {\n          \"id\": \"tb6c9807ba18600de4ba3f443833a61a4a\",\n          \"name\": \"施工手\",\n          \"active\": false,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t4t\",\n              \"pane\": \"pcf2f6e5e68211948e851ce7459230e6e\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            },\n            {\n              \"terminal\": \"t5x\",\n              \"pane\": \"p55cc2f41dffeab77f29c5032d4d101db\",\n              \"status\": \"working\",\n              \"app\": \"codex\",\n              \"name\": \"build-t-board-1\",\n              \"sub_agents\": []\n            }\n          ]\n        },\n        {\n          \"id\": \"tbbe6a5db540dd71ebfd1aa6b57e784353\",\n          \"name\": \"審查手\",\n          \"active\": false,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t4w\",\n              \"pane\": \"p713a8e8d632a1ab4e05d8b99cc2c696e\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"id\": \"sp22cf378e55f0f49e7249362ef34e7413\",\n      \"name\": \"herdr 看板改良-TUI\",\n      \"folder\": \"/Users/pauuul/Documents/PJ/herdr-linear-board-tui\",\n      \"machine\": null,\n      \"active\": false,\n      \"tabs\": [\n        {\n          \"id\": \"tb4c933a4f647ac519cd0a87ed3aaa4ed1\",\n          \"name\": \"規格師\",\n          \"active\": true,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t5p\",\n              \"pane\": \"peab3a476a32f484e7c869a73a334aec1\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        },\n        {\n          \"id\": \"tb84986edeee0433b0d341f4822f58876e\",\n          \"name\": \"施工手\",\n          \"active\": false,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t5v\",\n              \"pane\": \"p98cec610ae7d5aa2fb2cfe9f654f55d0\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        },\n        {\n          \"id\": \"tb5eac351a7c2d328385c089513083d30f\",\n          \"name\": \"審查手\",\n          \"active\": false,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t64\",\n              \"pane\": \"pa0bd2754523a79ce1702b856e641d765\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            },\n            {\n              \"terminal\": \"t65\",\n              \"pane\": \"pcba9382bee035c4086a8b9548740a84d\",\n              \"status\": \"working\",\n              \"app\": \"codex\",\n              \"name\": \"review-t-board-2-tui\",\n              \"sub_agents\": []\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"id\": \"sp0373dc820b3aee837e2ac6fa35e8dea5\",\n      \"name\": \"T-board-1 BUILD-5 narrow\",\n      \"folder\": \"/var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/T-board-build5-narrow-2w2kgth_\",\n      \"machine\": null,\n      \"active\": true,\n      \"tabs\": [\n        {\n          \"id\": \"tbbd574b84b7a90239c6adc08694aa3b46\",\n          \"name\": \"1\",\n          \"active\": false,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t66\",\n              \"pane\": \"pe70af3ffdce06e50c5dcd6bc7d11bb38\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        },\n        {\n          \"id\": \"tb47fc4b96e8e587d62d3fc63fafa425b4\",\n          \"name\": \"T-board-1 BUILD-5 narrow\",\n          \"active\": true,\n          \"settled\": false,\n          \"terminals\": []\n        }\n      ]\n    }\n  ],\n  \"recent\": []\n}\n",
+    "stderr": ""
+  },
+  {
+    "home": "/var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/T-board-build5-narrow-2w2kgth_",
+    "command": [
+      "herdr-app",
+      "status"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"zoom\": 1.0,\n  \"font_size\": 14.0,\n  \"ui_font_size\": 13.0,\n  \"space\": \"sp0373dc820b3aee837e2ac6fa35e8dea5\",\n  \"tab\": \"tb47fc4b96e8e587d62d3fc63fafa425b4\",\n  \"focused_pane\": \"pd3b505f48dc2ab598355d82043b24613\",\n  \"layout\": \"main\",\n  \"agent\": \"t2h\",\n  \"floats\": {},\n  \"overlays\": [],\n  \"errors\": []\n}\n",
+    "stderr": ""
+  },
+  {
+    "home": "/var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/T-board-build5-narrow-2w2kgth_",
+    "command": [
+      "herdr-app",
+      "shot",
+      "/Users/pauuul/Documents/PJ/herdr-linear-board/docs/board-opt/build5-narrow.png"
+    ],
+    "exit": 0,
+    "stdout": "/Users/pauuul/Documents/PJ/herdr-linear-board/docs/board-opt/build5-narrow.png\n",
+    "stderr": ""
+  },
+  {
+    "home": "/var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/T-board-build5-narrow-2w2kgth_",
+    "command": [
+      "herdr-app",
+      "do",
+      "space.close",
+      "--id",
+      "sp0373dc820b3aee837e2ac6fa35e8dea5",
+      "--confirmed",
+      "true"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"ok\": true\n}\n",
+    "stderr": ""
+  },
+  {
+    "home": "/var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/T-board-build5-narrow-2w2kgth_",
+    "command": [
+      "herdr-app",
+      "ls"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"spaces\": [\n    {\n      \"id\": \"spa85b670e9d704f2d54c93ef1c12d261b\",\n      \"name\": \"~家目錄\",\n      \"folder\": \"/Users/pauuul\",\n      \"machine\": null,\n      \"active\": false,\n      \"tabs\": [\n        {\n          \"id\": \"tb1c67b6fcb110837fe988052277b749da\",\n          \"name\": \"1\",\n          \"active\": true,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t1\",\n              \"pane\": \"p3d4336c56e796b7fdef680a35f96ea44\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"id\": \"sp89877e295296ac45dd33f3db2f1b8825\",\n      \"name\": \"herdr ops-工廠主控\",\n      \"folder\": \"/Users/pauuul/herdr-ops\",\n      \"machine\": null,\n      \"active\": false,\n      \"tabs\": [\n        {\n          \"id\": \"tb0a761228dd14c76bdb51e8c92801cdb9\",\n          \"name\": \"主控\",\n          \"active\": true,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t2h\",\n              \"pane\": \"p59d6b03ce32ab642a5e765ef7d66640c\",\n              \"status\": \"done\",\n              \"app\": \"codex\",\n              \"name\": \"lead\",\n              \"sub_agents\": []\n            }\n          ]\n        },\n        {\n          \"id\": \"tb2e54c67d9e6e2d98f52c18fb1dc2fb88\",\n          \"name\": \"規格師\",\n          \"active\": false,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t3t\",\n              \"pane\": \"p8a127711c429a1ed892e38b8abadf1af\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        },\n        {\n          \"id\": \"tb251eb80c80a2ab64169784074af077a7\",\n          \"name\": \"施工手\",\n          \"active\": false,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t3v\",\n              \"pane\": \"pd28ad69962097e4ab5ddfd1379235e16\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        },\n        {\n          \"id\": \"tbb151bfeb5d095117d139f557e70c9977\",\n          \"name\": \"審查手\",\n          \"active\": false,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t3w\",\n              \"pane\": \"p3e63df95932486ea161c9ee301a796ff\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"id\": \"sp234618934829945d2aea0813e563c5e2\",\n      \"name\": \"獵人腳本\",\n      \"folder\": \"/Users/pauuul/herdr-ops\",\n      \"machine\": null,\n      \"active\": false,\n      \"tabs\": [\n        {\n          \"id\": \"tb2c668e6e833332b6f73abf58be092be1\",\n          \"name\": \"1\",\n          \"active\": true,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t32\",\n              \"pane\": \"p5b38b12182d2e3bc10c9115fed8e3bc1\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        },\n        {\n          \"id\": \"tbfc9d785837932c65d1f46f1e1e4fd150\",\n          \"name\": \"規格師\",\n          \"active\": false,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t3x\",\n              \"pane\": \"pf888523cb751cf76cb67e78166ad8525\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        },\n        {\n          \"id\": \"tbc6531ac37612529ea7e0fad0faae9a67\",\n          \"name\": \"施工手\",\n          \"active\": false,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t3y\",\n              \"pane\": \"pf0b128a7b33e9e1432966e4258c6d315\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        },\n        {\n          \"id\": \"tba251cd8b66f31d7180b33595da577e6c\",\n          \"name\": \"審查手\",\n          \"active\": false,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t3z\",\n              \"pane\": \"p46d60ea9df068533418e33b7e0a5e091\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"id\": \"sp778d67b72e355bc7f2f92423a6f5f7be\",\n      \"name\": \"IOTA挖礦\",\n      \"folder\": \"/Users/pauuul/Documents/PJ/ai礦工\",\n      \"machine\": null,\n      \"active\": false,\n      \"tabs\": [\n        {\n          \"id\": \"tb5ca5e3ee6625677129e6b8f937845884\",\n          \"name\": \"規格師\",\n          \"active\": true,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t41\",\n              \"pane\": \"p6b4774b4f48ea0953d4a7f1abdd5bfd9\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        },\n        {\n          \"id\": \"tbe0e0a1336345b799a7650f7f40db2e7e\",\n          \"name\": \"施工手\",\n          \"active\": false,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t42\",\n              \"pane\": \"p499c03babca6cffed6751bc1a389e634\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        },\n        {\n          \"id\": \"tb6c959547554ed213057de555a514cb77\",\n          \"name\": \"審查手\",\n          \"active\": false,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t43\",\n              \"pane\": \"pee3717b9886bb014c280cc56b94dfdda\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"id\": \"spcfd37187a255d3b0e674fdb2a8df20cf\",\n      \"name\": \"herdr 看板改良\",\n      \"folder\": \"/Users/pauuul/Documents/PJ/herdr-linear-board\",\n      \"machine\": null,\n      \"active\": false,\n      \"tabs\": [\n        {\n          \"id\": \"tbef4f3bb63f56337b1e00666d09c53329\",\n          \"name\": \"規格師\",\n          \"active\": true,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t4r\",\n              \"pane\": \"pae831de3fb1db14e508203d182a71f6e\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        },\n        {\n          \"id\": \"tb6c9807ba18600de4ba3f443833a61a4a\",\n          \"name\": \"施工手\",\n          \"active\": false,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t4t\",\n              \"pane\": \"pcf2f6e5e68211948e851ce7459230e6e\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            },\n            {\n              \"terminal\": \"t5x\",\n              \"pane\": \"p55cc2f41dffeab77f29c5032d4d101db\",\n              \"status\": \"working\",\n              \"app\": \"codex\",\n              \"name\": \"build-t-board-1\",\n              \"sub_agents\": []\n            }\n          ]\n        },\n        {\n          \"id\": \"tbbe6a5db540dd71ebfd1aa6b57e784353\",\n          \"name\": \"審查手\",\n          \"active\": false,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t4w\",\n              \"pane\": \"p713a8e8d632a1ab4e05d8b99cc2c696e\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"id\": \"sp22cf378e55f0f49e7249362ef34e7413\",\n      \"name\": \"herdr 看板改良-TUI\",\n      \"folder\": \"/Users/pauuul/Documents/PJ/herdr-linear-board-tui\",\n      \"machine\": null,\n      \"active\": true,\n      \"tabs\": [\n        {\n          \"id\": \"tb4c933a4f647ac519cd0a87ed3aaa4ed1\",\n          \"name\": \"規格師\",\n          \"active\": true,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t5p\",\n              \"pane\": \"peab3a476a32f484e7c869a73a334aec1\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        },\n        {\n          \"id\": \"tb84986edeee0433b0d341f4822f58876e\",\n          \"name\": \"施工手\",\n          \"active\": false,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t5v\",\n              \"pane\": \"p98cec610ae7d5aa2fb2cfe9f654f55d0\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        },\n        {\n          \"id\": \"tb5eac351a7c2d328385c089513083d30f\",\n          \"name\": \"審查手\",\n          \"active\": false,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t64\",\n              \"pane\": \"pa0bd2754523a79ce1702b856e641d765\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            },\n            {\n              \"terminal\": \"t65\",\n              \"pane\": \"pcba9382bee035c4086a8b9548740a84d\",\n              \"status\": \"working\",\n              \"app\": \"codex\",\n              \"name\": \"review-t-board-2-tui\",\n              \"sub_agents\": []\n            }\n          ]\n        }\n      ]\n    }\n  ],\n  \"recent\": [\n    {\n      \"name\": \"T-board-1 BUILD-5 narrow\",\n      \"folder\": \"/var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/T-board-build5-narrow-2w2kgth_\"\n    }\n  ]\n}\n",
+    "stderr": ""
+  },
+  {
+    "home": "/var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/T-board-build5-narrow-2w2kgth_",
+    "command": [
+      "herdr-app",
+      "do",
+      "app.quit"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"ok\": true\n}\n",
+    "stderr": ""
+  },
+  {
+    "home": "/var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/T-board-build5-medium-0ib9_1rq",
+    "command": [
+      "herdr-app",
+      "ls"
+    ],
+    "exit": 2,
+    "stdout": "",
+    "stderr": "herdr-app: no Herdr window at /var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/T-board-build5-medium-0ib9_1rq/herdr-app.sock: No such file or directory (os error 2)\n"
+  },
+  {
+    "home": "/var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/T-board-build5-medium-0ib9_1rq",
+    "command": [
+      "herdr-app",
+      "ls"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"spaces\": [],\n  \"recent\": []\n}\n",
+    "stderr": ""
+  },
+  {
+    "home": "/var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/T-board-build5-medium-0ib9_1rq",
+    "command": [
+      "herdr-app",
+      "status"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"zoom\": 1.2,\n  \"font_size\": 16.8,\n  \"ui_font_size\": 15.6,\n  \"space\": \"spa85b670e9d704f2d54c93ef1c12d261b\",\n  \"tab\": \"tb1c67b6fcb110837fe988052277b749da\",\n  \"focused_pane\": \"p3d4336c56e796b7fdef680a35f96ea44\",\n  \"layout\": \"main\",\n  \"agent\": null,\n  \"floats\": {},\n  \"overlays\": [],\n  \"errors\": []\n}\n",
+    "stderr": ""
+  },
+  {
+    "home": "/var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/T-board-build5-medium-0ib9_1rq",
+    "command": [
+      "herdr-app",
+      "do",
+      "app.zoom_reset"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"ok\": true\n}\n",
+    "stderr": ""
+  },
+  {
+    "home": "/var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/T-board-build5-medium-0ib9_1rq",
+    "command": [
+      "herdr-app",
+      "do",
+      "space.new",
+      "--name",
+      "T-board-1 BUILD-5 medium",
+      "--folder",
+      "/var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/T-board-build5-medium-0ib9_1rq"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"space\": \"spccfd987930fea66e6b5fef7b97b44657\",\n  \"tab\": \"tbb301c342d2511efb60b92a2996bea4e6\",\n  \"terminal\": \"t67\"\n}\n",
+    "stderr": ""
+  },
+  {
+    "home": "/var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/T-board-build5-medium-0ib9_1rq",
+    "command": [
+      "herdr-app",
+      "do",
+      "tab.new",
+      "--name",
+      "T-board-1 BUILD-5 medium",
+      "--space",
+      "spccfd987930fea66e6b5fef7b97b44657",
+      "--mod",
+      "board-capture",
+      "--props",
+      "{\"state\": \"/Users/pauuul/Documents/PJ/herdr-linear-board/docs/board-opt/native-state.json\"}"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"space\": \"spccfd987930fea66e6b5fef7b97b44657\",\n  \"tab\": \"tb20a74b9332201fd38fb370aeb435e0fe\",\n  \"pane\": \"pd880b6576251b3e967aaf8905042c1b0\"\n}\n",
+    "stderr": ""
+  },
+  {
+    "home": "/var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/T-board-build5-medium-0ib9_1rq",
+    "command": [
+      "herdr-app",
+      "status"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"zoom\": 1.0,\n  \"font_size\": 14.0,\n  \"ui_font_size\": 13.0,\n  \"space\": \"spccfd987930fea66e6b5fef7b97b44657\",\n  \"tab\": \"tb20a74b9332201fd38fb370aeb435e0fe\",\n  \"focused_pane\": \"pd880b6576251b3e967aaf8905042c1b0\",\n  \"layout\": \"main\",\n  \"agent\": \"t2h\",\n  \"floats\": {},\n  \"overlays\": [],\n  \"errors\": []\n}\n",
+    "stderr": ""
+  },
+  {
+    "home": "/var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/T-board-build5-medium-0ib9_1rq",
+    "command": [
+      "herdr-app",
+      "ls"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"spaces\": [\n    {\n      \"id\": \"spa85b670e9d704f2d54c93ef1c12d261b\",\n      \"name\": \"~家目錄\",\n      \"folder\": \"/Users/pauuul\",\n      \"machine\": null,\n      \"active\": false,\n      \"tabs\": [\n        {\n          \"id\": \"tb1c67b6fcb110837fe988052277b749da\",\n          \"name\": \"1\",\n          \"active\": true,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t1\",\n              \"pane\": \"p3d4336c56e796b7fdef680a35f96ea44\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"id\": \"sp89877e295296ac45dd33f3db2f1b8825\",\n      \"name\": \"herdr ops-工廠主控\",\n      \"folder\": \"/Users/pauuul/herdr-ops\",\n      \"machine\": null,\n      \"active\": false,\n      \"tabs\": [\n        {\n          \"id\": \"tb0a761228dd14c76bdb51e8c92801cdb9\",\n          \"name\": \"主控\",\n          \"active\": true,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t2h\",\n              \"pane\": \"p59d6b03ce32ab642a5e765ef7d66640c\",\n              \"status\": \"done\",\n              \"app\": \"codex\",\n              \"name\": \"lead\",\n              \"sub_agents\": []\n            }\n          ]\n        },\n        {\n          \"id\": \"tb2e54c67d9e6e2d98f52c18fb1dc2fb88\",\n          \"name\": \"規格師\",\n          \"active\": false,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t3t\",\n              \"pane\": \"p8a127711c429a1ed892e38b8abadf1af\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        },\n        {\n          \"id\": \"tb251eb80c80a2ab64169784074af077a7\",\n          \"name\": \"施工手\",\n          \"active\": false,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t3v\",\n              \"pane\": \"pd28ad69962097e4ab5ddfd1379235e16\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        },\n        {\n          \"id\": \"tbb151bfeb5d095117d139f557e70c9977\",\n          \"name\": \"審查手\",\n          \"active\": false,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t3w\",\n              \"pane\": \"p3e63df95932486ea161c9ee301a796ff\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"id\": \"sp234618934829945d2aea0813e563c5e2\",\n      \"name\": \"獵人腳本\",\n      \"folder\": \"/Users/pauuul/herdr-ops\",\n      \"machine\": null,\n      \"active\": false,\n      \"tabs\": [\n        {\n          \"id\": \"tb2c668e6e833332b6f73abf58be092be1\",\n          \"name\": \"1\",\n          \"active\": true,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t32\",\n              \"pane\": \"p5b38b12182d2e3bc10c9115fed8e3bc1\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        },\n        {\n          \"id\": \"tbfc9d785837932c65d1f46f1e1e4fd150\",\n          \"name\": \"規格師\",\n          \"active\": false,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t3x\",\n              \"pane\": \"pf888523cb751cf76cb67e78166ad8525\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        },\n        {\n          \"id\": \"tbc6531ac37612529ea7e0fad0faae9a67\",\n          \"name\": \"施工手\",\n          \"active\": false,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t3y\",\n              \"pane\": \"pf0b128a7b33e9e1432966e4258c6d315\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        },\n        {\n          \"id\": \"tba251cd8b66f31d7180b33595da577e6c\",\n          \"name\": \"審查手\",\n          \"active\": false,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t3z\",\n              \"pane\": \"p46d60ea9df068533418e33b7e0a5e091\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"id\": \"sp778d67b72e355bc7f2f92423a6f5f7be\",\n      \"name\": \"IOTA挖礦\",\n      \"folder\": \"/Users/pauuul/Documents/PJ/ai礦工\",\n      \"machine\": null,\n      \"active\": false,\n      \"tabs\": [\n        {\n          \"id\": \"tb5ca5e3ee6625677129e6b8f937845884\",\n          \"name\": \"規格師\",\n          \"active\": true,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t41\",\n              \"pane\": \"p6b4774b4f48ea0953d4a7f1abdd5bfd9\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        },\n        {\n          \"id\": \"tbe0e0a1336345b799a7650f7f40db2e7e\",\n          \"name\": \"施工手\",\n          \"active\": false,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t42\",\n              \"pane\": \"p499c03babca6cffed6751bc1a389e634\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        },\n        {\n          \"id\": \"tb6c959547554ed213057de555a514cb77\",\n          \"name\": \"審查手\",\n          \"active\": false,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t43\",\n              \"pane\": \"pee3717b9886bb014c280cc56b94dfdda\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"id\": \"spcfd37187a255d3b0e674fdb2a8df20cf\",\n      \"name\": \"herdr 看板改良\",\n      \"folder\": \"/Users/pauuul/Documents/PJ/herdr-linear-board\",\n      \"machine\": null,\n      \"active\": false,\n      \"tabs\": [\n        {\n          \"id\": \"tbef4f3bb63f56337b1e00666d09c53329\",\n          \"name\": \"規格師\",\n          \"active\": true,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t4r\",\n              \"pane\": \"pae831de3fb1db14e508203d182a71f6e\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        },\n        {\n          \"id\": \"tb6c9807ba18600de4ba3f443833a61a4a\",\n          \"name\": \"施工手\",\n          \"active\": false,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t4t\",\n              \"pane\": \"pcf2f6e5e68211948e851ce7459230e6e\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            },\n            {\n              \"terminal\": \"t5x\",\n              \"pane\": \"p55cc2f41dffeab77f29c5032d4d101db\",\n              \"status\": \"working\",\n              \"app\": \"codex\",\n              \"name\": \"build-t-board-1\",\n              \"sub_agents\": []\n            }\n          ]\n        },\n        {\n          \"id\": \"tbbe6a5db540dd71ebfd1aa6b57e784353\",\n          \"name\": \"審查手\",\n          \"active\": false,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t4w\",\n              \"pane\": \"p713a8e8d632a1ab4e05d8b99cc2c696e\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"id\": \"sp22cf378e55f0f49e7249362ef34e7413\",\n      \"name\": \"herdr 看板改良-TUI\",\n      \"folder\": \"/Users/pauuul/Documents/PJ/herdr-linear-board-tui\",\n      \"machine\": null,\n      \"active\": false,\n      \"tabs\": [\n        {\n          \"id\": \"tb4c933a4f647ac519cd0a87ed3aaa4ed1\",\n          \"name\": \"規格師\",\n          \"active\": true,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t5p\",\n              \"pane\": \"peab3a476a32f484e7c869a73a334aec1\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        },\n        {\n          \"id\": \"tb84986edeee0433b0d341f4822f58876e\",\n          \"name\": \"施工手\",\n          \"active\": false,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t5v\",\n              \"pane\": \"p98cec610ae7d5aa2fb2cfe9f654f55d0\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        },\n        {\n          \"id\": \"tb5eac351a7c2d328385c089513083d30f\",\n          \"name\": \"審查手\",\n          \"active\": false,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t64\",\n              \"pane\": \"pa0bd2754523a79ce1702b856e641d765\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            },\n            {\n              \"terminal\": \"t65\",\n              \"pane\": \"pcba9382bee035c4086a8b9548740a84d\",\n              \"status\": \"working\",\n              \"app\": \"codex\",\n              \"name\": \"review-t-board-2-tui\",\n              \"sub_agents\": []\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"id\": \"spccfd987930fea66e6b5fef7b97b44657\",\n      \"name\": \"T-board-1 BUILD-5 medium\",\n      \"folder\": \"/var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/T-board-build5-medium-0ib9_1rq\",\n      \"machine\": null,\n      \"active\": true,\n      \"tabs\": [\n        {\n          \"id\": \"tbb301c342d2511efb60b92a2996bea4e6\",\n          \"name\": \"1\",\n          \"active\": false,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t67\",\n              \"pane\": \"p232c02f9d79de7a15f443a1a3dbc1686\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        },\n        {\n          \"id\": \"tb20a74b9332201fd38fb370aeb435e0fe\",\n          \"name\": \"T-board-1 BUILD-5 medium\",\n          \"active\": true,\n          \"settled\": false,\n          \"terminals\": []\n        }\n      ]\n    }\n  ],\n  \"recent\": []\n}\n",
+    "stderr": ""
+  },
+  {
+    "home": "/var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/T-board-build5-medium-0ib9_1rq",
+    "command": [
+      "herdr-app",
+      "status"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"zoom\": 1.0,\n  \"font_size\": 14.0,\n  \"ui_font_size\": 13.0,\n  \"space\": \"spccfd987930fea66e6b5fef7b97b44657\",\n  \"tab\": \"tb20a74b9332201fd38fb370aeb435e0fe\",\n  \"focused_pane\": \"pd880b6576251b3e967aaf8905042c1b0\",\n  \"layout\": \"main\",\n  \"agent\": \"t2h\",\n  \"floats\": {},\n  \"overlays\": [],\n  \"errors\": []\n}\n",
+    "stderr": ""
+  },
+  {
+    "home": "/var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/T-board-build5-medium-0ib9_1rq",
+    "command": [
+      "herdr-app",
+      "shot",
+      "/Users/pauuul/Documents/PJ/herdr-linear-board/docs/board-opt/build5-medium.png"
+    ],
+    "exit": 0,
+    "stdout": "/Users/pauuul/Documents/PJ/herdr-linear-board/docs/board-opt/build5-medium.png\n",
+    "stderr": ""
+  },
+  {
+    "home": "/var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/T-board-build5-medium-0ib9_1rq",
+    "command": [
+      "herdr-app",
+      "do",
+      "space.close",
+      "--id",
+      "spccfd987930fea66e6b5fef7b97b44657",
+      "--confirmed",
+      "true"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"ok\": true\n}\n",
+    "stderr": ""
+  },
+  {
+    "home": "/var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/T-board-build5-medium-0ib9_1rq",
+    "command": [
+      "herdr-app",
+      "ls"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"spaces\": [\n    {\n      \"id\": \"spa85b670e9d704f2d54c93ef1c12d261b\",\n      \"name\": \"~家目錄\",\n      \"folder\": \"/Users/pauuul\",\n      \"machine\": null,\n      \"active\": false,\n      \"tabs\": [\n        {\n          \"id\": \"tb1c67b6fcb110837fe988052277b749da\",\n          \"name\": \"1\",\n          \"active\": true,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t1\",\n              \"pane\": \"p3d4336c56e796b7fdef680a35f96ea44\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"id\": \"sp89877e295296ac45dd33f3db2f1b8825\",\n      \"name\": \"herdr ops-工廠主控\",\n      \"folder\": \"/Users/pauuul/herdr-ops\",\n      \"machine\": null,\n      \"active\": false,\n      \"tabs\": [\n        {\n          \"id\": \"tb0a761228dd14c76bdb51e8c92801cdb9\",\n          \"name\": \"主控\",\n          \"active\": true,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t2h\",\n              \"pane\": \"p59d6b03ce32ab642a5e765ef7d66640c\",\n              \"status\": \"done\",\n              \"app\": \"codex\",\n              \"name\": \"lead\",\n              \"sub_agents\": []\n            }\n          ]\n        },\n        {\n          \"id\": \"tb2e54c67d9e6e2d98f52c18fb1dc2fb88\",\n          \"name\": \"規格師\",\n          \"active\": false,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t3t\",\n              \"pane\": \"p8a127711c429a1ed892e38b8abadf1af\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        },\n        {\n          \"id\": \"tb251eb80c80a2ab64169784074af077a7\",\n          \"name\": \"施工手\",\n          \"active\": false,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t3v\",\n              \"pane\": \"pd28ad69962097e4ab5ddfd1379235e16\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        },\n        {\n          \"id\": \"tbb151bfeb5d095117d139f557e70c9977\",\n          \"name\": \"審查手\",\n          \"active\": false,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t3w\",\n              \"pane\": \"p3e63df95932486ea161c9ee301a796ff\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"id\": \"sp234618934829945d2aea0813e563c5e2\",\n      \"name\": \"獵人腳本\",\n      \"folder\": \"/Users/pauuul/herdr-ops\",\n      \"machine\": null,\n      \"active\": false,\n      \"tabs\": [\n        {\n          \"id\": \"tb2c668e6e833332b6f73abf58be092be1\",\n          \"name\": \"1\",\n          \"active\": true,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t32\",\n              \"pane\": \"p5b38b12182d2e3bc10c9115fed8e3bc1\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        },\n        {\n          \"id\": \"tbfc9d785837932c65d1f46f1e1e4fd150\",\n          \"name\": \"規格師\",\n          \"active\": false,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t3x\",\n              \"pane\": \"pf888523cb751cf76cb67e78166ad8525\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        },\n        {\n          \"id\": \"tbc6531ac37612529ea7e0fad0faae9a67\",\n          \"name\": \"施工手\",\n          \"active\": false,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t3y\",\n              \"pane\": \"pf0b128a7b33e9e1432966e4258c6d315\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        },\n        {\n          \"id\": \"tba251cd8b66f31d7180b33595da577e6c\",\n          \"name\": \"審查手\",\n          \"active\": false,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t3z\",\n              \"pane\": \"p46d60ea9df068533418e33b7e0a5e091\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"id\": \"sp778d67b72e355bc7f2f92423a6f5f7be\",\n      \"name\": \"IOTA挖礦\",\n      \"folder\": \"/Users/pauuul/Documents/PJ/ai礦工\",\n      \"machine\": null,\n      \"active\": false,\n      \"tabs\": [\n        {\n          \"id\": \"tb5ca5e3ee6625677129e6b8f937845884\",\n          \"name\": \"規格師\",\n          \"active\": true,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t41\",\n              \"pane\": \"p6b4774b4f48ea0953d4a7f1abdd5bfd9\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        },\n        {\n          \"id\": \"tbe0e0a1336345b799a7650f7f40db2e7e\",\n          \"name\": \"施工手\",\n          \"active\": false,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t42\",\n              \"pane\": \"p499c03babca6cffed6751bc1a389e634\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        },\n        {\n          \"id\": \"tb6c959547554ed213057de555a514cb77\",\n          \"name\": \"審查手\",\n          \"active\": false,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t43\",\n              \"pane\": \"pee3717b9886bb014c280cc56b94dfdda\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"id\": \"spcfd37187a255d3b0e674fdb2a8df20cf\",\n      \"name\": \"herdr 看板改良\",\n      \"folder\": \"/Users/pauuul/Documents/PJ/herdr-linear-board\",\n      \"machine\": null,\n      \"active\": false,\n      \"tabs\": [\n        {\n          \"id\": \"tbef4f3bb63f56337b1e00666d09c53329\",\n          \"name\": \"規格師\",\n          \"active\": true,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t4r\",\n              \"pane\": \"pae831de3fb1db14e508203d182a71f6e\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        },\n        {\n          \"id\": \"tb6c9807ba18600de4ba3f443833a61a4a\",\n          \"name\": \"施工手\",\n          \"active\": false,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t4t\",\n              \"pane\": \"pcf2f6e5e68211948e851ce7459230e6e\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            },\n            {\n              \"terminal\": \"t5x\",\n              \"pane\": \"p55cc2f41dffeab77f29c5032d4d101db\",\n              \"status\": \"working\",\n              \"app\": \"codex\",\n              \"name\": \"build-t-board-1\",\n              \"sub_agents\": []\n            }\n          ]\n        },\n        {\n          \"id\": \"tbbe6a5db540dd71ebfd1aa6b57e784353\",\n          \"name\": \"審查手\",\n          \"active\": false,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t4w\",\n              \"pane\": \"p713a8e8d632a1ab4e05d8b99cc2c696e\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"id\": \"sp22cf378e55f0f49e7249362ef34e7413\",\n      \"name\": \"herdr 看板改良-TUI\",\n      \"folder\": \"/Users/pauuul/Documents/PJ/herdr-linear-board-tui\",\n      \"machine\": null,\n      \"active\": true,\n      \"tabs\": [\n        {\n          \"id\": \"tb4c933a4f647ac519cd0a87ed3aaa4ed1\",\n          \"name\": \"規格師\",\n          \"active\": true,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t5p\",\n              \"pane\": \"peab3a476a32f484e7c869a73a334aec1\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        },\n        {\n          \"id\": \"tb84986edeee0433b0d341f4822f58876e\",\n          \"name\": \"施工手\",\n          \"active\": false,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t5v\",\n              \"pane\": \"p98cec610ae7d5aa2fb2cfe9f654f55d0\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        },\n        {\n          \"id\": \"tb5eac351a7c2d328385c089513083d30f\",\n          \"name\": \"審查手\",\n          \"active\": false,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t64\",\n              \"pane\": \"pa0bd2754523a79ce1702b856e641d765\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            },\n            {\n              \"terminal\": \"t65\",\n              \"pane\": \"pcba9382bee035c4086a8b9548740a84d\",\n              \"status\": \"working\",\n              \"app\": \"codex\",\n              \"name\": \"review-t-board-2-tui\",\n              \"sub_agents\": []\n            }\n          ]\n        }\n      ]\n    }\n  ],\n  \"recent\": [\n    {\n      \"name\": \"T-board-1 BUILD-5 medium\",\n      \"folder\": \"/var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/T-board-build5-medium-0ib9_1rq\"\n    }\n  ]\n}\n",
+    "stderr": ""
+  },
+  {
+    "home": "/var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/T-board-build5-medium-0ib9_1rq",
+    "command": [
+      "herdr-app",
+      "do",
+      "app.quit"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"ok\": true\n}\n",
+    "stderr": ""
+  },
+  {
+    "home": "/var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/T-board-build5-wide-khb_wntr",
+    "command": [
+      "herdr-app",
+      "ls"
+    ],
+    "exit": 2,
+    "stdout": "",
+    "stderr": "herdr-app: no Herdr window at /var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/T-board-build5-wide-khb_wntr/herdr-app.sock: No such file or directory (os error 2)\n"
+  },
+  {
+    "home": "/var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/T-board-build5-wide-khb_wntr",
+    "command": [
+      "herdr-app",
+      "ls"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"spaces\": [],\n  \"recent\": []\n}\n",
+    "stderr": ""
+  },
+  {
+    "home": "/var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/T-board-build5-wide-khb_wntr",
+    "command": [
+      "herdr-app",
+      "status"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"zoom\": 1.2,\n  \"font_size\": 16.8,\n  \"ui_font_size\": 15.6,\n  \"space\": \"spa85b670e9d704f2d54c93ef1c12d261b\",\n  \"tab\": \"tb1c67b6fcb110837fe988052277b749da\",\n  \"focused_pane\": \"p3d4336c56e796b7fdef680a35f96ea44\",\n  \"layout\": \"main\",\n  \"agent\": null,\n  \"floats\": {},\n  \"overlays\": [],\n  \"errors\": []\n}\n",
+    "stderr": ""
+  },
+  {
+    "home": "/var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/T-board-build5-wide-khb_wntr",
+    "command": [
+      "herdr-app",
+      "do",
+      "app.zoom_reset"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"ok\": true\n}\n",
+    "stderr": ""
+  },
+  {
+    "home": "/var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/T-board-build5-wide-khb_wntr",
+    "command": [
+      "herdr-app",
+      "do",
+      "space.new",
+      "--name",
+      "T-board-1 BUILD-5 wide",
+      "--folder",
+      "/var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/T-board-build5-wide-khb_wntr"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"space\": \"sp02b1633e1771e1e1533c14bf5c1109a6\",\n  \"tab\": \"tbbbbe156b11bb00df3959deefb866384a\",\n  \"terminal\": \"t68\"\n}\n",
+    "stderr": ""
+  },
+  {
+    "home": "/var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/T-board-build5-wide-khb_wntr",
+    "command": [
+      "herdr-app",
+      "do",
+      "tab.new",
+      "--name",
+      "T-board-1 BUILD-5 wide",
+      "--space",
+      "sp02b1633e1771e1e1533c14bf5c1109a6",
+      "--mod",
+      "board-capture",
+      "--props",
+      "{\"state\": \"/Users/pauuul/Documents/PJ/herdr-linear-board/docs/board-opt/native-state.json\"}"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"space\": \"sp02b1633e1771e1e1533c14bf5c1109a6\",\n  \"tab\": \"tb74ab545a29130c789a1faf9ca46132bb\",\n  \"pane\": \"p7bebf67f27baa3d6ca3c1e064d343f39\"\n}\n",
+    "stderr": ""
+  },
+  {
+    "home": "/var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/T-board-build5-wide-khb_wntr",
+    "command": [
+      "herdr-app",
+      "status"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"zoom\": 1.0,\n  \"font_size\": 14.0,\n  \"ui_font_size\": 13.0,\n  \"space\": \"sp02b1633e1771e1e1533c14bf5c1109a6\",\n  \"tab\": \"tb74ab545a29130c789a1faf9ca46132bb\",\n  \"focused_pane\": \"p7bebf67f27baa3d6ca3c1e064d343f39\",\n  \"layout\": \"main\",\n  \"agent\": \"t2h\",\n  \"floats\": {},\n  \"overlays\": [],\n  \"errors\": []\n}\n",
+    "stderr": ""
+  },
+  {
+    "home": "/var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/T-board-build5-wide-khb_wntr",
+    "command": [
+      "herdr-app",
+      "ls"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"spaces\": [\n    {\n      \"id\": \"spa85b670e9d704f2d54c93ef1c12d261b\",\n      \"name\": \"~家目錄\",\n      \"folder\": \"/Users/pauuul\",\n      \"machine\": null,\n      \"active\": false,\n      \"tabs\": [\n        {\n          \"id\": \"tb1c67b6fcb110837fe988052277b749da\",\n          \"name\": \"1\",\n          \"active\": true,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t1\",\n              \"pane\": \"p3d4336c56e796b7fdef680a35f96ea44\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"id\": \"sp89877e295296ac45dd33f3db2f1b8825\",\n      \"name\": \"herdr ops-工廠主控\",\n      \"folder\": \"/Users/pauuul/herdr-ops\",\n      \"machine\": null,\n      \"active\": false,\n      \"tabs\": [\n        {\n          \"id\": \"tb0a761228dd14c76bdb51e8c92801cdb9\",\n          \"name\": \"主控\",\n          \"active\": true,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t2h\",\n              \"pane\": \"p59d6b03ce32ab642a5e765ef7d66640c\",\n              \"status\": \"done\",\n              \"app\": \"codex\",\n              \"name\": \"lead\",\n              \"sub_agents\": []\n            }\n          ]\n        },\n        {\n          \"id\": \"tb2e54c67d9e6e2d98f52c18fb1dc2fb88\",\n          \"name\": \"規格師\",\n          \"active\": false,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t3t\",\n              \"pane\": \"p8a127711c429a1ed892e38b8abadf1af\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        },\n        {\n          \"id\": \"tb251eb80c80a2ab64169784074af077a7\",\n          \"name\": \"施工手\",\n          \"active\": false,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t3v\",\n              \"pane\": \"pd28ad69962097e4ab5ddfd1379235e16\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        },\n        {\n          \"id\": \"tbb151bfeb5d095117d139f557e70c9977\",\n          \"name\": \"審查手\",\n          \"active\": false,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t3w\",\n              \"pane\": \"p3e63df95932486ea161c9ee301a796ff\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"id\": \"sp234618934829945d2aea0813e563c5e2\",\n      \"name\": \"獵人腳本\",\n      \"folder\": \"/Users/pauuul/herdr-ops\",\n      \"machine\": null,\n      \"active\": false,\n      \"tabs\": [\n        {\n          \"id\": \"tb2c668e6e833332b6f73abf58be092be1\",\n          \"name\": \"1\",\n          \"active\": true,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t32\",\n              \"pane\": \"p5b38b12182d2e3bc10c9115fed8e3bc1\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        },\n        {\n          \"id\": \"tbfc9d785837932c65d1f46f1e1e4fd150\",\n          \"name\": \"規格師\",\n          \"active\": false,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t3x\",\n              \"pane\": \"pf888523cb751cf76cb67e78166ad8525\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        },\n        {\n          \"id\": \"tbc6531ac37612529ea7e0fad0faae9a67\",\n          \"name\": \"施工手\",\n          \"active\": false,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t3y\",\n              \"pane\": \"pf0b128a7b33e9e1432966e4258c6d315\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        },\n        {\n          \"id\": \"tba251cd8b66f31d7180b33595da577e6c\",\n          \"name\": \"審查手\",\n          \"active\": false,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t3z\",\n              \"pane\": \"p46d60ea9df068533418e33b7e0a5e091\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"id\": \"sp778d67b72e355bc7f2f92423a6f5f7be\",\n      \"name\": \"IOTA挖礦\",\n      \"folder\": \"/Users/pauuul/Documents/PJ/ai礦工\",\n      \"machine\": null,\n      \"active\": false,\n      \"tabs\": [\n        {\n          \"id\": \"tb5ca5e3ee6625677129e6b8f937845884\",\n          \"name\": \"規格師\",\n          \"active\": true,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t41\",\n              \"pane\": \"p6b4774b4f48ea0953d4a7f1abdd5bfd9\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        },\n        {\n          \"id\": \"tbe0e0a1336345b799a7650f7f40db2e7e\",\n          \"name\": \"施工手\",\n          \"active\": false,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t42\",\n              \"pane\": \"p499c03babca6cffed6751bc1a389e634\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        },\n        {\n          \"id\": \"tb6c959547554ed213057de555a514cb77\",\n          \"name\": \"審查手\",\n          \"active\": false,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t43\",\n              \"pane\": \"pee3717b9886bb014c280cc56b94dfdda\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"id\": \"spcfd37187a255d3b0e674fdb2a8df20cf\",\n      \"name\": \"herdr 看板改良\",\n      \"folder\": \"/Users/pauuul/Documents/PJ/herdr-linear-board\",\n      \"machine\": null,\n      \"active\": false,\n      \"tabs\": [\n        {\n          \"id\": \"tbef4f3bb63f56337b1e00666d09c53329\",\n          \"name\": \"規格師\",\n          \"active\": true,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t4r\",\n              \"pane\": \"pae831de3fb1db14e508203d182a71f6e\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        },\n        {\n          \"id\": \"tb6c9807ba18600de4ba3f443833a61a4a\",\n          \"name\": \"施工手\",\n          \"active\": false,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t4t\",\n              \"pane\": \"pcf2f6e5e68211948e851ce7459230e6e\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            },\n            {\n              \"terminal\": \"t5x\",\n              \"pane\": \"p55cc2f41dffeab77f29c5032d4d101db\",\n              \"status\": \"working\",\n              \"app\": \"codex\",\n              \"name\": \"build-t-board-1\",\n              \"sub_agents\": []\n            }\n          ]\n        },\n        {\n          \"id\": \"tbbe6a5db540dd71ebfd1aa6b57e784353\",\n          \"name\": \"審查手\",\n          \"active\": false,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t4w\",\n              \"pane\": \"p713a8e8d632a1ab4e05d8b99cc2c696e\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"id\": \"sp22cf378e55f0f49e7249362ef34e7413\",\n      \"name\": \"herdr 看板改良-TUI\",\n      \"folder\": \"/Users/pauuul/Documents/PJ/herdr-linear-board-tui\",\n      \"machine\": null,\n      \"active\": false,\n      \"tabs\": [\n        {\n          \"id\": \"tb4c933a4f647ac519cd0a87ed3aaa4ed1\",\n          \"name\": \"規格師\",\n          \"active\": true,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t5p\",\n              \"pane\": \"peab3a476a32f484e7c869a73a334aec1\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        },\n        {\n          \"id\": \"tb84986edeee0433b0d341f4822f58876e\",\n          \"name\": \"施工手\",\n          \"active\": false,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t5v\",\n              \"pane\": \"p98cec610ae7d5aa2fb2cfe9f654f55d0\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        },\n        {\n          \"id\": \"tb5eac351a7c2d328385c089513083d30f\",\n          \"name\": \"審查手\",\n          \"active\": false,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t64\",\n              \"pane\": \"pa0bd2754523a79ce1702b856e641d765\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            },\n            {\n              \"terminal\": \"t65\",\n              \"pane\": \"pcba9382bee035c4086a8b9548740a84d\",\n              \"status\": \"working\",\n              \"app\": \"codex\",\n              \"name\": \"review-t-board-2-tui\",\n              \"sub_agents\": []\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"id\": \"sp02b1633e1771e1e1533c14bf5c1109a6\",\n      \"name\": \"T-board-1 BUILD-5 wide\",\n      \"folder\": \"/var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/T-board-build5-wide-khb_wntr\",\n      \"machine\": null,\n      \"active\": true,\n      \"tabs\": [\n        {\n          \"id\": \"tbbbbe156b11bb00df3959deefb866384a\",\n          \"name\": \"1\",\n          \"active\": false,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t68\",\n              \"pane\": \"p95403fd79fe7376e42e06e41dff4dcea\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        },\n        {\n          \"id\": \"tb74ab545a29130c789a1faf9ca46132bb\",\n          \"name\": \"T-board-1 BUILD-5 wide\",\n          \"active\": true,\n          \"settled\": false,\n          \"terminals\": []\n        }\n      ]\n    }\n  ],\n  \"recent\": []\n}\n",
+    "stderr": ""
+  },
+  {
+    "home": "/var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/T-board-build5-wide-khb_wntr",
+    "command": [
+      "herdr-app",
+      "status"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"zoom\": 1.0,\n  \"font_size\": 14.0,\n  \"ui_font_size\": 13.0,\n  \"space\": \"sp02b1633e1771e1e1533c14bf5c1109a6\",\n  \"tab\": \"tb74ab545a29130c789a1faf9ca46132bb\",\n  \"focused_pane\": \"p7bebf67f27baa3d6ca3c1e064d343f39\",\n  \"layout\": \"main\",\n  \"agent\": \"t2h\",\n  \"floats\": {},\n  \"overlays\": [],\n  \"errors\": []\n}\n",
+    "stderr": ""
+  },
+  {
+    "home": "/var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/T-board-build5-wide-khb_wntr",
+    "command": [
+      "herdr-app",
+      "shot",
+      "/Users/pauuul/Documents/PJ/herdr-linear-board/docs/board-opt/build5-wide.png"
+    ],
+    "exit": 0,
+    "stdout": "/Users/pauuul/Documents/PJ/herdr-linear-board/docs/board-opt/build5-wide.png\n",
+    "stderr": ""
+  },
+  {
+    "home": "/var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/T-board-build5-wide-khb_wntr",
+    "command": [
+      "herdr-app",
+      "do",
+      "space.close",
+      "--id",
+      "sp02b1633e1771e1e1533c14bf5c1109a6",
+      "--confirmed",
+      "true"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"ok\": true\n}\n",
+    "stderr": ""
+  },
+  {
+    "home": "/var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/T-board-build5-wide-khb_wntr",
+    "command": [
+      "herdr-app",
+      "ls"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"spaces\": [\n    {\n      \"id\": \"spa85b670e9d704f2d54c93ef1c12d261b\",\n      \"name\": \"~家目錄\",\n      \"folder\": \"/Users/pauuul\",\n      \"machine\": null,\n      \"active\": false,\n      \"tabs\": [\n        {\n          \"id\": \"tb1c67b6fcb110837fe988052277b749da\",\n          \"name\": \"1\",\n          \"active\": true,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t1\",\n              \"pane\": \"p3d4336c56e796b7fdef680a35f96ea44\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"id\": \"sp89877e295296ac45dd33f3db2f1b8825\",\n      \"name\": \"herdr ops-工廠主控\",\n      \"folder\": \"/Users/pauuul/herdr-ops\",\n      \"machine\": null,\n      \"active\": false,\n      \"tabs\": [\n        {\n          \"id\": \"tb0a761228dd14c76bdb51e8c92801cdb9\",\n          \"name\": \"主控\",\n          \"active\": true,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t2h\",\n              \"pane\": \"p59d6b03ce32ab642a5e765ef7d66640c\",\n              \"status\": \"done\",\n              \"app\": \"codex\",\n              \"name\": \"lead\",\n              \"sub_agents\": []\n            }\n          ]\n        },\n        {\n          \"id\": \"tb2e54c67d9e6e2d98f52c18fb1dc2fb88\",\n          \"name\": \"規格師\",\n          \"active\": false,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t3t\",\n              \"pane\": \"p8a127711c429a1ed892e38b8abadf1af\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        },\n        {\n          \"id\": \"tb251eb80c80a2ab64169784074af077a7\",\n          \"name\": \"施工手\",\n          \"active\": false,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t3v\",\n              \"pane\": \"pd28ad69962097e4ab5ddfd1379235e16\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        },\n        {\n          \"id\": \"tbb151bfeb5d095117d139f557e70c9977\",\n          \"name\": \"審查手\",\n          \"active\": false,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t3w\",\n              \"pane\": \"p3e63df95932486ea161c9ee301a796ff\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"id\": \"sp234618934829945d2aea0813e563c5e2\",\n      \"name\": \"獵人腳本\",\n      \"folder\": \"/Users/pauuul/herdr-ops\",\n      \"machine\": null,\n      \"active\": false,\n      \"tabs\": [\n        {\n          \"id\": \"tb2c668e6e833332b6f73abf58be092be1\",\n          \"name\": \"1\",\n          \"active\": true,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t32\",\n              \"pane\": \"p5b38b12182d2e3bc10c9115fed8e3bc1\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        },\n        {\n          \"id\": \"tbfc9d785837932c65d1f46f1e1e4fd150\",\n          \"name\": \"規格師\",\n          \"active\": false,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t3x\",\n              \"pane\": \"pf888523cb751cf76cb67e78166ad8525\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        },\n        {\n          \"id\": \"tbc6531ac37612529ea7e0fad0faae9a67\",\n          \"name\": \"施工手\",\n          \"active\": false,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t3y\",\n              \"pane\": \"pf0b128a7b33e9e1432966e4258c6d315\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        },\n        {\n          \"id\": \"tba251cd8b66f31d7180b33595da577e6c\",\n          \"name\": \"審查手\",\n          \"active\": false,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t3z\",\n              \"pane\": \"p46d60ea9df068533418e33b7e0a5e091\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"id\": \"sp778d67b72e355bc7f2f92423a6f5f7be\",\n      \"name\": \"IOTA挖礦\",\n      \"folder\": \"/Users/pauuul/Documents/PJ/ai礦工\",\n      \"machine\": null,\n      \"active\": false,\n      \"tabs\": [\n        {\n          \"id\": \"tb5ca5e3ee6625677129e6b8f937845884\",\n          \"name\": \"規格師\",\n          \"active\": true,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t41\",\n              \"pane\": \"p6b4774b4f48ea0953d4a7f1abdd5bfd9\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        },\n        {\n          \"id\": \"tbe0e0a1336345b799a7650f7f40db2e7e\",\n          \"name\": \"施工手\",\n          \"active\": false,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t42\",\n              \"pane\": \"p499c03babca6cffed6751bc1a389e634\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        },\n        {\n          \"id\": \"tb6c959547554ed213057de555a514cb77\",\n          \"name\": \"審查手\",\n          \"active\": false,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t43\",\n              \"pane\": \"pee3717b9886bb014c280cc56b94dfdda\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"id\": \"spcfd37187a255d3b0e674fdb2a8df20cf\",\n      \"name\": \"herdr 看板改良\",\n      \"folder\": \"/Users/pauuul/Documents/PJ/herdr-linear-board\",\n      \"machine\": null,\n      \"active\": false,\n      \"tabs\": [\n        {\n          \"id\": \"tbef4f3bb63f56337b1e00666d09c53329\",\n          \"name\": \"規格師\",\n          \"active\": true,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t4r\",\n              \"pane\": \"pae831de3fb1db14e508203d182a71f6e\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        },\n        {\n          \"id\": \"tb6c9807ba18600de4ba3f443833a61a4a\",\n          \"name\": \"施工手\",\n          \"active\": false,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t4t\",\n              \"pane\": \"pcf2f6e5e68211948e851ce7459230e6e\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            },\n            {\n              \"terminal\": \"t5x\",\n              \"pane\": \"p55cc2f41dffeab77f29c5032d4d101db\",\n              \"status\": \"working\",\n              \"app\": \"codex\",\n              \"name\": \"build-t-board-1\",\n              \"sub_agents\": []\n            }\n          ]\n        },\n        {\n          \"id\": \"tbbe6a5db540dd71ebfd1aa6b57e784353\",\n          \"name\": \"審查手\",\n          \"active\": false,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t4w\",\n              \"pane\": \"p713a8e8d632a1ab4e05d8b99cc2c696e\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"id\": \"sp22cf378e55f0f49e7249362ef34e7413\",\n      \"name\": \"herdr 看板改良-TUI\",\n      \"folder\": \"/Users/pauuul/Documents/PJ/herdr-linear-board-tui\",\n      \"machine\": null,\n      \"active\": true,\n      \"tabs\": [\n        {\n          \"id\": \"tb4c933a4f647ac519cd0a87ed3aaa4ed1\",\n          \"name\": \"規格師\",\n          \"active\": true,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t5p\",\n              \"pane\": \"peab3a476a32f484e7c869a73a334aec1\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        },\n        {\n          \"id\": \"tb84986edeee0433b0d341f4822f58876e\",\n          \"name\": \"施工手\",\n          \"active\": false,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t5v\",\n              \"pane\": \"p98cec610ae7d5aa2fb2cfe9f654f55d0\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        },\n        {\n          \"id\": \"tb5eac351a7c2d328385c089513083d30f\",\n          \"name\": \"審查手\",\n          \"active\": false,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t64\",\n              \"pane\": \"pa0bd2754523a79ce1702b856e641d765\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            },\n            {\n              \"terminal\": \"t65\",\n              \"pane\": \"pcba9382bee035c4086a8b9548740a84d\",\n              \"status\": \"working\",\n              \"app\": \"codex\",\n              \"name\": \"review-t-board-2-tui\",\n              \"sub_agents\": []\n            }\n          ]\n        }\n      ]\n    }\n  ],\n  \"recent\": [\n    {\n      \"name\": \"T-board-1 BUILD-5 wide\",\n      \"folder\": \"/var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/T-board-build5-wide-khb_wntr\"\n    }\n  ]\n}\n",
+    "stderr": ""
+  },
+  {
+    "home": "/var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/T-board-build5-wide-khb_wntr",
+    "command": [
+      "herdr-app",
+      "do",
+      "app.quit"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"ok\": true\n}\n",
+    "stderr": ""
+  }
+]

@@ -1,0 +1,12 @@
+$ rg -n readTextFile|writeTextFile|\bexec\b|\bhc\b|\brun\b|appHome|requests|gates|on_size_change mods/herdr-board
+exit 0
+mods/herdr-board/open.js:1:import { exec, window } from "herdr";
+mods/herdr-board/open.js:9:  if (platform === "windows") exec("explorer", [local]).catch(() => {});
+mods/herdr-board/open.js:10:  else if (platform === "linux") exec("xdg-open", [local]).catch(() => {});
+mods/herdr-board/open.js:11:  else exec("open", ["--", local]).catch(() => {});
+mods/herdr-board/main.js:1:// Read-only kanban for the Herdr ops flow. Loads state.json only; no requests or writes.
+mods/herdr-board/main.js:4:import { theme, home, appHome, props, readTextFile } from "herdr";
+mods/herdr-board/main.js:54:    const text = await readTextFile(`${appHome()}/herdr-board.json`);
+mods/herdr-board/main.js:77:        const text = await readTextFile(this.statePath);
+mods/herdr-board/main.js:212:          .on_size_change((size, cx) => { this.rootWidth = size.width; cx.notify(); })
+mods/herdr-board/main.js:252:      .on_size_change((size, cx) => { this.rootWidth = size.width; cx.notify(); })

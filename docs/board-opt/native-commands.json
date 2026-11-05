@@ -1,0 +1,351 @@
+[
+  {
+    "command": [
+      "herdr-app",
+      "do",
+      "app.quit"
+    ],
+    "exit": 2,
+    "stdout": "",
+    "stderr": "herdr-app: no Herdr window at /var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/T-board-native-6695lwj0/herdr-app.sock: Connection refused (os error 61)\n"
+  },
+  {
+    "quit": "herdr-app: no Herdr window at /var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/T-board-native-6695lwj0/herdr-app.sock: Connection refused (os error 61)\n"
+  },
+  {
+    "command": [
+      "herdr-app",
+      "do",
+      "app.zoom_reset"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"ok\": true\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "herdr-app",
+      "do",
+      "space.new",
+      "--name",
+      "T-board-1 isolated capture",
+      "--folder",
+      "/var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/T-board-native-6695lwj0"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"space\": \"sp978aa94f3c32fcd8ee4fcb79a1b04924\",\n  \"tab\": \"tba6b24b0bbe97b500b8971070e877f060\",\n  \"terminal\": \"t5k\"\n}\n",
+    "stderr": ""
+  },
+  {
+    "space-result": {
+      "space": "sp978aa94f3c32fcd8ee4fcb79a1b04924",
+      "tab": "tba6b24b0bbe97b500b8971070e877f060",
+      "terminal": "t5k"
+    }
+  },
+  {
+    "command": [
+      "herdr-app",
+      "ls"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"spaces\": [\n    {\n      \"id\": \"sp978aa94f3c32fcd8ee4fcb79a1b04924\",\n      \"name\": \"T-board-1 isolated capture\",\n      \"folder\": \"/var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/T-board-native-6695lwj0\",\n      \"machine\": null,\n      \"active\": true,\n      \"tabs\": [\n        {\n          \"id\": \"tba6b24b0bbe97b500b8971070e877f060\",\n          \"name\": \"1\",\n          \"active\": true,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t5k\",\n              \"pane\": \"p22d518f086a36b8f679c730bd451a5bb\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        }\n      ]\n    }\n  ],\n  \"recent\": []\n}",
+    "stderr": "",
+    "scope": "only task space; full inventory in temporary native home"
+  },
+  {
+    "command": [
+      "herdr-app",
+      "do",
+      "tab.new",
+      "--name",
+      "T-board-1 narrow",
+      "--space",
+      "sp978aa94f3c32fcd8ee4fcb79a1b04924",
+      "--mod",
+      "board-capture",
+      "--props",
+      "{\"state\": \"/Users/pauuul/Documents/PJ/herdr-linear-board/docs/board-opt/native-state.json\"}"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"space\": \"sp978aa94f3c32fcd8ee4fcb79a1b04924\",\n  \"tab\": \"tb09060a335c1d8165105576d4feb5eb83\",\n  \"pane\": \"pc19484a0a99fa1ae8c14f920b4a0f126\"\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "herdr-app",
+      "status"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"zoom\": 1.0,\n  \"font_size\": 14.0,\n  \"ui_font_size\": 13.0,\n  \"space\": \"sp978aa94f3c32fcd8ee4fcb79a1b04924\",\n  \"tab\": \"tb09060a335c1d8165105576d4feb5eb83\",\n  \"focused_pane\": \"pc19484a0a99fa1ae8c14f920b4a0f126\",\n  \"layout\": \"main\",\n  \"agent\": \"t2h\",\n  \"floats\": {},\n  \"overlays\": [],\n  \"errors\": []\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "herdr-app",
+      "ls"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"spaces\": [\n    {\n      \"id\": \"sp978aa94f3c32fcd8ee4fcb79a1b04924\",\n      \"name\": \"T-board-1 isolated capture\",\n      \"folder\": \"/var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/T-board-native-6695lwj0\",\n      \"machine\": null,\n      \"active\": true,\n      \"tabs\": [\n        {\n          \"id\": \"tba6b24b0bbe97b500b8971070e877f060\",\n          \"name\": \"1\",\n          \"active\": false,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t5k\",\n              \"pane\": \"p22d518f086a36b8f679c730bd451a5bb\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        },\n        {\n          \"id\": \"tb09060a335c1d8165105576d4feb5eb83\",\n          \"name\": \"T-board-1 narrow\",\n          \"active\": true,\n          \"settled\": false,\n          \"terminals\": []\n        }\n      ]\n    }\n  ],\n  \"recent\": []\n}",
+    "stderr": "",
+    "scope": "only task space; full inventory in temporary native home"
+  },
+  {
+    "command": [
+      "herdr-app",
+      "shot",
+      "/Users/pauuul/Documents/PJ/herdr-linear-board/docs/board-opt/narrow.png"
+    ],
+    "exit": 0,
+    "stdout": "/Users/pauuul/Documents/PJ/herdr-linear-board/docs/board-opt/narrow.png\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "herdr-app",
+      "do",
+      "space.close",
+      "--id",
+      "sp978aa94f3c32fcd8ee4fcb79a1b04924",
+      "--confirmed",
+      "true"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"ok\": true\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "herdr-app",
+      "do",
+      "app.quit"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"ok\": true\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "herdr-app",
+      "do",
+      "app.zoom_reset"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"ok\": true\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "herdr-app",
+      "do",
+      "space.new",
+      "--name",
+      "T-board-1 isolated capture",
+      "--folder",
+      "/var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/T-board-native-6695lwj0"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"space\": \"sp2709dda76f72488a52cc7e705a9f4f8a\",\n  \"tab\": \"tbe7c75be6dd03dd5230a423afcddbf4a2\",\n  \"terminal\": \"t5m\"\n}\n",
+    "stderr": ""
+  },
+  {
+    "space-result": {
+      "space": "sp2709dda76f72488a52cc7e705a9f4f8a",
+      "tab": "tbe7c75be6dd03dd5230a423afcddbf4a2",
+      "terminal": "t5m"
+    }
+  },
+  {
+    "command": [
+      "herdr-app",
+      "ls"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"spaces\": [\n    {\n      \"id\": \"sp2709dda76f72488a52cc7e705a9f4f8a\",\n      \"name\": \"T-board-1 isolated capture\",\n      \"folder\": \"/var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/T-board-native-6695lwj0\",\n      \"machine\": null,\n      \"active\": true,\n      \"tabs\": [\n        {\n          \"id\": \"tbe7c75be6dd03dd5230a423afcddbf4a2\",\n          \"name\": \"1\",\n          \"active\": true,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t5m\",\n              \"pane\": \"p95d5884183676003d3795ba7b391c7dc\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        }\n      ]\n    }\n  ],\n  \"recent\": []\n}",
+    "stderr": "",
+    "scope": "only task space; full inventory in temporary native home"
+  },
+  {
+    "command": [
+      "herdr-app",
+      "do",
+      "tab.new",
+      "--name",
+      "T-board-1 medium",
+      "--space",
+      "sp2709dda76f72488a52cc7e705a9f4f8a",
+      "--mod",
+      "board-capture",
+      "--props",
+      "{\"state\": \"/Users/pauuul/Documents/PJ/herdr-linear-board/docs/board-opt/native-state.json\"}"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"space\": \"sp2709dda76f72488a52cc7e705a9f4f8a\",\n  \"tab\": \"tb562bb43803f79af494fda22087f7e87d\",\n  \"pane\": \"pd9d2626fe574a7465748b98ecccb8011\"\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "herdr-app",
+      "status"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"zoom\": 1.0,\n  \"font_size\": 14.0,\n  \"ui_font_size\": 13.0,\n  \"space\": \"sp2709dda76f72488a52cc7e705a9f4f8a\",\n  \"tab\": \"tb562bb43803f79af494fda22087f7e87d\",\n  \"focused_pane\": \"pd9d2626fe574a7465748b98ecccb8011\",\n  \"layout\": \"main\",\n  \"agent\": \"t2h\",\n  \"floats\": {},\n  \"overlays\": [],\n  \"errors\": []\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "herdr-app",
+      "ls"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"spaces\": [\n    {\n      \"id\": \"sp2709dda76f72488a52cc7e705a9f4f8a\",\n      \"name\": \"T-board-1 isolated capture\",\n      \"folder\": \"/var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/T-board-native-6695lwj0\",\n      \"machine\": null,\n      \"active\": true,\n      \"tabs\": [\n        {\n          \"id\": \"tbe7c75be6dd03dd5230a423afcddbf4a2\",\n          \"name\": \"1\",\n          \"active\": false,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t5m\",\n              \"pane\": \"p95d5884183676003d3795ba7b391c7dc\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        },\n        {\n          \"id\": \"tb562bb43803f79af494fda22087f7e87d\",\n          \"name\": \"T-board-1 medium\",\n          \"active\": true,\n          \"settled\": false,\n          \"terminals\": []\n        }\n      ]\n    }\n  ],\n  \"recent\": []\n}",
+    "stderr": "",
+    "scope": "only task space; full inventory in temporary native home"
+  },
+  {
+    "command": [
+      "herdr-app",
+      "shot",
+      "/Users/pauuul/Documents/PJ/herdr-linear-board/docs/board-opt/medium.png"
+    ],
+    "exit": 0,
+    "stdout": "/Users/pauuul/Documents/PJ/herdr-linear-board/docs/board-opt/medium.png\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "herdr-app",
+      "do",
+      "space.close",
+      "--id",
+      "sp2709dda76f72488a52cc7e705a9f4f8a",
+      "--confirmed",
+      "true"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"ok\": true\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "herdr-app",
+      "do",
+      "app.quit"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"ok\": true\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "herdr-app",
+      "do",
+      "app.zoom_reset"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"ok\": true\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "herdr-app",
+      "do",
+      "space.new",
+      "--name",
+      "T-board-1 isolated capture",
+      "--folder",
+      "/var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/T-board-native-6695lwj0"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"space\": \"spa7a7dbd8d352d6d411290e4aeef8d8fd\",\n  \"tab\": \"tb3ab5daeaad6210e949883835e4bacf28\",\n  \"terminal\": \"t5n\"\n}\n",
+    "stderr": ""
+  },
+  {
+    "space-result": {
+      "space": "spa7a7dbd8d352d6d411290e4aeef8d8fd",
+      "tab": "tb3ab5daeaad6210e949883835e4bacf28",
+      "terminal": "t5n"
+    }
+  },
+  {
+    "command": [
+      "herdr-app",
+      "ls"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"spaces\": [\n    {\n      \"id\": \"spa7a7dbd8d352d6d411290e4aeef8d8fd\",\n      \"name\": \"T-board-1 isolated capture\",\n      \"folder\": \"/var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/T-board-native-6695lwj0\",\n      \"machine\": null,\n      \"active\": true,\n      \"tabs\": [\n        {\n          \"id\": \"tb3ab5daeaad6210e949883835e4bacf28\",\n          \"name\": \"1\",\n          \"active\": true,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t5n\",\n              \"pane\": \"pcd9c06bad72bd29931a16c4fd6943cea\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        }\n      ]\n    }\n  ],\n  \"recent\": []\n}",
+    "stderr": "",
+    "scope": "only task space; full inventory in temporary native home"
+  },
+  {
+    "command": [
+      "herdr-app",
+      "do",
+      "tab.new",
+      "--name",
+      "T-board-1 wide",
+      "--space",
+      "spa7a7dbd8d352d6d411290e4aeef8d8fd",
+      "--mod",
+      "board-capture",
+      "--props",
+      "{\"state\": \"/Users/pauuul/Documents/PJ/herdr-linear-board/docs/board-opt/native-state.json\"}"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"space\": \"spa7a7dbd8d352d6d411290e4aeef8d8fd\",\n  \"tab\": \"tb6173336af9ef0b5ff15de50076ea5655\",\n  \"pane\": \"pdb1f7a7efcc9bc6c3446188bc31c3c15\"\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "herdr-app",
+      "status"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"zoom\": 1.0,\n  \"font_size\": 14.0,\n  \"ui_font_size\": 13.0,\n  \"space\": \"spa7a7dbd8d352d6d411290e4aeef8d8fd\",\n  \"tab\": \"tb6173336af9ef0b5ff15de50076ea5655\",\n  \"focused_pane\": \"pdb1f7a7efcc9bc6c3446188bc31c3c15\",\n  \"layout\": \"main\",\n  \"agent\": \"t2h\",\n  \"floats\": {},\n  \"overlays\": [],\n  \"errors\": []\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "herdr-app",
+      "ls"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"spaces\": [\n    {\n      \"id\": \"spa7a7dbd8d352d6d411290e4aeef8d8fd\",\n      \"name\": \"T-board-1 isolated capture\",\n      \"folder\": \"/var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/T-board-native-6695lwj0\",\n      \"machine\": null,\n      \"active\": true,\n      \"tabs\": [\n        {\n          \"id\": \"tb3ab5daeaad6210e949883835e4bacf28\",\n          \"name\": \"1\",\n          \"active\": false,\n          \"settled\": false,\n          \"terminals\": [\n            {\n              \"terminal\": \"t5n\",\n              \"pane\": \"pcd9c06bad72bd29931a16c4fd6943cea\",\n              \"status\": null,\n              \"app\": null,\n              \"name\": null,\n              \"sub_agents\": []\n            }\n          ]\n        },\n        {\n          \"id\": \"tb6173336af9ef0b5ff15de50076ea5655\",\n          \"name\": \"T-board-1 wide\",\n          \"active\": true,\n          \"settled\": false,\n          \"terminals\": []\n        }\n      ]\n    }\n  ],\n  \"recent\": []\n}",
+    "stderr": "",
+    "scope": "only task space; full inventory in temporary native home"
+  },
+  {
+    "command": [
+      "herdr-app",
+      "shot",
+      "/Users/pauuul/Documents/PJ/herdr-linear-board/docs/board-opt/wide.png"
+    ],
+    "exit": 0,
+    "stdout": "/Users/pauuul/Documents/PJ/herdr-linear-board/docs/board-opt/wide.png\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "herdr-app",
+      "do",
+      "space.close",
+      "--id",
+      "spa7a7dbd8d352d6d411290e4aeef8d8fd",
+      "--confirmed",
+      "true"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"ok\": true\n}\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "herdr-app",
+      "do",
+      "app.quit"
+    ],
+    "exit": 0,
+    "stdout": "{\n  \"ok\": true\n}\n",
+    "stderr": ""
+  }
+]

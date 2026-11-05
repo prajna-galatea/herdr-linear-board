@@ -1,0 +1,38 @@
+[
+  {
+    "path": "mods/herdr-board/main.js",
+    "sha256": "aac82159621f401a83976efa5a1938d971faab008d59dbcfac6cd43ea925aaf0"
+  },
+  {
+    "path": "mods/herdr-board/mod.json",
+    "sha256": "1b2c049fbfd9459a70075c0313f8f3adab9788136efcbeb13c53d3adf318ee2f"
+  },
+  {
+    "path": "mods/herdr-board/open.js",
+    "sha256": "046a895303c836e4fdfdb681be457625b4380c6a1d68812046b0d9d89671829f"
+  },
+  {
+    "path": "mods/herdr-board/spinner.svg",
+    "sha256": "1844bedde800d69068cf7ac1128886ac23d0c5fb840fcf8944b6d604038f2f2d"
+  },
+  {
+    "path": "mods/herdr-board/state.js",
+    "sha256": "cebe894ce23d489b8d4a90f884638a18e795b44cb368128d073ae1124b83dc7f"
+  },
+  {
+    "path": "tests/board.test.mjs",
+    "sha256": "fcf8c17cc3ab3c629b87819f5069fecbf62a88bc0fdab2114efc0c530d5aaf34"
+  },
+  {
+    "path": "tests/herdr-board-runtime.test.mjs",
+    "sha256": "66285ffeb866d5792fa661ad989a3d9081065bd6820aab3693bb0d8f3bbd3971"
+  },
+  {
+    "path": "tests/herdr-board.test.mjs",
+    "sha256": "59ed1e12a7079c9f39fd57f72fdcd9c99de210829d64f80a8b78522765b5a504"
+  },
+  {
+    "path": "tests/task.test.mjs",
+    "sha256": "95900f658a5d62371ea2152069328df336fc9fc1441cfd93eebb49cb6def704b"
+  }
+]

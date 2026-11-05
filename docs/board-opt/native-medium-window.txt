@@ -1,0 +1,1 @@
+2026-11-04T07:17:33.287544Z  INFO gpui_shell::script: T_BOARD_ROOT {"width":613,"height":732}

@@ -1,0 +1,2 @@
+$ rg -n split|pane.new|live.?workspace mods/herdr-board
+exit 1

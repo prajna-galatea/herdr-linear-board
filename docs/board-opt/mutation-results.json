@@ -1,0 +1,58 @@
+[
+  {
+    "name": "readonly",
+    "command": "TZ=Asia/Taipei node --test --test-reporter=tap",
+    "exit": 1,
+    "failed": 10,
+    "cases": [
+      "actual search/model/archive/card/back/refresh/timer events preserve state, requests and gates",
+      "real opener only runs after valid detail click",
+      "actual two-argument resize events rearrange visible lanes at every boundary",
+      "same-size same-mtime reload, deletion, broken JSON and recovery",
+      "close cancels owned tasks and late callbacks do no work",
+      "explicit invalid state does not read config or production source",
+      "initial missing retains empty four lanes without creating file",
+      "source change clears old snapshot and queued refresh converges",
+      "closing during an in-flight read ignores late completion",
+      "main board source has no hc writes or pane splits"
+    ]
+  },
+  {
+    "name": "lanes",
+    "command": "TZ=Asia/Taipei node --test --test-reporter=tap",
+    "exit": 1,
+    "failed": 1,
+    "cases": [
+      "four lanes map columns independently of expected table"
+    ]
+  },
+  {
+    "name": "card",
+    "command": "TZ=Asia/Taipei node --test --test-reporter=tap",
+    "exit": 1,
+    "failed": 1,
+    "cases": [
+      "actual search/model/archive/card/back/refresh/timer events preserve state, requests and gates"
+    ]
+  },
+  {
+    "name": "layout",
+    "command": "TZ=Asia/Taipei node --test --test-reporter=tap",
+    "exit": 1,
+    "failed": 1,
+    "cases": [
+      "actual two-argument resize events rearrange visible lanes at every boundary"
+    ]
+  },
+  {
+    "name": "archive",
+    "command": "TZ=Asia/Taipei node --test --test-reporter=tap",
+    "exit": 1,
+    "failed": 3,
+    "cases": [
+      "actual search/model/archive/card/back/refresh/timer events preserve state, requests and gates",
+      "same-size same-mtime reload, deletion, broken JSON and recovery",
+      "archive filter hides merged and example T-001..T-003 by default"
+    ]
+  }
+]

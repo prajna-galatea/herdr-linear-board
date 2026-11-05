@@ -1,0 +1,16 @@
+exit=0
+{
+  "zoom": 1.2,
+  "font_size": 16.8,
+  "ui_font_size": 15.6,
+  "space": "spa85b670e9d704f2d54c93ef1c12d261b",
+  "tab": "tb1c67b6fcb110837fe988052277b749da",
+  "focused_pane": "p3d4336c56e796b7fdef680a35f96ea44",
+  "layout": "main",
+  "agent": null,
+  "floats": {},
+  "overlays": [
+    "frame-welcome"
+  ],
+  "errors": []
+}

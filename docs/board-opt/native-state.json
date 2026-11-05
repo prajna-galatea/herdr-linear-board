@@ -1,0 +1,85 @@
+{
+  "version": 1,
+  "tasks": [
+    {
+      "id": "T-native-0",
+      "title": "長標題：唯讀看板驗收與可逆歸檔 長內容長內容長內容長內容長內容長內容長內容長內容長內容長內容長內容長內容",
+      "column": "todo",
+      "pane": "build-sol",
+      "model": "model-long-model-long-model-long-model-long-model-long-model-long-model-long-model-long-model-",
+      "reject_counts": {
+        "a": 2,
+        "b": 1
+      },
+      "_d": {
+        "history": [
+          {
+            "at": "2026-11-04T00:00:00Z",
+            "col": "todo",
+            "note": "native fixture"
+          }
+        ]
+      }
+    },
+    {
+      "id": "T-native-1",
+      "title": "長標題：唯讀看板驗收與可逆歸檔 長內容長內容長內容長內容長內容長內容長內容長內容長內容長內容長內容長內容",
+      "column": "build",
+      "pane": "build-sol",
+      "model": "model-long-model-long-model-long-model-long-model-long-model-long-model-long-model-long-model-",
+      "reject_counts": {
+        "a": 2,
+        "b": 1
+      },
+      "_d": {
+        "history": [
+          {
+            "at": "2026-11-04T00:00:00Z",
+            "col": "build",
+            "note": "native fixture"
+          }
+        ]
+      }
+    },
+    {
+      "id": "T-native-2",
+      "title": "長標題：唯讀看板驗收與可逆歸檔 長內容長內容長內容長內容長內容長內容長內容長內容長內容長內容長內容長內容",
+      "column": "pr",
+      "pane": "build-sol",
+      "model": "model-long-model-long-model-long-model-long-model-long-model-long-model-long-model-long-model-",
+      "reject_counts": {
+        "a": 2,
+        "b": 1
+      },
+      "_d": {
+        "history": [
+          {
+            "at": "2026-11-04T00:00:00Z",
+            "col": "pr",
+            "note": "native fixture"
+          }
+        ]
+      }
+    },
+    {
+      "id": "T-native-3",
+      "title": "長標題：唯讀看板驗收與可逆歸檔 長內容長內容長內容長內容長內容長內容長內容長內容長內容長內容長內容長內容",
+      "column": "merged",
+      "pane": "build-sol",
+      "model": "model-long-model-long-model-long-model-long-model-long-model-long-model-long-model-long-model-",
+      "reject_counts": {
+        "a": 2,
+        "b": 1
+      },
+      "_d": {
+        "history": [
+          {
+            "at": "2026-11-04T00:00:00Z",
+            "col": "merged",
+            "note": "native fixture"
+          }
+        ]
+      }
+    }
+  ]
+}

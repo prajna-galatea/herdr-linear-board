@@ -1,0 +1,52 @@
+{
+  "candidate": "083991ca7e8d5e2176d395ea74e8d06bc82d080a",
+  "clone": "/var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/T-board-build5-pinned-4uvzxb6x",
+  "git_status": "",
+  "tests": [
+    {
+      "command": "TZ=Asia/Taipei node --test",
+      "cwd": "/var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/T-board-build5-pinned-4uvzxb6x",
+      "head": "083991ca7e8d5e2176d395ea74e8d06bc82d080a",
+      "exit": 0,
+      "summary": [
+        "\u2714 taskFor leaves skill and instructions out when blank (0.052792ms)",
+        "\u2139 tests 55",
+        "\u2139 suites 0",
+        "\u2139 pass 55",
+        "\u2139 fail 0",
+        "\u2139 cancelled 0",
+        "\u2139 skipped 0",
+        "\u2139 todo 0",
+        "\u2139 duration_ms 94.753666"
+      ]
+    },
+    {
+      "command": "TZ=UTC node --test",
+      "cwd": "/var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/T-board-build5-pinned-4uvzxb6x",
+      "head": "083991ca7e8d5e2176d395ea74e8d06bc82d080a",
+      "exit": 0,
+      "summary": [
+        "\u2714 taskFor leaves skill and instructions out when blank (0.058167ms)",
+        "\u2139 tests 55",
+        "\u2139 suites 0",
+        "\u2139 pass 55",
+        "\u2139 fail 0",
+        "\u2139 cancelled 0",
+        "\u2139 skipped 0",
+        "\u2139 todo 0",
+        "\u2139 duration_ms 103.169667"
+      ]
+    }
+  ],
+  "hashes": {
+    "mods/herdr-board/mod.json": "1b2c049fbfd9459a70075c0313f8f3adab9788136efcbeb13c53d3adf318ee2f",
+    "mods/herdr-board/main.js": "450243761302ce888fc61deda55cdc6d9df4fd5a6fd37bceb966fac03a885c77",
+    "mods/herdr-board/state.js": "cebe894ce23d489b8d4a90f884638a18e795b44cb368128d073ae1124b83dc7f",
+    "mods/herdr-board/spinner.svg": "1844bedde800d69068cf7ac1128886ac23d0c5fb840fcf8944b6d604038f2f2d",
+    "mods/herdr-board/open.js": "046a895303c836e4fdfdb681be457625b4380c6a1d68812046b0d9d89671829f",
+    "tests/herdr-board.test.mjs": "59ed1e12a7079c9f39fd57f72fdcd9c99de210829d64f80a8b78522765b5a504",
+    "tests/herdr-board-runtime.test.mjs": "caddde14db2fe1d5e6f5f737a6b25e030eab9439669f686384fb4c94b75e1b5b",
+    "tests/board.test.mjs": "fcf8c17cc3ab3c629b87819f5069fecbf62a88bc0fdab2114efc0c530d5aaf34",
+    "tests/task.test.mjs": "95900f658a5d62371ea2152069328df336fc9fc1441cfd93eebb49cb6def704b"
+  }
+}

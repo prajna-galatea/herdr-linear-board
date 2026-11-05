@@ -1,0 +1,7 @@
+{
+  "candidate": "083991ca7e8d5e2176d395ea74e8d06bc82d080a",
+  "command": "TZ=UTC node --test --test-reporter=tap --test-name-pattern=\"detail shows stale\" tests/herdr-board-runtime.test.mjs",
+  "exit": 1,
+  "failed": 1,
+  "reason": "visible detail text fails /\u672a\u66f4\u65b0/ assertion"
+}

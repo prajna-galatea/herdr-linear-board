@@ -1,0 +1,20 @@
+{
+  "head": "e3d466bf27626bd6985c2b975178a39996f06959",
+  "copy": "/var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/T-board-build4-pinned-gcjun7an/repo",
+  "tests": {
+    "Asia/Taipei": 0,
+    "UTC": 0
+  },
+  "secret_scan": 0,
+  "hashes": {
+    "mods/herdr-board/main.js": "83a98a2c980efcde32126680f24ddbb2bd03dfdeac549a379b6076b026f55b6f",
+    "mods/herdr-board/mod.json": "1b2c049fbfd9459a70075c0313f8f3adab9788136efcbeb13c53d3adf318ee2f",
+    "mods/herdr-board/open.js": "046a895303c836e4fdfdb681be457625b4380c6a1d68812046b0d9d89671829f",
+    "mods/herdr-board/spinner.svg": "1844bedde800d69068cf7ac1128886ac23d0c5fb840fcf8944b6d604038f2f2d",
+    "mods/herdr-board/state.js": "cebe894ce23d489b8d4a90f884638a18e795b44cb368128d073ae1124b83dc7f",
+    "tests/board.test.mjs": "fcf8c17cc3ab3c629b87819f5069fecbf62a88bc0fdab2114efc0c530d5aaf34",
+    "tests/herdr-board-runtime.test.mjs": "910f4d384ffc8124651797562c013cf4467bd7b7086d845992d0f326740c1313",
+    "tests/herdr-board.test.mjs": "59ed1e12a7079c9f39fd57f72fdcd9c99de210829d64f80a8b78522765b5a504",
+    "tests/task.test.mjs": "95900f658a5d62371ea2152069328df336fc9fc1441cfd93eebb49cb6def704b"
+  }
+}
