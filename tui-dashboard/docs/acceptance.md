@@ -46,3 +46,16 @@ PTY 證據亦涵蓋 120×40／80×24／59×24、捲動、120→59→120 resize�
 五框架調查、README Q1–Q3 與 fixture 來源沿用已提交紀錄，本輪未重新連網查核星數、發版或現行 state，沒有將既有擷取聲稱為本輪即時查詢。PR 草稿更新為最終行為與 73 項驗證。
 
 沒有啟用看板、server、背景服務、正式流程或 Herdr 分頁，未執行 hc send、未推送、未合併、未建立遠端 PR。遠端交件由獲授權者處理 `herdr/t-board-2-tui → herdr-local-board`；本機提交與草稿不等於遠端 PR。
+
+
+# BUILD-6 補充驗收紀錄
+
+依據 REVIEW-5：未知或缺省 column 原先多餘地轉換 pane，對 `{ "toString": null }` 拋出 TypeError。刪除兩處未使用的 pane 轉換；測試先重現 29 pass、1 fail，修正後 30 pass、0 fail，見 build6-before.txt 與 build6-after.txt。真 CLI 使用假 state，五秒輪詢顯示 PANE、ready 與未知欄位警告，外部 writer 改回 tri 後仍 ready；終端輸出與原始資料見 terminal-poll.txt、pty-poll.json。
+
+受測程式提交 `eaed95820ebf7055df8de5cc29f3e6ad3d76d4f1`；後續只追加證據文件。18 個程式、測試、fixture 與依賴清單雜湊見 candidate-files.sha256。原始備份及雜湊在 `/private/tmp/t-board-build6-backup/`。環境 Node v26.7.0、npm 11.19.0、Python 3.14.7；Node 22 未實跑。
+
+`TUI_CAPTURE_EVIDENCE=1 TZ=Asia/Taipei node --test` 與 `TUI_CAPTURE_EVIDENCE=0 TZ=UTC node --test` 依序執行，各 74 pass、0 fail／cancelled／skipped，含原有 38 項；完整輸出 test-asia-taipei.txt、test-utc.txt。PTY 含 guard、畫面、復原與 Node 26 權限控制。
+
+隔離副本將 active 改為 todo，`node --test .../test/board.test.mjs` 得 28 pass、2 fail、exit 1；其中 DEMO-SPEC 映射斷言 actual false／expected true，另一項 TypeError 不計入有效映射證據。還原後 30 pass、exit 0；兩份 board.mjs SHA-256 均為 `9f98b25e604ad6337a490920c7a69d9bcd7e5e9d545c79c00bf20f596f5888f9`。diff、完整 raw JSON 與可讀輸出見 build6-mutation*。
+
+本輪未重新查詢調查星數、發版資料或正式 state；沿用既有來源證據。唯讀限制及其涵蓋範圍不變，不代表完整 OS 沙箱。未啟用看板、執行 hc send、推送、合併或建立遠端 PR。

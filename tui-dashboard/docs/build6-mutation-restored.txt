@@ -1,0 +1,48 @@
+用法: node tui-dashboard/src/cli.mjs [--state PATH] [--help]
+  --state PATH   覆寫 state.json 路徑（優先於 HERDR_BOARD_STATE）
+  HERDR_BOARD_STATE  第二優先
+  預設 ~/herdr-ops/board/state.json
+
+正式流程不含看板，啟用需 Pol哥 同意。請手動在獨立終端分頁執行。
+✔ projectBoard maps fixture tasks into four columns (1.200208ms)
+✔ needs_pol and unknown column priority (0.183333ms)
+✔ unknown or missing column ignores malformed pane and retains polling data (0.133708ms)
+✔ card fields follow T-board-1 simplified card contract (0.355ms)
+✔ reject sum ignores invalid entries (0.0515ms)
+✔ formatElapsed boundary seconds (0.718416ms)
+✔ formatElapsed rejects missing timezone and future times (0.087916ms)
+✔ sanitizeText strips control sequences (0.05775ms)
+✔ displayWidth treats CJK wider than ASCII (0.080083ms)
+✔ wrapText respects display width (0.108625ms)
+✔ resolveStatePath precedence and home expansion (0.092166ms)
+✔ cli --help exits 0 without reading state (0.328583ms)
+未知參數或 --state 缺少路徑
+未知參數或 --state 缺少路徑
+未知參數或 --state 缺少路徑
+需要可用的 TTY 終端與尺寸才能顯示看板
+✔ readStateFile and display state transitions (2.407708ms)
+✔ invalid version fails whole board (0.077708ms)
+✔ empty tasks still yields four visible columns (0.04175ms)
+✔ timezone invariance for elapsed label (0.037625ms)
+✔ all states preserve order and strict needs_pol priority (0.102208ms)
+✔ invalid task null is omitted with its own warning (0.051959ms)
+✔ invalid task 12 is omitted with its own warning (0.023958ms)
+✔ invalid task "bad" is omitted with its own warning (0.021375ms)
+✔ invalid task true is omitted with its own warning (0.024625ms)
+✔ invalid task [] is omitted with its own warning (0.02075ms)
+✔ invalid task {} is omitted with its own warning (0.030834ms)
+✔ invalid task {"id":12} is omitted with its own warning (0.026958ms)
+✔ invalid task {"id":" "} is omitted with its own warning (0.028292ms)
+✔ invalid task {"id":"\u001b[31m"} is omitted with its own warning (0.024375ms)
+✔ missing fields and terminal data are handled without hidden content (0.042792ms)
+✔ CLI rejects unknown or incomplete options and non-TTY (0.204625ms)
+✔ invalid version values fail through file read, preserve the snapshot and recover (6.213333ms)
+✔ null reject count is ignored with a warning on the projected card (0.08775ms)
+ℹ tests 30
+ℹ suites 0
+ℹ pass 30
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 61.682083
