@@ -1,0 +1,9 @@
+{
+  "directory": "/private/tmp/t-board5-mutation-sfi6ugur",
+  "command": "node --test tui-dashboard/test/board.test.mjs",
+  "failedExit": 1,
+  "restoredExit": 0,
+  "before": "a611de276e647c9d923ada27df5a815fcd7fd4a749c240669758b1f75fdb3005",
+  "after": "a611de276e647c9d923ada27df5a815fcd7fd4a749c240669758b1f75fdb3005",
+  "matchesCandidate": true
+}

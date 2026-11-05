@@ -1,0 +1,5 @@
+command: gitleaks dir /private/tmp/t-board-build6-gitleaks --redact --no-banner
+source: git ls-files --cached --others --exclude-standard -- tui-dashboard/
+files: 57; node_modules/cache/ignored files, .env/ids.env and this output excluded
+exit: 0
+scanned ~395143 bytes; no leaks found

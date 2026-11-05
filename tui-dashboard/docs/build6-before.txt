@@ -1,0 +1,64 @@
+用法: node tui-dashboard/src/cli.mjs [--state PATH] [--help]
+  --state PATH   覆寫 state.json 路徑（優先於 HERDR_BOARD_STATE）
+  HERDR_BOARD_STATE  第二優先
+  預設 ~/herdr-ops/board/state.json
+
+正式流程不含看板，啟用需 Pol哥 同意。請手動在獨立終端分頁執行。
+✔ projectBoard maps fixture tasks into four columns (1.191084ms)
+✔ needs_pol and unknown column priority (0.173542ms)
+✖ unknown or missing column ignores malformed pane and retains polling data (0.120292ms)
+✔ card fields follow T-board-1 simplified card contract (0.372625ms)
+✔ reject sum ignores invalid entries (0.051792ms)
+✔ formatElapsed boundary seconds (0.682833ms)
+✔ formatElapsed rejects missing timezone and future times (0.085833ms)
+✔ sanitizeText strips control sequences (0.053291ms)
+✔ displayWidth treats CJK wider than ASCII (0.086917ms)
+✔ wrapText respects display width (0.106125ms)
+✔ resolveStatePath precedence and home expansion (0.081083ms)
+✔ cli --help exits 0 without reading state (0.335291ms)
+未知參數或 --state 缺少路徑
+未知參數或 --state 缺少路徑
+未知參數或 --state 缺少路徑
+需要可用的 TTY 終端與尺寸才能顯示看板
+✔ readStateFile and display state transitions (2.809542ms)
+✔ invalid version fails whole board (0.059042ms)
+✔ empty tasks still yields four visible columns (0.036583ms)
+✔ timezone invariance for elapsed label (0.032875ms)
+✔ all states preserve order and strict needs_pol priority (0.093ms)
+✔ invalid task null is omitted with its own warning (0.043917ms)
+✔ invalid task 12 is omitted with its own warning (0.022667ms)
+✔ invalid task "bad" is omitted with its own warning (0.022292ms)
+✔ invalid task true is omitted with its own warning (0.022458ms)
+✔ invalid task [] is omitted with its own warning (0.022625ms)
+✔ invalid task {} is omitted with its own warning (0.02075ms)
+✔ invalid task {"id":12} is omitted with its own warning (0.022666ms)
+✔ invalid task {"id":" "} is omitted with its own warning (0.024167ms)
+✔ invalid task {"id":"\u001b[31m"} is omitted with its own warning (0.021625ms)
+✔ missing fields and terminal data are handled without hidden content (0.041459ms)
+✔ CLI rejects unknown or incomplete options and non-TTY (0.191208ms)
+✔ invalid version values fail through file read, preserve the snapshot and recover (6.449792ms)
+✔ null reject count is ignored with a warning on the projected card (0.077ms)
+ℹ tests 30
+ℹ suites 0
+ℹ pass 29
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 58.9115
+
+✖ failing tests:
+
+test at tui-dashboard/test/board.test.mjs:62:1
+✖ unknown or missing column ignores malformed pane and retains polling data (0.120292ms)
+  TypeError: Cannot convert object to primitive value
+      at String (<anonymous>)
+      at sanitizeText (file:///Users/pauuul/Documents/PJ/herdr-linear-board-tui/tui-dashboard/src/board.mjs:57:10)
+      at roleFromPane (file:///Users/pauuul/Documents/PJ/herdr-linear-board-tui/tui-dashboard/src/board.mjs:93:16)
+      at classifyTask (file:///Users/pauuul/Documents/PJ/herdr-linear-board-tui/tui-dashboard/src/board.mjs:114:22)
+      at taskToCard (file:///Users/pauuul/Documents/PJ/herdr-linear-board-tui/tui-dashboard/src/board.mjs:172:33)
+      at projectBoard (file:///Users/pauuul/Documents/PJ/herdr-linear-board-tui/tui-dashboard/src/board.mjs:207:53)
+      at TestContext.<anonymous> (file:///Users/pauuul/Documents/PJ/herdr-linear-board-tui/tui-dashboard/test/board.test.mjs:64:21)
+      at Test.runInAsyncScope (node:async_hooks:226:14)
+      at Test.run (node:internal/test_runner/test:1397:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:969:18)

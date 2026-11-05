@@ -1,0 +1,534 @@
+CASE poll; exit=0; modeRestored=true; sameFiles=true
+--- initial 120x40 ---
+待辦                          進行中（角色＋模型）          等把關                        已結案
+(空)                          (空)                          (空)                          (空)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+unavailable 無法載入：找不到狀態檔
+↑↓ 捲動 · PgUp/PgDn 換頁 · q 離開
+--- ready-one 120x40 ---
+待辦                          進行中（角色＋模型）          等把關                        已結案
+POLL                          (空)                          (空)                          (空)
+one
+待指派 · 未指定
+時間未知
+退回 0
+─
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ready 已更新 2026-11-05T08:15:15.741Z · /var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/tui-pty-ziltrrou/long-state-pat
+↑↓ 捲動 · PgUp/PgDn 換頁 · q 離開
+--- same-length-mtime-two 120x40 ---
+待辦                          進行中（角色＋模型）          等把關                        已結案
+POLL                          (空)                          (空)                          (空)
+two
+待指派 · 未指定
+時間未知
+退回 0
+─
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ready 已更新 2026-11-05T08:15:20.768Z · /var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/tui-pty-ziltrrou/long-state-pat
+↑↓ 捲動 · PgUp/PgDn 換頁 · q 離開
+--- atomic-tri 120x40 ---
+待辦                          進行中（角色＋模型）          等把關                        已結案
+POLL                          (空)                          (空)                          (空)
+tri
+待指派 · 未指定
+時間未知
+退回 0
+─
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ready 已更新 2026-11-05T08:15:25.787Z · /var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/tui-pty-ziltrrou/long-state-pat
+↑↓ 捲動 · PgUp/PgDn 換頁 · q 離開
+--- stale-json 120x40 ---
+待辦                          進行中（角色＋模型）          等把關                        已結案
+POLL                          (空)                          (空)                          (空)
+tri
+待指派 · 未指定
+時間未知
+退回 0
+─
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+stale 顯示舊資料：狀態檔不是合法的 JSON
+↑↓ 捲動 · PgUp/PgDn 換頁 · q 離開
+--- stale-schema 120x40 ---
+待辦                          進行中（角色＋模型）          等把關                        已結案
+POLL                          (空)                          (空)                          (空)
+tri
+待指派 · 未指定
+時間未知
+退回 0
+─
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+stale 顯示舊資料：狀態檔缺少 tasks 陣列
+↑↓ 捲動 · PgUp/PgDn 換頁 · q 離開
+--- stale-object-version 120x40 ---
+待辦                          進行中（角色＋模型）          等把關                        已結案
+POLL                          (空)                          (空)                          (空)
+tri
+待指派 · 未指定
+時間未知
+退回 0
+─
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+stale 顯示舊資料：不支援的 version（僅接受 1 或省略）
+↑↓ 捲動 · PgUp/PgDn 換頁 · q 離開
+--- recovered-version 120x40 ---
+待辦                          進行中（角色＋模型）          等把關                        已結案
+POLL                          (空)                          (空)                          (空)
+tri
+待指派 · 未指定
+時間未知
+退回 0
+─
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ready 已更新 2026-11-05T08:15:45.827Z · /var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/tui-pty-ziltrrou/long-state-pat
+↑↓ 捲動 · PgUp/PgDn 換頁 · q 離開
+--- unknown-pane 120x40 ---
+待辦                          進行中（角色＋模型）          等把關                        已結案
+PANE                          (空)                          (空)                          (空)
+（未命名）
+未知角色 · 未指定
+時間未知
+退回 0
+─
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ready · 警告 1：未知欄位「unknown」的任務已放進待辦 · ready 已更新 2026-11-05T08:15:50.831Z · /var/folders/tl/j59n3_9x3g
+↑↓ 捲動 · PgUp/PgDn 換頁 · q 離開
+--- recovered-pane 120x40 ---
+待辦                          進行中（角色＋模型）          等把關                        已結案
+POLL                          (空)                          (空)                          (空)
+tri
+待指派 · 未指定
+時間未知
+退回 0
+─
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ready 已更新 2026-11-05T08:15:55.836Z · /var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/tui-pty-ziltrrou/long-state-pat
+↑↓ 捲動 · PgUp/PgDn 換頁 · q 離開
+--- stale-unreadable 120x40 ---
+待辦                          進行中（角色＋模型）          等把關                        已結案
+POLL                          (空)                          (空)                          (空)
+tri
+待指派 · 未指定
+時間未知
+退回 0
+─
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+stale 顯示舊資料：無法讀取狀態檔
+↑↓ 捲動 · PgUp/PgDn 換頁 · q 離開
+--- stale-missing 120x40 ---
+待辦                          進行中（角色＋模型）          等把關                        已結案
+POLL                          (空)                          (空)                          (空)
+tri
+待指派 · 未指定
+時間未知
+退回 0
+─
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+stale 顯示舊資料：找不到狀態檔
+↑↓ 捲動 · PgUp/PgDn 換頁 · q 離開
+--- recovered-empty 120x40 ---
+待辦                          進行中（角色＋模型）          等把關                        已結案
+(空)                          (空)                          (空)                          (空)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ready 已更新 2026-11-05T08:16:10.851Z · /var/folders/tl/j59n3_9x3gj_3t0pd7pwmcdm0000gn/T/tui-pty-ziltrrou/long-state-pat
+↑↓ 捲動 · PgUp/PgDn 換頁 · q 離開

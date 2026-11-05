@@ -1,0 +1,1 @@
+{"controls":13,"violations":[{"kind":"fs.openSync(write)"},{"kind":"fs.writeSync"},{"kind":"fs.writeFile"},{"kind":"fsp.writeFile"},{"kind":"FileHandle.write"},{"kind":"fs.createWriteStream"},{"kind":"fs.renameSync"},{"kind":"child_process.spawn"},{"kind":"net.connect"},{"kind":"http.get"},{"kind":"dns.lookup"},{"kind":"fetch"},{"kind":"WebSocket"}]}

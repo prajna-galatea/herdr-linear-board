@@ -1,0 +1,46 @@
+✔ parseSync reads issues from the tool results (0.655917ms)
+✔ a state without an answer fails the sync (0.201833ms)
+✔ parseRepos expands ~ and tolerates a missing or broken file (0.359917ms)
+✔ filterIssues by id or title (0.093292ms)
+✔ projectsOf counts projects, biggest first and no project last (0.108334ms)
+✔ filterIssues narrows by project along with the text (0.0615ms)
+✔ boardColumns orders states and puts urgent issues first (0.156833ms)
+✔ limitCards shares the limit out so no column starves (0.120792ms)
+✔ ago takes an ISO date or a timestamp (0.652125ms)
+✔ safeUrl lets only https through (0.13725ms)
+✔ parseSyncResult reads a finished sync and reports a failed one (0.18475ms)
+✔ issueAgents finds the agent by tab, space or branch, the most urgent first (0.151125ms)
+✔ poll reloads changed content despite identical modification time (20.820041ms)
+✔ dispatch and gate write unique request files without touching state.json (28.761541ms)
+✔ parseState reads a task and rejects broken JSON without inventing a board (0.633666ms)
+✔ unknown columns land in 待辦 and every column stays, in order (0.446416ms)
+✔ taskLine is one line, keeps the id, title and result paths, and strips controls (0.210584ms)
+✔ gate action requests a lead notification and never mentions git (0.446042ms)
+✔ the example file has one example task in every column (0.205042ms)
+✔ dispatch uses configured commands and an existing pane is an idle send (0.190417ms)
+✔ config expands ~ and validates roles (0.191958ms)
+✔ requests carry unknown column hints and pending files are associated with tasks (0.13675ms)
+✔ a launch that did not deliver the first message is not success (0.121083ms)
+✔ only a local absolute path or a home path can be opened (0.303ms)
+✔ an unknown column is drawn in 待辦 and still offers 派工 (0.136ms)
+✔ filter matches id or title, and an agent matches the pane name then the task id (0.213084ms)
+✔ branchFor uses Linear's suggested branch (0.788916ms)
+✔ branchFor falls back to the identifier and title (0.174542ms)
+✔ folderName turns a branch into one path segment (0.096ms)
+✔ taskFor is one line with the issue and its rules (0.16325ms)
+✔ taskFor asks for subagents only when chosen (0.057708ms)
+✔ taskFor shortens long descriptions (0.067708ms)
+✔ taskFor works without a description (0.048209ms)
+✔ branchProblem refuses names git would read as options (0.051542ms)
+✔ worktreeFolder never lands on the repo's worktrees folder itself (0.084042ms)
+✔ taskFor strips control characters from Linear's text (0.089667ms)
+✔ taskFor starts with the skill and adds the instructions (0.067ms)
+✔ taskFor leaves skill and instructions out when blank (0.043208ms)
+ℹ tests 38
+ℹ suites 0
+ℹ pass 38
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 99.520667

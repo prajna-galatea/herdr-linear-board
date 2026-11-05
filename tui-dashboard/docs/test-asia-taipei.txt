@@ -1,0 +1,92 @@
+✔ parseSync reads issues from the tool results (0.682875ms)
+✔ a state without an answer fails the sync (0.209667ms)
+✔ parseRepos expands ~ and tolerates a missing or broken file (0.384166ms)
+✔ filterIssues by id or title (0.09575ms)
+✔ projectsOf counts projects, biggest first and no project last (0.115166ms)
+✔ filterIssues narrows by project along with the text (0.06225ms)
+✔ boardColumns orders states and puts urgent issues first (0.171292ms)
+✔ limitCards shares the limit out so no column starves (0.114083ms)
+✔ ago takes an ISO date or a timestamp (0.572917ms)
+✔ safeUrl lets only https through (0.144875ms)
+✔ parseSyncResult reads a finished sync and reports a failed one (0.187375ms)
+✔ issueAgents finds the agent by tab, space or branch, the most urgent first (0.142333ms)
+✔ poll reloads changed content despite identical modification time (19.612083ms)
+✔ dispatch and gate write unique request files without touching state.json (30.751667ms)
+✔ parseState reads a task and rejects broken JSON without inventing a board (0.626833ms)
+✔ unknown columns land in 待辦 and every column stays, in order (0.430208ms)
+✔ taskLine is one line, keeps the id, title and result paths, and strips controls (0.205541ms)
+✔ gate action requests a lead notification and never mentions git (0.747708ms)
+✔ the example file has one example task in every column (0.389167ms)
+✔ dispatch uses configured commands and an existing pane is an idle send (0.205ms)
+✔ config expands ~ and validates roles (0.189209ms)
+✔ requests carry unknown column hints and pending files are associated with tasks (0.141084ms)
+✔ a launch that did not deliver the first message is not success (0.104458ms)
+✔ only a local absolute path or a home path can be opened (0.246666ms)
+✔ an unknown column is drawn in 待辦 and still offers 派工 (0.518625ms)
+✔ filter matches id or title, and an agent matches the pane name then the task id (0.248084ms)
+✔ branchFor uses Linear's suggested branch (0.812875ms)
+✔ branchFor falls back to the identifier and title (0.203792ms)
+✔ folderName turns a branch into one path segment (0.104792ms)
+✔ taskFor is one line with the issue and its rules (0.17375ms)
+✔ taskFor asks for subagents only when chosen (0.063916ms)
+✔ taskFor shortens long descriptions (0.069708ms)
+✔ taskFor works without a description (0.04675ms)
+✔ branchProblem refuses names git would read as options (0.054416ms)
+✔ worktreeFolder never lands on the repo's worktrees folder itself (0.065959ms)
+✔ taskFor strips control characters from Linear's text (0.104667ms)
+✔ taskFor starts with the skill and adds the instructions (0.0685ms)
+✔ taskFor leaves skill and instructions out when blank (0.04375ms)
+用法: node tui-dashboard/src/cli.mjs [--state PATH] [--help]
+  --state PATH   覆寫 state.json 路徑（優先於 HERDR_BOARD_STATE）
+  HERDR_BOARD_STATE  第二優先
+  預設 ~/herdr-ops/board/state.json
+
+正式流程不含看板，啟用需 Pol哥 同意。請手動在獨立終端分頁執行。
+✔ projectBoard maps fixture tasks into four columns (1.380375ms)
+✔ needs_pol and unknown column priority (0.195667ms)
+✔ unknown or missing column ignores malformed pane and retains polling data (0.509792ms)
+✔ card fields follow T-board-1 simplified card contract (0.194625ms)
+✔ reject sum ignores invalid entries (0.072125ms)
+✔ formatElapsed boundary seconds (0.594667ms)
+✔ formatElapsed rejects missing timezone and future times (0.095625ms)
+✔ sanitizeText strips control sequences (0.055875ms)
+✔ displayWidth treats CJK wider than ASCII (0.085125ms)
+✔ wrapText respects display width (0.111417ms)
+✔ resolveStatePath precedence and home expansion (0.100459ms)
+✔ cli --help exits 0 without reading state (0.353667ms)
+未知參數或 --state 缺少路徑
+未知參數或 --state 缺少路徑
+未知參數或 --state 缺少路徑
+需要可用的 TTY 終端與尺寸才能顯示看板
+✔ readStateFile and display state transitions (2.783459ms)
+✔ invalid version fails whole board (0.087292ms)
+✔ empty tasks still yields four visible columns (0.04225ms)
+✔ timezone invariance for elapsed label (0.038416ms)
+✔ all states preserve order and strict needs_pol priority (0.136333ms)
+✔ invalid task null is omitted with its own warning (0.069625ms)
+✔ invalid task 12 is omitted with its own warning (0.031125ms)
+✔ invalid task "bad" is omitted with its own warning (0.026042ms)
+✔ invalid task true is omitted with its own warning (0.034917ms)
+✔ invalid task [] is omitted with its own warning (0.025084ms)
+✔ invalid task {} is omitted with its own warning (0.021542ms)
+✔ invalid task {"id":12} is omitted with its own warning (0.027041ms)
+✔ invalid task {"id":" "} is omitted with its own warning (0.031833ms)
+✔ invalid task {"id":"\u001b[31m"} is omitted with its own warning (0.042625ms)
+✔ missing fields and terminal data are handled without hidden content (0.050375ms)
+✔ CLI rejects unknown or incomplete options and non-TTY (0.217583ms)
+✔ invalid version values fail through file read, preserve the snapshot and recover (6.467375ms)
+✔ null reject count is ignored with a warning on the projected card (0.100333ms)
+✔ unknown column with needs_pol and string rejects maps to todo with warnings (0.718333ms)
+✔ I/O guard positive controls run in an isolated subprocess (50.883084ms)
+✔ read loop sees file replace with same byte length (4.009959ms)
+✔ real PTY: four columns, 80/59 widths, scrolling, resize and exit restoration (21381.012667ms)
+✔ real CLI polling: unavailable, same length/mtime, atomic replace, stale and recovery (65579.387125ms)
+✔ Node 26 permission mode cross-check forbids file writes, child processes and network (3020.708667ms)
+ℹ tests 74
+ℹ suites 0
+ℹ pass 74
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 90053.85

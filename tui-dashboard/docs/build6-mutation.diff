@@ -1,0 +1,13 @@
+diff --git a/tui-dashboard/src/board.mjs b/private/tmp/t-board-build6-mutation/tui-dashboard/src/board.mjs
+index 176215c..80633e7 100644
+--- a/tui-dashboard/src/board.mjs
++++ b/private/tmp/t-board-build6-mutation/tui-dashboard/src/board.mjs
+@@ -124,7 +124,7 @@ export function classifyTask(raw, warnings) {
+   }
+
+   if (ACTIVE_COLUMNS.has(column)) {
+-    return { bucket: "active", roleLabel: ROLE_BY_COLUMN[column] };
++    return { bucket: "todo", roleLabel: ROLE_BY_COLUMN[column] };
+   }
+
+   if (GATE_COLUMNS.has(column)) {
